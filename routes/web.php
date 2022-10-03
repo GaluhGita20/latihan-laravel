@@ -158,6 +158,15 @@ Route::middleware('auth')
                                     Route::grid('district', 'DistrictController');
                                 }
                             );
+                            
+                            Route::get('prioritas-aset/import', 'PrioritasAsetController@import')->name('prioritas-aset.import');
+                            Route::post('prioritas-aset/importSave', 'PrioritasAsetController@importSave')->name('prioritas-aset.importSave');
+                            Route::grid('prioritas-aset', 'PrioritasAsetController');
+
+                            Route::get('tipe-maintenance/import', 'TipeMaintenanceController@import')->name('tipe-maintenance.import');
+                            Route::post('tipe-maintenance/importSave', 'TipeMaintenanceController@importSave')->name('tipe-maintenance.importSave');
+                            Route::grid('tipe-maintenance', 'TipeMaintenanceController');
+
                     }
                 );
 
