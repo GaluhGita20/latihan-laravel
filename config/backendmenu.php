@@ -104,6 +104,11 @@ return [
                 ]
             ],
             [
+                'name' => 'master.aset',
+                'title' => 'Aset',
+                'url' => '/master/aset',
+            ],
+            [
                 'name' => 'master.prioritas-aset',
                 'title' => 'Prioritas Aset',
                 'url' => '/master/prioritas-aset',
