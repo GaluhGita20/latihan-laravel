@@ -131,14 +131,7 @@ Route::middleware('auth')
                                 }
                             );
 
-                        Route::namespace('Example')
-                            ->group(
-                                function () {
-                                    Route::get('example/import', 'ExampleController@import')->name('example.import');
-                                    Route::post('example/importSave', 'ExampleController@importSave')->name('example.importSave');
-                                    Route::grid('example', 'ExampleController');
-                                }
-                            );
+
 
                         Route::namespace('Geo')
                             ->name('geo.')
@@ -158,6 +151,14 @@ Route::middleware('auth')
                                     Route::grid('district', 'DistrictController');
                                 }
                             );
+
+                                    Route::get('instruksi-kerja/import', 'InstruksiKerjaController@import')->name('instruksi-kerja.import');
+                                    Route::post('instruksi-kerja/importSave', 'InstruksiKerjaController@importSave')->name('instruksi-kerja.importSave');
+                                    Route::grid('instruksi-kerja', 'InstruksiKerjaController');
+
+                                    Route::get('sub-lokasi/import', 'SubLokasiController@import')->name('sub-lokasi.import');
+                                    Route::post('sub-lokasi/importSave', 'SubLokasiController@importSave')->name('sub-lokasi.importSave');
+                                    Route::grid('sub-lokasi', 'SubLokasiController');
                     }
                 );
 
