@@ -103,6 +103,16 @@ return [
                     ],
                 ]
             ],
+            [
+                'name' => 'master.prioritas-aset',
+                'title' => 'Prioritas Aset',
+                'url' => '/master/prioritas-aset',
+            ],
+            [
+                'name' => 'master.tipe-maintenance',
+                'title' => 'Tipe Maintenance',
+                'url' => '/master/tipe-maintenance',
+            ],
         ]
     ],
 
