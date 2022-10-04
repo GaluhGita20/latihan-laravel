@@ -103,13 +103,11 @@ return [
                     ],
                 ]
             ],
-
             [
                 'name' => 'master.kondisi-aset',
                 'title' => 'Kondisi Aset',
                 'url' => '/master/kondisi-aset',
             ],
-
             [
                 'name' => 'master.team',
                 'title' => 'Team/Group',
@@ -120,6 +118,15 @@ return [
                 'name' => 'master.vendor-aset',
                 'title' => 'Vendor Aset',
                 'url' => '/master/vendor-aset',
+            [
+                'name' => 'master.prioritas-aset',
+                'title' => 'Prioritas Aset',
+                'url' => '/master/prioritas-aset',
+            ],
+            [
+                'name' => 'master.tipe-maintenance',
+                'title' => 'Tipe Maintenance',
+                'url' => '/master/tipe-maintenance',
             ],
         ]
     ],
