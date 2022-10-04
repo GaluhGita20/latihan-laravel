@@ -4,7 +4,7 @@ namespace App\Models\Setting\Globals;
 
 use App\Models\Auth\Role;
 use App\Models\Auth\User;
-use App\Models\Setting\Org\Position;
+use App\Models\Master\Org\Position;
 use App\Models\Model;
 
 class Approval extends Model

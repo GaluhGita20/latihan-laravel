@@ -4,16 +4,15 @@ namespace App\Http\Controllers\Master;
 
 use App\Exports\GenerateExport;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Master\AsetRequest;
-use App\Models\Master\Aset;
+use App\Http\Requests\Master\KondisiAsetRequest;
 use App\Models\Master\KondisiAset;
 use Illuminate\Http\Request;
 
-class AsetController extends Controller
+class KondisiAsetController extends Controller
 {
-    protected $module   = 'master.aset';
-    protected $routes   = 'master.aset';
-    protected $views    = 'master.aset';
+    protected $module   = 'master.kondisi-aset';
+    protected $routes   = 'master.kondisi-aset';
+    protected $views    = 'master.kondisi-aset';
     protected $perms    = 'master';
 
     public function __construct()
@@ -25,10 +24,10 @@ class AsetController extends Controller
                 'views' => $this->views,
                 'perms' => $this->perms,
                 'permission' => $this->perms . '.view',
-                'title' => 'Aset',
+                'title' => 'Kondisi Aset',
                 'breadcrumb' => [
                     'Data Master' => route($this->routes . '.index'),
-                    'Aset' => route($this->routes . '.index'),
+                    'Kondisi Aset' => route($this->routes . '.index'),
                 ]
             ]
         );
@@ -41,8 +40,7 @@ class AsetController extends Controller
                 'tableStruct' => [
                     'datatable_1' => [
                         $this->makeColumn('name:num'),
-                        $this->makeColumn('name:code|label:Id Aset|className:text-left'),
-                        $this->makeColumn('name:name|label:Nama Aset|className:text-left'),
+                        $this->makeColumn('name:name|label:Kondisi Aset|className:text-left'),
                         $this->makeColumn('name:updated_by'),
                         $this->makeColumn('name:action'),
                     ],
@@ -55,10 +53,7 @@ class AsetController extends Controller
     public function grid()
     {
         $user = auth()->user();
-        $records = Aset::with('kondisiAset')
-        ->grid()
-        ->filters()
-        ->dtGet();
+        $records = KondisiAset::grid()->filters()->dtGet();
 
         return \DataTables::of($records)
             ->addColumn(
@@ -96,38 +91,31 @@ class AsetController extends Controller
 
     public function create()
     {
-        $KONDISIASET = KondisiAset::orderBy('name', 'ASC')->get();
-        return $this->render(
-            $this->views . '.create',
-            compact('KONDISIASET')
-        );
+        return $this->render($this->views . '.create');
     }
 
-    public function store(AsetRequest $request)
+    public function store(KondisiAsetRequest $request)
     {
-        $record = new Aset;
+        $record = new KondisiAset;
         return $record->handleStoreOrUpdate($request);
     }
 
-    public function show(Aset $record)
+    public function show(KondisiAset $record)
     {
         return $this->render($this->views . '.show', compact('record'));
     }
 
-    public function edit(Aset $record)
+    public function edit(KondisiAset $record)
     {
-        $KONDISIASET = KondisiAset::orderBy('name', 'ASC')->get();
-        return $this->render(
-            $this->views . '.edit',
-            compact('record', 'KONDISIASET')
-        );    }
+        return $this->render($this->views . '.edit', compact('record'));
+    }
 
-    public function update(AsetRequest $request, Aset $record)
+    public function update(KondisiAsetRequest $request, KondisiAset $record)
     {
         return $record->handleStoreOrUpdate($request);
     }
 
-    public function destroy(Aset $record)
+    public function destroy(KondisiAset $record)
     {
         return $record->handleDestroy();
     }

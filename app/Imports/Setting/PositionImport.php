@@ -2,8 +2,8 @@
 
 namespace App\Imports\Setting;
 
-use App\Models\Setting\Org\Struct;
-use App\Models\Setting\Org\Position;
+use App\Models\Master\Org\Struct;
+use App\Models\Master\Org\Position;
 use Illuminate\Support\Collection;
 use Maatwebsite\Excel\Concerns\ToCollection;
 use Maatwebsite\Excel\Concerns\WithStartRow;
@@ -22,10 +22,10 @@ class PositionImport implements ToCollection, WithStartRow
         }
 
         // Maping Data
-        foreach ($collection as $rw => $row) 
+        foreach ($collection as $rw => $row)
         {
             if ($rw == 0) continue;
-            
+
             $name       = trim($row[1] ?? '');
             $boc        = trim($row[2] ?? '');
             $bod        = trim($row[3] ?? '');

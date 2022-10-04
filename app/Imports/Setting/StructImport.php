@@ -2,7 +2,7 @@
 
 namespace App\Imports\Setting;
 
-use App\Models\Setting\Org\Struct;
+use App\Models\Master\Org\Struct;
 use Illuminate\Support\Collection;
 use Maatwebsite\Excel\Concerns\ToCollection;
 use Maatwebsite\Excel\Concerns\WithStartRow;
@@ -29,7 +29,7 @@ class StructImport implements ToCollection, WithStartRow
 
         $root = Struct::root()->first();
         // Maping Data
-        foreach ($collection as $rw => $row) 
+        foreach ($collection as $rw => $row)
         {
             if ($rw == 0) continue;
 
