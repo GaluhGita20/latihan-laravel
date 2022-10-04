@@ -158,6 +158,14 @@ Route::middleware('auth')
                                     Route::grid('district', 'DistrictController');
                                 }
                             );
+
+                            Route::get('kondisi-aset/import', 'KondisiAsetController@import')->name('kondisi-aset.import');
+                            Route::post('kondisi-aset/importSave', 'KondisiAsetController@importSave')->name('kondisi-aset.importSave');
+                            Route::grid('kondisi-aset', 'KondisiAsetController');
+
+                            Route::get('team/import', 'TeamController@import')->name('team.import');
+                            Route::post('team/importSave', 'TeamController@importSave')->name('team.importSave');
+                            Route::grid('team', 'TeamController');
                             
                             Route::get('prioritas-aset/import', 'PrioritasAsetController@import')->name('prioritas-aset.import');
                             Route::post('prioritas-aset/importSave', 'PrioritasAsetController@importSave')->name('prioritas-aset.importSave');
