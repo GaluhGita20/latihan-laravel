@@ -113,6 +113,18 @@ Route::middleware('auth')
                                     Route::grid('root', 'RootController');
                                     Route::grid('boc', 'BocController');
 
+                                    Route::get('bod/import', 'BodController@import')->name('bod.import');
+                                    Route::post('bod/importSave', 'BodController@importSave')->name('bod.importSave');
+                                    Route::grid('bod', 'BodController');
+
+                                    Route::get('division/import', 'DivisionController@import')->name('division.import');
+                                    Route::post('division/importSave', 'DivisionController@importSave')->name('division.importSave');
+                                    Route::grid('division', 'DivisionController');
+
+                                    Route::get('department/import', 'DepartmentController@import')->name('department.import');
+                                    Route::post('department/importSave', 'DepartmentController@importSave')->name('department.importSave');
+                                    Route::grid('department', 'DepartmentController');
+
                                     Route::get('unit/import', 'UnitController@import')->name('unit.import');
                                     Route::post('unit/importSave', 'UnitController@importSave')->name('unit.importSave');
                                     Route::grid('unit', 'UnitController');
@@ -158,6 +170,9 @@ Route::middleware('auth')
                                     Route::grid('district', 'DistrictController');
                                 }
                             );
+                                    Route::get('failure-code/import', 'FailureCodeController@import')->name('failure-code.import');
+                                    Route::post('failure-code/importSave', 'FailureCodeController@importSave')->name('failure-code.importSave');
+                                    Route::grid('failure-code', 'FailureCodeController');
                     }
                 );
 
