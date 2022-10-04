@@ -7,8 +7,8 @@ use App\Models\Auth\User;
 use App\Models\Master\Geo\City;
 use App\Models\Setting\Globals\Notification;
 use App\Models\Setting\Globals\TempFiles;
-use App\Models\Setting\Org\Struct;
-use App\Models\Setting\Org\Position;
+use App\Models\Master\Org\Struct;
+use App\Models\Master\Org\Position;
 use App\Models\Master\Pegawai\Pegawai;
 use Illuminate\Http\Request;
 
