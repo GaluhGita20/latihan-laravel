@@ -128,6 +128,7 @@ Route::middleware('auth')
                                     Route::get('position/import', 'PositionController@import')->name('position.import');
                                     Route::post('position/importSave', 'PositionController@importSave')->name('position.importSave');
                                     Route::grid('position', 'PositionController');
+
                                 }
                             );
 
@@ -137,6 +138,7 @@ Route::middleware('auth')
                                     Route::get('example/import', 'ExampleController@import')->name('example.import');
                                     Route::post('example/importSave', 'ExampleController@importSave')->name('example.importSave');
                                     Route::grid('example', 'ExampleController');
+
                                 }
                             );
 
@@ -158,6 +160,13 @@ Route::middleware('auth')
                                     Route::grid('district', 'DistrictController');
                                 }
                             );
+                                    Route::get('biaya-lain/import', 'BiayaLainController@import')->name('biaya-lain.import');
+                                    Route::post('biaya-lain/importSave', 'BiayaLainController@importSave')->name('biaya-lain.importSave');
+                                    Route::grid('biaya-lain', 'BiayaLainController');
+
+                                    Route::get('status-aset/import', 'StatusAsetController@import')->name('status-aset.import');
+                                    Route::post('status-aset/importSave', 'StatusAsetController@importSave')->name('status-aset.importSave');
+                                    Route::grid('status-aset', 'StatusAsetController');
                     }
                 );
 
