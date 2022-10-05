@@ -23,16 +23,16 @@ class CreateRefAset extends Migration
             $table->commonFields();
 
             $table->foreign('status_aset_id')
-                    ->on('ref_status_aset')
-                    ->references('id');
+                ->on('ref_status_aset')
+                ->references('id');
 
             $table->foreign('kondisi_aset_id')
-                    ->on('ref_kondisi_aset')
-                    ->references('id');  
+                ->on('ref_kondisi_aset')
+                ->references('id');
 
             // $table->foreign('sub_lokasi_id')
             //         ->on('ref_sub_lokasi')
-            //         ->references('id');         
+            //         ->references('id');
         });
     }
 
