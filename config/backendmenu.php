@@ -50,19 +50,19 @@ return [
                         'url' => '/master/org/root'
                     ],
                     [
-                        'name' => 'master.org.unit',
-                        'title' => 'Unit Pelaksana',
-                        'url' => '/master/org/unit',
+                        'name' => 'master.org.bod',
+                        'title' => 'Direksi',
+                        'url' => '/master/org/bod'
                     ],
                     [
-                        'name' => 'master.org.bagian',
-                        'title' => 'Bagian',
-                        'url' => '/master/org/bagian',
+                        'name' => 'master.org.division',
+                        'title' => 'Divisi',
+                        'url' => '/master/org/division'
                     ],
                     [
-                        'name' => 'master.org.subbagian',
-                        'title' => 'Subbagian',
-                        'url' => '/master/org/subbagian',
+                        'name' => 'master.org.department',
+                        'title' => 'Departement',
+                        'url' => '/master/org/department'
                     ],
                     [
                         'name' => 'master.org.position',
@@ -109,6 +109,21 @@ return [
                 'url' => '/master/aset',
             ],
             [
+                'name' => 'master.failure-code',
+                'title' => 'Failure Code',
+                'url' => '/master/failure-code',
+            ],
+            [
+                'name' => 'master.biaya-lain',
+                'title' => 'Biaya Lain',
+                'url' => '/master/biaya-lain',
+            ],
+            [
+                'name' => 'master.status-aset',
+                'title' => 'Status Aset',
+                'url' => '/master/status-aset',
+            ],
+            [
                 'name' => 'master.kondisi-aset',
                 'title' => 'Kondisi Aset',
                 'url' => '/master/kondisi-aset',
@@ -117,6 +132,12 @@ return [
                 'name' => 'master.team',
                 'title' => 'Team/Group',
                 'url' => '/master/team',
+            ],
+
+            [
+                'name' => 'master.vendor-aset',
+                'title' => 'Vendor Aset',
+                'url' => '/master/vendor-aset',
             ],
             [
                 'name' => 'master.prioritas-aset',
@@ -158,5 +179,6 @@ return [
                 'url' => '/setting/activity',
             ],
         ]
+        
     ],
 ];
