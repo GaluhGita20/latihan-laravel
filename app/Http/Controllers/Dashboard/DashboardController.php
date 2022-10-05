@@ -8,7 +8,7 @@ use App\Models\Conducting\Kka\KkaSampleDetail;
 use App\Models\Master\Ict\IctObject;
 use App\Models\Preparation\Assignment\Assignment;
 use App\Models\Rkia\Summary;
-use App\Models\Setting\Org\Struct;
+use App\Models\Master\Org\Struct;
 use Illuminate\Http\Request;
 
 class DashboardController extends Controller
