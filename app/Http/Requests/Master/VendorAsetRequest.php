@@ -10,15 +10,15 @@ class VendorAsetRequest extends FormRequest
     {
         $id = $this->record->id ?? 0;
         $rules = [
-            'city_id' => 'required',
-            'code'        => 'required|string|max:12|unique:ref_vendor_aset,code,'.$id,
-            'name'        => 'required|string|max:255|unique:ref_vendor_aset,name,'.$id,
-            'alamat'        => 'required|string||unique:ref_vendor_aset,alamat,'.$id,
-            'kodepos'        => 'required|string|max:255|unique:ref_vendor_aset,kodepos,'.$id,
-            'telepon'        => 'required|string|max:255|unique:ref_vendor_aset,telepon,'.$id,
-            'email'        => 'required|string|max:255|unique:ref_vendor_aset,email,'.$id,
-            'pic'        => 'required|string|max:255|unique:ref_vendor_aset,pic,'.$id,
-            'website'        => 'required|string|max:255|unique:ref_vendor_aset,website,'.$id,
+            'city_id'       => 'required',
+            'code'          => 'required|string|max:12|unique:ref_vendor_aset,code,'.$id,
+            'name'          => 'required|string|max:255|unique:ref_vendor_aset,name,'.$id,
+            'alamat'        => 'required|string',
+            'kodepos'       => 'required|string',
+            'telepon'       => 'required|string',
+            'email'         => 'required|string',
+            'pic'           => 'required|string',
+            'website'       => 'required|string',
         ];
 
         return $rules;
