@@ -104,9 +104,34 @@ return [
                 ]
             ],
             [
+                'name' => 'master.instruksi-kerja',
+                'title' => 'Instruksi Kerja',
+                'url' => '/master/instruksi-kerja',
+            ],
+            [
+                'name' => 'master.sub-lokasi',
+                'title' => 'Sub Lokasi',
+                'url' => '/master/sub-lokasi',
+            ],
+            [
+                'name' => 'master.aset',
+                'title' => 'Aset',
+                'url' => '/master/aset',
+            ],
+            [
                 'name' => 'master.failure-code',
                 'title' => 'Failure Code',
                 'url' => '/master/failure-code',
+            ],
+            [
+                'name' => 'master.biaya-lain',
+                'title' => 'Biaya Lain',
+                'url' => '/master/biaya-lain',
+            ],
+            [
+                'name' => 'master.status-aset',
+                'title' => 'Status Aset',
+                'url' => '/master/status-aset',
             ],
             [
                 'name' => 'master.kondisi-aset',
@@ -117,6 +142,12 @@ return [
                 'name' => 'master.team',
                 'title' => 'Team/Group',
                 'url' => '/master/team',
+            ],
+
+            [
+                'name' => 'master.vendor-aset',
+                'title' => 'Vendor Aset',
+                'url' => '/master/vendor-aset',
             ],
             [
                 'name' => 'master.prioritas-aset',
@@ -158,5 +189,6 @@ return [
                 'url' => '/setting/activity',
             ],
         ]
+        
     ],
 ];

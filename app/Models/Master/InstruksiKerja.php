@@ -5,12 +5,14 @@ namespace App\Models\Master;
 use App\Imports\Master\ExampleImport;
 use App\Models\Model;
 use App\Models\Setting\Globals\TempFiles;
+use App\Models\Master\Org\Struct;
 
-class KondisiAset extends Model
+class InstruksiKerja extends Model
 {
-    protected $table = 'ref_kondisi_aset';
+    protected $table = 'ref_instruksi_kerja';
 
     protected $fillable = [
+        'struct_id',
         'name',
     ];
 
@@ -25,11 +27,11 @@ class KondisiAset extends Model
     /*******************************
      ** RELATION
      *******************************/
-    public function aset()
+    
+    public function struct()
     {
-        return $this->hasMany(Aset::class, 'kondisi_aset_id');
+        return $this->belongsTo(Struct::class, 'struct-id');
     }
-
     /*******************************
      ** SCOPE
      *******************************/
@@ -40,7 +42,7 @@ class KondisiAset extends Model
 
     public function scopeFilters($query)
     {
-        return $query->filterBy(['name']);
+        return $query->filterBy(['code', 'name']);
     }
 
     /*******************************
@@ -115,7 +117,7 @@ class KondisiAset extends Model
      *******************************/
     public function canDeleted()
     {
-        // if($this->moduleRelations()->exists()) return false;
+        // if($this->districts()->exists()) return false;
 
         return true;
     }

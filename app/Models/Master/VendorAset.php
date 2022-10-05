@@ -5,13 +5,24 @@ namespace App\Models\Master;
 use App\Imports\Master\ExampleImport;
 use App\Models\Model;
 use App\Models\Setting\Globals\TempFiles;
+use App\Models\Master\Geo\City;
+use App\Models\Master\Geo\Province;
 
-class KondisiAset extends Model
+class VendorAset extends Model
 {
-    protected $table = 'ref_kondisi_aset';
+    protected $table = 'ref_vendor_aset';
 
     protected $fillable = [
+        'city_id',
+        'code',
         'name',
+        'alamat',
+        'kodepos',
+        'telepon',
+        'email',
+        'pic',
+        'website',
+
     ];
 
     /*******************************
@@ -25,9 +36,11 @@ class KondisiAset extends Model
     /*******************************
      ** RELATION
      *******************************/
-    public function aset()
+
+
+    public function city()
     {
-        return $this->hasMany(Aset::class, 'kondisi_aset_id');
+        return $this->belongsTo(City::class, 'city_id');
     }
 
     /*******************************
@@ -40,7 +53,7 @@ class KondisiAset extends Model
 
     public function scopeFilters($query)
     {
-        return $query->filterBy(['name']);
+        return $query->filterBy(['code','name']);
     }
 
     /*******************************

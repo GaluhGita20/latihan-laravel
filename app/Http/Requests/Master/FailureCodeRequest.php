@@ -12,7 +12,7 @@ class FailureCodeRequest extends FormRequest
         $rules = [
             'province_id' => 'required',
             'name'        => 'required|string|max:225|unique:ref_failure_code,name,'.$id,
-            'desc'        => 'required|string|max:225|unique:ref_failure_code,desc,'.$id,
+            'desc'        => 'required|string|max:225',
         ];
 
         return $rules;

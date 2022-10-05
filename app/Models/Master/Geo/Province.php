@@ -35,6 +35,9 @@ class Province extends Model
         return $this->hasMany(FailureCode::class, 'province_id');
     }
 
+   
+
+
     /*******************************
      ** SCOPE
      *******************************/

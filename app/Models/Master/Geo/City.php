@@ -37,6 +37,10 @@ class City extends Model
         return $this->belongsTo(Province::class, 'province_id');
     }
 
+    public function vendorAset()
+    {
+        return $this->hasMany(VendorAset::class, 'city_id');
+    }
     /*******************************
      ** SCOPE
      *******************************/

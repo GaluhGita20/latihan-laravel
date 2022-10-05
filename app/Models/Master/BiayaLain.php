@@ -2,13 +2,13 @@
 
 namespace App\Models\Master;
 
-use App\Imports\Master\ExampleImport;
+use App\Imports\Master\ExsampleImport;
 use App\Models\Model;
 use App\Models\Setting\Globals\TempFiles;
 
-class KondisiAset extends Model
+class BiayaLain extends Model
 {
-    protected $table = 'ref_kondisi_aset';
+    protected $table = 'ref_biaya_lain';
 
     protected $fillable = [
         'name',
@@ -25,10 +25,6 @@ class KondisiAset extends Model
     /*******************************
      ** RELATION
      *******************************/
-    public function aset()
-    {
-        return $this->hasMany(Aset::class, 'kondisi_aset_id');
-    }
 
     /*******************************
      ** SCOPE
