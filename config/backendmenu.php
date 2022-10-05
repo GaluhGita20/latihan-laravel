@@ -104,6 +104,16 @@ return [
                 ]
             ],
             [
+                'name' => 'master.biaya-lain',
+                'title' => 'Biaya Lain',
+                'url' => '/master/biaya-lain',
+            ],
+            [
+                'name' => 'master.status-aset',
+                'title' => 'Status Aset',
+                'url' => '/master/status-aset',
+            ],
+            [
                 'name' => 'master.kondisi-aset',
                 'title' => 'Kondisi Aset',
                 'url' => '/master/kondisi-aset',
@@ -153,5 +163,6 @@ return [
                 'url' => '/setting/activity',
             ],
         ]
+        
     ],
 ];
