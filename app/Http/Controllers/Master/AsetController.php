@@ -7,6 +7,8 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Master\AsetRequest;
 use App\Models\Master\Aset;
 use App\Models\Master\KondisiAset;
+use App\Models\Master\StatusAset;
+use App\Models\Master\SubLokasi;
 use Illuminate\Http\Request;
 
 class AsetController extends Controller
@@ -55,7 +57,7 @@ class AsetController extends Controller
     public function grid()
     {
         $user = auth()->user();
-        $records = Aset::with('kondisiAset')
+        $records = Aset::with('kondisiAset','statusAset','subLokasi')
         ->grid()
         ->filters()
         ->dtGet();
@@ -96,10 +98,16 @@ class AsetController extends Controller
 
     public function create()
     {
+        $STATUSASET  = StatusAset::orderBy('name', 'ASC')->get();
         $KONDISIASET = KondisiAset::orderBy('name', 'ASC')->get();
+        $SUBLOKASI = SubLokasi::orderBy('name', 'ASC')->get();
         return $this->render(
             $this->views . '.create',
-            compact('KONDISIASET')
+            compact(
+                'STATUSASET',
+                'KONDISIASET',
+                'SUBLOKASI'
+                )
         );
     }
 
@@ -116,11 +124,19 @@ class AsetController extends Controller
 
     public function edit(Aset $record)
     {
+        $STATUSASET  = StatusAset::orderBy('name', 'ASC')->get();
         $KONDISIASET = KondisiAset::orderBy('name', 'ASC')->get();
+        $SUBLOKASI = KondisiAset::orderBy('name', 'ASC')->get();
         return $this->render(
             $this->views . '.edit',
-            compact('record', 'KONDISIASET')
-        );    }
+            compact(
+                'record',
+                'STATUSASET',
+                'KONDISIASET',
+                'SUBLOKASI'
+            )
+        );
+    }
 
     public function update(AsetRequest $request, Aset $record)
     {

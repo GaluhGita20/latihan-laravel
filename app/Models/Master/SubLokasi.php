@@ -25,6 +25,10 @@ class SubLokasi extends Model
     /*******************************
      ** RELATION
      *******************************/
+    public function aset()
+    {
+        return $this->hasMany(Aset::class, 'sub_lokasi_id');
+    }
 
     /*******************************
      ** SCOPE
