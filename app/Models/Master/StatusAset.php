@@ -25,6 +25,10 @@ class StatusAset extends Model
     /*******************************
      ** RELATION
      *******************************/
+    public function aset()
+    {
+        return $this->hasMany(Aset::class, 'status_aset_id');
+    }
 
     /*******************************
      ** SCOPE

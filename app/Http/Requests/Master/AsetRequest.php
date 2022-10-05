@@ -12,7 +12,10 @@ class AsetRequest extends FormRequest
         $rules = [
             'code'        => 'required|string|max:20|unique:ref_aset,name,'.$id,
             'name'        => 'required|string|max:255|unique:ref_aset,name,'.$id,
+            'status_aset_id'     => 'required',
             'kondisi_aset_id'     => 'required',
+            'sub_lokasi_id'     => 'required',
+            
         ];
 
         return $rules;

@@ -11,7 +11,9 @@ class Aset extends Model
     protected $table = 'ref_aset';
 
     protected $fillable = [
+        'status_aset_id',
         'kondisi_aset_id',
+        'sub_lokasi_id',
         'code',
         'name',
     ];
@@ -30,6 +32,14 @@ class Aset extends Model
     public function kondisiAset()
     {
         return $this->belongsTo(KondisiAset::class, 'kondisi_aset_id');
+    }
+    public function statusAset()
+    {
+        return $this->belongsTo(StatusAset::class, 'status_aset_id');
+    }
+    public function subLokasi()
+    {
+        return $this->belongsTo(SubLokasi::class, 'sub_lokasi_id');
     }
 
     /*******************************
