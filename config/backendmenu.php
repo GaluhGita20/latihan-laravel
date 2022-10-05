@@ -50,19 +50,19 @@ return [
                         'url' => '/master/org/root'
                     ],
                     [
-                        'name' => 'master.org.unit',
-                        'title' => 'Unit Pelaksana',
-                        'url' => '/master/org/unit',
+                        'name' => 'master.org.bod',
+                        'title' => 'Direksi',
+                        'url' => '/master/org/bod'
                     ],
                     [
-                        'name' => 'master.org.bagian',
-                        'title' => 'Bagian',
-                        'url' => '/master/org/bagian',
+                        'name' => 'master.org.division',
+                        'title' => 'Divisi',
+                        'url' => '/master/org/division'
                     ],
                     [
-                        'name' => 'master.org.subbagian',
-                        'title' => 'Subbagian',
-                        'url' => '/master/org/subbagian',
+                        'name' => 'master.org.department',
+                        'title' => 'Departement',
+                        'url' => '/master/org/department'
                     ],
                     [
                         'name' => 'master.org.position',
@@ -114,6 +114,62 @@ return [
                 'title' => 'Tipe Aset',
                 'url' => '/master/tipe-aset',
             ],
+            [
+                'name' => 'master.instruksi-kerja',
+                'title' => 'Instruksi Kerja',
+                'url' => '/master/instruksi-kerja',
+            ],
+            [
+                'name' => 'master.sub-lokasi',
+                'title' => 'Sub Lokasi',
+                'url' => '/master/sub-lokasi',
+            ],
+            [
+                'name' => 'master.aset',
+                'title' => 'Aset',
+                'url' => '/master/aset',
+            ],
+            [
+                'name' => 'master.failure-code',
+                'title' => 'Failure Code',
+                'url' => '/master/failure-code',
+            ],
+            [
+                'name' => 'master.biaya-lain',
+                'title' => 'Biaya Lain',
+                'url' => '/master/biaya-lain',
+            ],
+            [
+                'name' => 'master.status-aset',
+                'title' => 'Status Aset',
+                'url' => '/master/status-aset',
+            ],
+            [
+                'name' => 'master.kondisi-aset',
+                'title' => 'Kondisi Aset',
+                'url' => '/master/kondisi-aset',
+            ],
+            [
+                'name' => 'master.team',
+                'title' => 'Team/Group',
+                'url' => '/master/team',
+            ],
+
+            [
+                'name' => 'master.vendor-aset',
+                'title' => 'Vendor Aset',
+                'url' => '/master/vendor-aset',
+            ],
+            [
+                'name' => 'master.prioritas-aset',
+                'title' => 'Prioritas Aset',
+                'url' => '/master/prioritas-aset',
+            ],
+            [
+                'name' => 'master.tipe-maintenance',
+                'title' => 'Tipe Maintenance',
+                'url' => '/master/tipe-maintenance',
+            ],
         ]
     ],
 
@@ -144,5 +200,6 @@ return [
                 'url' => '/setting/activity',
             ],
         ]
+        
     ],
 ];
