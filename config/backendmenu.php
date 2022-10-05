@@ -104,6 +104,11 @@ return [
                 ]
             ],
             [
+                'name' => 'master.aset',
+                'title' => 'Aset',
+                'url' => '/master/aset',
+            ],
+            [
                 'name' => 'master.failure-code',
                 'title' => 'Failure Code',
                 'url' => '/master/failure-code',

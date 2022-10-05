@@ -176,6 +176,10 @@ Route::middleware('auth')
                             Route::post('failure-code/importSave', 'FailureCodeController@importSave')->name('failure-code.importSave');
                             Route::grid('failure-code', 'FailureCodeController');
 
+                            Route::get('aset/import', 'AsetController@import')->name('aset.import');
+                            Route::post('aset/importSave', 'AsetController@importSave')->name('aset.importSave');
+                            Route::grid('aset', 'AsetController');
+
                             Route::get('biaya-lain/import', 'BiayaLainController@import')->name('biaya-lain.import');
                             Route::post('biaya-lain/importSave', 'BiayaLainController@importSave')->name('biaya-lain.importSave');
                             Route::grid('biaya-lain', 'BiayaLainController');
