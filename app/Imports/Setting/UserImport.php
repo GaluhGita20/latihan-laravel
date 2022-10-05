@@ -4,7 +4,7 @@ namespace App\Imports\Setting;
 
 use App\Models\Auth\Role;
 use App\Models\Auth\User;
-use App\Models\Setting\Org\Struct;
+use App\Models\Master\Org\Struct;
 use Illuminate\Support\Collection;
 use Maatwebsite\Excel\Concerns\ToCollection;
 use Maatwebsite\Excel\Concerns\WithStartRow;
@@ -15,14 +15,14 @@ class UserImport implements ToCollection, WithStartRow
     * @param Collection $collection
     */
     public function collection(Collection $collection)
-    {   
+    {
         // Validasi Template
         $row = $collection->first();
         if (empty($row[1]) && !empty($row[5]) && strtoupper(trim($row[5])) != strtoupper('JABATAN')) {
             throw new \Exception("MESSAGE--File tidak tidak sesuai dengan template terbaru. Silahkan download template kembali!", 1);
         }
 
-        foreach ($collection as $rw => $row) 
+        foreach ($collection as $rw => $row)
         {
             if ($rw == 0) continue;
 
