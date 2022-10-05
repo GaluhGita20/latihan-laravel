@@ -104,6 +104,16 @@ return [
                 ]
             ],
             [
+                'name' => 'master.instruksi-kerja',
+                'title' => 'Instruksi Kerja',
+                'url' => '/master/instruksi-kerja',
+            ],
+            [
+                'name' => 'master.sub-lokasi',
+                'title' => 'Sub Lokasi',
+                'url' => '/master/sub-lokasi',
+            ],
+            [
                 'name' => 'master.aset',
                 'title' => 'Aset',
                 'url' => '/master/aset',
