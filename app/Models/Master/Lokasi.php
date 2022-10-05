@@ -1,17 +1,18 @@
 <?php
 
-namespace App\Models\Master\Geo;
+namespace App\Models\Master;
 
 use App\Imports\Master\ExampleImport;
 use App\Models\Model;
 use App\Models\Setting\Globals\TempFiles;
+use App\Models\Master\Org\Struct;
 
-class Province extends Model
+class Lokasi extends Model
 {
-    protected $table = 'ref_province';
+    protected $table = 'ref_location';
 
     protected $fillable = [
-        'code',
+        'struct_id',
         'name',
     ];
 
@@ -26,14 +27,10 @@ class Province extends Model
     /*******************************
      ** RELATION
      *******************************/
-    public function cities()
+
+    public function struct()
     {
-        return $this->hasMany(City::class, 'province_id');
-    }
-    
-    public function location()
-    {
-        return $this->hasMany(Lokasi::class, 'province_id');
+        return $this->belongsTo(Struct::class, 'struct_id');
     }
 
     /*******************************
@@ -121,7 +118,7 @@ class Province extends Model
      *******************************/
     public function canDeleted()
     {
-        if($this->cities()->exists()) return false;
+        // if($this->districts()->exists()) return false;
 
         return true;
     }

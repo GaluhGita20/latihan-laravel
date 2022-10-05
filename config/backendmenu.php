@@ -103,6 +103,17 @@ return [
                     ],
                 ]
             ],
+            [
+                'name' => 'master.lokasi',
+                'title' => 'Lokasi',
+                'url' => '/master/lokasi',
+            ],
+
+            [
+                'name' => 'master.tipe-aset',
+                'title' => 'Tipe Aset',
+                'url' => '/master/tipe-aset',
+            ],
         ]
     ],
 
