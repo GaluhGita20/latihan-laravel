@@ -50,19 +50,19 @@ return [
                         'url' => '/master/org/root'
                     ],
                     [
-                        'name' => 'master.org.unit',
-                        'title' => 'Unit Pelaksana',
-                        'url' => '/master/org/unit',
+                        'name' => 'master.org.bod',
+                        'title' => 'Direksi',
+                        'url' => '/master/org/bod'
                     ],
                     [
-                        'name' => 'master.org.bagian',
-                        'title' => 'Bagian',
-                        'url' => '/master/org/bagian',
+                        'name' => 'master.org.division',
+                        'title' => 'Divisi',
+                        'url' => '/master/org/division'
                     ],
                     [
-                        'name' => 'master.org.subbagian',
-                        'title' => 'Subbagian',
-                        'url' => '/master/org/subbagian',
+                        'name' => 'master.org.department',
+                        'title' => 'Departement',
+                        'url' => '/master/org/department'
                     ],
                     [
                         'name' => 'master.org.position',
@@ -102,6 +102,11 @@ return [
                         'url' => '/master/geo/district'
                     ],
                 ]
+            ],
+            [
+                'name' => 'master.failure-code',
+                'title' => 'Failure Code',
+                'url' => '/master/failure-code',
             ],
             [
                 'name' => 'master.biaya-lain',
