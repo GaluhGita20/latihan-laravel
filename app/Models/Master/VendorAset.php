@@ -1,18 +1,28 @@
 <?php
 
-namespace App\Models\Master\Geo;
+namespace App\Models\Master;
 
 use App\Imports\Master\ExampleImport;
 use App\Models\Model;
 use App\Models\Setting\Globals\TempFiles;
+use App\Models\Master\Geo\City;
+use App\Models\Master\Geo\Province;
 
-class Province extends Model
+class VendorAset extends Model
 {
-    protected $table = 'ref_province';
+    protected $table = 'ref_vendor_aset';
 
     protected $fillable = [
+        'city_id',
         'code',
         'name',
+        'alamat',
+        'kodepos',
+        'telepon',
+        'email',
+        'pic',
+        'website',
+
     ];
 
     /*******************************
@@ -26,17 +36,12 @@ class Province extends Model
     /*******************************
      ** RELATION
      *******************************/
-    public function cities()
-    {
-        return $this->hasMany(City::class, 'province_id');
-    }
-    public function failurCode()
-    {
-        return $this->hasMany(FailureCode::class, 'province_id');
-    }
 
-   
 
+    public function city()
+    {
+        return $this->belongsTo(City::class, 'city_id');
+    }
 
     /*******************************
      ** SCOPE
@@ -48,7 +53,7 @@ class Province extends Model
 
     public function scopeFilters($query)
     {
-        return $query->filterBy(['code', 'name']);
+        return $query->filterBy(['code','name']);
     }
 
     /*******************************
@@ -123,7 +128,7 @@ class Province extends Model
      *******************************/
     public function canDeleted()
     {
-        if($this->cities()->exists()) return false;
+        // if($this->moduleRelations()->exists()) return false;
 
         return true;
     }

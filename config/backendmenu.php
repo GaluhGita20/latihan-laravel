@@ -128,6 +128,12 @@ return [
                 'title' => 'Team/Group',
                 'url' => '/master/team',
             ],
+
+            [
+                'name' => 'master.vendor-aset',
+                'title' => 'Vendor Aset',
+                'url' => '/master/vendor-aset',
+            ],
             [
                 'name' => 'master.prioritas-aset',
                 'title' => 'Prioritas Aset',

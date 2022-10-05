@@ -191,6 +191,10 @@ Route::middleware('auth')
                             Route::get('team/import', 'TeamController@import')->name('team.import');
                             Route::post('team/importSave', 'TeamController@importSave')->name('team.importSave');
                             Route::grid('team', 'TeamController');
+
+                            Route::get('vendor-aset/import', 'VendorAsetController@import')->name('vendor-aset.import');
+                            Route::post('vendor-aset/importSave', 'VendorAsetController@importSave')->name('vendor-aset.importSave');
+                            Route::grid('vendor-aset', 'VendorAsetController');
                             
                             Route::get('prioritas-aset/import', 'PrioritasAsetController@import')->name('prioritas-aset.import');
                             Route::post('prioritas-aset/importSave', 'PrioritasAsetController@importSave')->name('prioritas-aset.importSave');
