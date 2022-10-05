@@ -108,6 +108,36 @@ return [
                 'title' => 'Failure Code',
                 'url' => '/master/failure-code',
             ],
+            [
+                'name' => 'master.biaya-lain',
+                'title' => 'Biaya Lain',
+                'url' => '/master/biaya-lain',
+            ],
+            [
+                'name' => 'master.status-aset',
+                'title' => 'Status Aset',
+                'url' => '/master/status-aset',
+            ],
+            [
+                'name' => 'master.kondisi-aset',
+                'title' => 'Kondisi Aset',
+                'url' => '/master/kondisi-aset',
+            ],
+            [
+                'name' => 'master.team',
+                'title' => 'Team/Group',
+                'url' => '/master/team',
+            ],
+            [
+                'name' => 'master.prioritas-aset',
+                'title' => 'Prioritas Aset',
+                'url' => '/master/prioritas-aset',
+            ],
+            [
+                'name' => 'master.tipe-maintenance',
+                'title' => 'Tipe Maintenance',
+                'url' => '/master/tipe-maintenance',
+            ],
         ]
     ],
 
@@ -138,5 +168,6 @@ return [
                 'url' => '/setting/activity',
             ],
         ]
+        
     ],
 ];

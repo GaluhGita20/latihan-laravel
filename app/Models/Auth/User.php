@@ -7,7 +7,7 @@ use App\Models\Setting\Globals\Activity;
 use App\Models\Setting\Globals\Approval;
 use App\Models\Setting\Globals\Notification;
 use App\Models\Setting\Globals\TempFiles;
-use App\Models\Setting\Org\Position;
+use App\Models\Master\Org\Position;
 use App\Models\Traits\RaidModel;
 use App\Models\Traits\ResponseTrait;
 use App\Models\Traits\Utilities;
