@@ -38,7 +38,7 @@
             </select>
 		</div>
 	</div>
-	<div class="form-group row">
+	{{-- <div class="form-group row">
 		<label class="col-sm-12 col-form-label">{{ __('Sub Lokasi') }}</label>
 		<div class="col-sm-12 parent-group">
             <select class="form-control base-plugin--select2" name="sub_lokasi_id">
@@ -48,5 +48,5 @@
                 @endforeach
             </select>
 		</div>
-	</div>
+	</div> --}}
 @endsection

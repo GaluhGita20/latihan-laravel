@@ -14,7 +14,7 @@ class AsetRequest extends FormRequest
             'name'        => 'required|string|max:255|unique:ref_aset,name,'.$id,
             'status_aset_id'     => 'required',
             'kondisi_aset_id'     => 'required',
-            'sub_lokasi_id'     => 'required',
+            // 'sub_lokasi_id'     => 'required',
             
         ];
 
