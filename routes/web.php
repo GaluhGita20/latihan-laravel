@@ -172,6 +172,14 @@ Route::middleware('auth')
                                     Route::grid('district', 'DistrictController');
                                 }
                             );
+                        
+                            Route::get('lokasi/import', 'LokasiController@import')->name('lokasi.import');
+                            Route::post('lokasi/importSave', 'LokasiController@importSave')->name('lokasi.importSave');
+                            Route::grid('lokasi', 'LokasiController');
+
+                            Route::get('tipe-aset/import', 'TipeAsetController@import')->name('tipe-aset.import');
+                            Route::post('tipe-aset/importSave', 'TipeAsetController@importSave')->name('tipe-aset.importSave');
+                            Route::grid('tipe-aset', 'TipeAsetController');
 
                             Route::get('instruksi-kerja/import', 'InstruksiKerjaController@import')->name('instruksi-kerja.import');
                             Route::post('instruksi-kerja/importSave', 'InstruksiKerjaController@importSave')->name('instruksi-kerja.importSave');

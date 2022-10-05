@@ -1,17 +1,16 @@
 <?php
 
-namespace App\Models\Master\Geo;
+namespace App\Models\Master;
 
 use App\Imports\Master\ExampleImport;
 use App\Models\Model;
 use App\Models\Setting\Globals\TempFiles;
 
-class Province extends Model
+class TipeAset extends Model
 {
-    protected $table = 'ref_province';
+    protected $table = 'ref_asset_type';
 
     protected $fillable = [
-        'code',
         'name',
     ];
 
@@ -26,21 +25,6 @@ class Province extends Model
     /*******************************
      ** RELATION
      *******************************/
-    public function cities()
-    {
-        return $this->hasMany(City::class, 'province_id');
-    }
-    
-    public function failureCodes()
-    {
-        return $this->hasMany(FailureCode::class, 'province_id');
-    }
-
-    public function location()
-    {
-        return $this->hasMany(Lokasi::class, 'province_id');
-    }
-
 
     /*******************************
      ** SCOPE
@@ -52,7 +36,7 @@ class Province extends Model
 
     public function scopeFilters($query)
     {
-        return $query->filterBy(['code', 'name']);
+        return $query->filterBy(['name']);
     }
 
     /*******************************
@@ -127,7 +111,7 @@ class Province extends Model
      *******************************/
     public function canDeleted()
     {
-        if($this->cities()->exists()) return false;
+        // if($this->moduleRelations()->exists()) return false;
 
         return true;
     }
