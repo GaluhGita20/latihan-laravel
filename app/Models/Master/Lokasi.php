@@ -2,15 +2,17 @@
 
 namespace App\Models\Master;
 
-use App\Imports\Master\SubLokasiImport;
+use App\Imports\Master\ExampleImport;
 use App\Models\Model;
 use App\Models\Setting\Globals\TempFiles;
+use App\Models\Master\Org\Struct;
 
-class SubLokasi extends Model
+class Lokasi extends Model
 {
-    protected $table = 'ref_sub_lokasi';
+    protected $table = 'ref_location';
 
     protected $fillable = [
+        'struct_id',
         'name',
     ];
 
@@ -25,9 +27,10 @@ class SubLokasi extends Model
     /*******************************
      ** RELATION
      *******************************/
-    public function aset()
+
+    public function struct()
     {
-        return $this->hasMany(Aset::class, 'sub_lokasi_id');
+        return $this->belongsTo(Struct::class, 'struct_id');
     }
 
     /*******************************
@@ -40,7 +43,7 @@ class SubLokasi extends Model
 
     public function scopeFilters($query)
     {
-        return $query->filterBy(['name']);
+        return $query->filterBy(['code', 'name']);
     }
 
     /*******************************
@@ -115,7 +118,7 @@ class SubLokasi extends Model
      *******************************/
     public function canDeleted()
     {
-        // if($this->moduleRelations()->exists()) return false;
+        // if($this->districts()->exists()) return false;
 
         return true;
     }

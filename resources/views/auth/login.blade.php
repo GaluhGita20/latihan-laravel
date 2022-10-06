@@ -2,7 +2,7 @@
 @section('content')
     <div class="login-form login-signin">
         <div class="mb-10 text-center">
-            <img src="{{ asset(config('base.logo.'.config('base.company.key'))) }}" alt="Image" style="max-width: 300px; max-height: 100px">
+            <img src="{{ asset(config('base.logo.cmms')) }}" alt="Image" style="max-width: 300px; max-height: 100px">
         </div>
         <div class="mb-10 mb-lg-15">
             <h1 class="font-size-h1 font-weight-boldest">Platinum <br/><small>CMMS</small></h1>

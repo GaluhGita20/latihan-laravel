@@ -2,13 +2,13 @@
 
 namespace App\Models\Master;
 
-use App\Imports\Master\SubLokasiImport;
+use App\Imports\Master\ExampleImport;
 use App\Models\Model;
 use App\Models\Setting\Globals\TempFiles;
 
-class SubLokasi extends Model
+class TipeAset extends Model
 {
-    protected $table = 'ref_sub_lokasi';
+    protected $table = 'ref_asset_type';
 
     protected $fillable = [
         'name',
@@ -25,10 +25,6 @@ class SubLokasi extends Model
     /*******************************
      ** RELATION
      *******************************/
-    public function aset()
-    {
-        return $this->hasMany(Aset::class, 'sub_lokasi_id');
-    }
 
     /*******************************
      ** SCOPE

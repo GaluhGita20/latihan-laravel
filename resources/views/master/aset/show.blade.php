@@ -14,6 +14,12 @@
 		</div>
 	</div>
 	<div class="form-group row">
+		<label class="col-sm-12 col-form-label">{{ __('Status Aset') }}</label>
+		<div class="col-sm-12 parent-group">
+			<input type="text" value="{{ $record->statusAset->name }}" class="form-control" placeholder="{{ __('Status Aset') }}" disabled>
+		</div>
+	</div>
+	<div class="form-group row">
 		<label class="col-sm-12 col-form-label">{{ __('Kondisi Aset') }}</label>
 		<div class="col-sm-12 parent-group">
 			<input type="text" value="{{ $record->kondisiAset->name }}" class="form-control" placeholder="{{ __('Kondisi Aset') }}" disabled>

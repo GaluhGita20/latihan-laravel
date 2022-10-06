@@ -4,18 +4,15 @@ namespace App\Http\Controllers\Master;
 
 use App\Exports\GenerateExport;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Master\AsetRequest;
-use App\Models\Master\Aset;
-use App\Models\Master\KondisiAset;
-use App\Models\Master\StatusAset;
-use App\Models\Master\SubLokasi;
+use App\Http\Requests\Master\TipeAsetRequest;
+use App\Models\Master\TipeAset;
 use Illuminate\Http\Request;
 
-class AsetController extends Controller
+class TipeAsetController extends Controller
 {
-    protected $module   = 'master.aset';
-    protected $routes   = 'master.aset';
-    protected $views    = 'master.aset';
+    protected $module   = 'master.tipe-aset';
+    protected $routes   = 'master.tipe-aset';
+    protected $views    = 'master.tipe-aset';
     protected $perms    = 'master';
 
     public function __construct()
@@ -27,10 +24,10 @@ class AsetController extends Controller
                 'views' => $this->views,
                 'perms' => $this->perms,
                 'permission' => $this->perms . '.view',
-                'title' => 'Aset',
+                'title' => 'Tipe Aset',
                 'breadcrumb' => [
                     'Data Master' => route($this->routes . '.index'),
-                    'Aset' => route($this->routes . '.index'),
+                    'Tipe Aset' => route($this->routes . '.index'),
                 ]
             ]
         );
@@ -43,8 +40,7 @@ class AsetController extends Controller
                 'tableStruct' => [
                     'datatable_1' => [
                         $this->makeColumn('name:num'),
-                        $this->makeColumn('name:code|label:Id Aset|className:text-left'),
-                        $this->makeColumn('name:name|label:Nama Aset|className:text-left'),
+                        $this->makeColumn('name:name|label:Tipe Aset|className:text-left'),
                         $this->makeColumn('name:updated_by'),
                         $this->makeColumn('name:action'),
                     ],
@@ -57,10 +53,7 @@ class AsetController extends Controller
     public function grid()
     {
         $user = auth()->user();
-        $records = Aset::with('kondisiAset','statusAset','subLokasi')
-        ->grid()
-        ->filters()
-        ->dtGet();
+        $records = TipeAset::grid()->filters()->dtGet();
 
         return \DataTables::of($records)
             ->addColumn(
@@ -98,52 +91,31 @@ class AsetController extends Controller
 
     public function create()
     {
-        $STATUSASET  = StatusAset::orderBy('name', 'ASC')->get();
-        $KONDISIASET = KondisiAset::orderBy('name', 'ASC')->get();
-        $SUBLOKASI = SubLokasi::orderBy('name', 'ASC')->get();
-        return $this->render(
-            $this->views . '.create',
-            compact(
-                'STATUSASET',
-                'KONDISIASET',
-                'SUBLOKASI'
-                )
-        );
+        return $this->render($this->views . '.create');
     }
 
-    public function store(AsetRequest $request)
+    public function store(TipeAsetRequest $request)
     {
-        $record = new Aset;
+        $record = new TipeAset;
         return $record->handleStoreOrUpdate($request);
     }
 
-    public function show(Aset $record)
+    public function show(TipeAset $record)
     {
         return $this->render($this->views . '.show', compact('record'));
     }
 
-    public function edit(Aset $record)
+    public function edit(TipeAset $record)
     {
-        $STATUSASET  = StatusAset::orderBy('name', 'ASC')->get();
-        $KONDISIASET = KondisiAset::orderBy('name', 'ASC')->get();
-        $SUBLOKASI = KondisiAset::orderBy('name', 'ASC')->get();
-        return $this->render(
-            $this->views . '.edit',
-            compact(
-                'record',
-                'STATUSASET',
-                'KONDISIASET',
-                'SUBLOKASI'
-            )
-        );
+        return $this->render($this->views . '.edit', compact('record'));
     }
 
-    public function update(AsetRequest $request, Aset $record)
+    public function update(TipeAsetRequest $request, TipeAset $record)
     {
         return $record->handleStoreOrUpdate($request);
     }
 
-    public function destroy(Aset $record)
+    public function destroy(TipeAset $record)
     {
         return $record->handleDestroy();
     }
