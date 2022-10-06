@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateRefAset extends Migration
+class CreateRefParts extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,14 @@ class CreateRefAset extends Migration
      */
     public function up()
     {
-        Schema::create('ref_aset', function (Blueprint $table) {
+        Schema::create('ref_parts', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('status_aset_id');
             $table->unsignedBigInteger('kondisi_aset_id');
             $table->unsignedBigInteger('asset_type_id');
             $table->unsignedBigInteger('location_id');
             $table->unsignedBigInteger('sub_lokasi_id');
+            // $table->unsignedBigInteger('assemblies_id');
             $table->string('code');
             $table->string('name');
             $table->commonFields();
@@ -43,6 +44,10 @@ class CreateRefAset extends Migration
             $table->foreign('sub_lokasi_id')
                     ->on('ref_sub_lokasi')
                     ->references('id');
+
+            // $table->foreign('assemblies_id')
+            //         ->on('ref_assemblies')
+            //         ->references('id');
         });
     }
 
@@ -53,6 +58,6 @@ class CreateRefAset extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('ref_aset');
+        Schema::dropIfExists('ref_parts');
     }
 }

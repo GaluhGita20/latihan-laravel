@@ -5,15 +5,15 @@
 @section('modal-body')
 	@method('PATCH')
 	<div class="form-group row">
-		<label class="col-sm-12 col-form-label">{{ __('Id Aset') }}</label>
+		<label class="col-sm-12 col-form-label">{{ __('Id Parts') }}</label>
 		<div class="col-sm-12 parent-group">
-			<input type="text" name="code" value="{{ $record->code }}" class="form-control" placeholder="{{ __('Id Aset') }}">
+			<input type="text" name="code" value="{{ $record->code }}" class="form-control" placeholder="{{ __('Id Parts') }}">
 		</div>
 	</div>
 	<div class="form-group row">
-		<label class="col-sm-12 col-form-label">{{ __('Nama Aset') }}</label>
+		<label class="col-sm-12 col-form-label">{{ __('Nama Parts') }}</label>
 		<div class="col-sm-12 parent-group">
-			<input type="text" name="name" value="{{ $record->name }}" class="form-control" placeholder="{{ __('Nama') }}">
+			<input type="text" name="name" value="{{ $record->name }}" class="form-control" placeholder="{{ __('Nama Parts') }}">
 		</div>
 	</div>
 	<div class="form-group row">

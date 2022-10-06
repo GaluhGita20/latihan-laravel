@@ -2,17 +2,22 @@
 
 namespace App\Models\Master;
 
-use App\Imports\Master\SubLokasiImport;
+use App\Imports\Master\ExampleImport;
 use App\Models\Model;
 use App\Models\Setting\Globals\TempFiles;
 
-class SubLokasi extends Model
+class Parts extends Model
 {
-    protected $table = 'ref_sub_lokasi';
+    protected $table = 'ref_parts';
 
     protected $fillable = [
-        'struct_id',
+        'status_aset_id',
+        'kondisi_aset_id',
+        'asset_type_id',
         'location_id',
+        'sub_lokasi_id',
+        // 'assemblies_id',
+        'code',
         'name',
     ];
 
@@ -27,9 +32,19 @@ class SubLokasi extends Model
     /*******************************
      ** RELATION
      *******************************/
-    public function struct()
+    public function kondisiAset()
     {
-        return $this->belongsTo(Struct::class, 'struct_id');
+        return $this->belongsTo(KondisiAset::class, 'kondisi_aset_id');
+    }
+
+    public function statusAset()
+    {
+        return $this->belongsTo(StatusAset::class, 'status_aset_id');
+    }
+
+    public function tipeAset()
+    {
+        return $this->belongsTo(TipeAset::class, 'asset_type_id');
     }
 
     public function lokasi()
@@ -37,11 +52,14 @@ class SubLokasi extends Model
         return $this->belongsTo(Lokasi::class, 'location_id');
     }
 
-    public function aset()
+    public function subLokasi()
     {
-        return $this->hasMany(Aset::class, 'sub_lokasi_id');
+        return $this->belongsTo(SubLokasi::class, 'sub_lokasi_id');
     }
-
+    public function assemblies()
+    {
+        return $this->belongsTo(Assemblies::class, 'assemblies_id');
+    }
 
     /*******************************
      ** SCOPE

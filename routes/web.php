@@ -172,7 +172,11 @@ Route::middleware('auth')
                                     Route::grid('district', 'DistrictController');
                                 }
                             );
-                        
+                            
+                            Route::get('parts/import', 'PartsController@import')->name('parts.import');
+                            Route::post('parts/importSave', 'PartsController@importSave')->name('parts.importSave');
+                            Route::grid('parts', 'PartsController');
+
                             Route::get('lokasi/import', 'LokasiController@import')->name('lokasi.import');
                             Route::post('lokasi/importSave', 'LokasiController@importSave')->name('lokasi.importSave');
                             Route::grid('lokasi', 'LokasiController');
