@@ -5,14 +5,14 @@ namespace App\Models\Master;
 use App\Imports\Master\ExampleImport;
 use App\Models\Model;
 use App\Models\Setting\Globals\TempFiles;
-use App\Models\Master\Geo\Province;
+use App\Models\Master\Aset;
 
 class FailureCode extends Model
 {
     protected $table = 'ref_failure_code';
 
     protected $fillable = [
-        'province_id',
+        'aset_id',
         'name',
         'desc'
     ];
@@ -28,9 +28,9 @@ class FailureCode extends Model
     /*******************************
      ** RELATION
      *******************************/
-    public function province()
+    public function aset()
     {
-        return $this->belongsTo(Province::class, 'province_id');
+        return $this->belongsTo(Aset::class, 'aset_id');
     }
     
 

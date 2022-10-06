@@ -41,6 +41,10 @@ class Aset extends Model
     {
         return $this->belongsTo(SubLokasi::class, 'sub_lokasi_id');
     }
+    public function failureCodes()
+    {
+        return $this->hasMany(FailureCode::class, 'aset_id');
+    }
 
     /*******************************
      ** SCOPE
