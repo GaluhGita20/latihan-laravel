@@ -3,7 +3,7 @@
     <div class="brand flex-column-auto pr-3" id="kt_brand">
         <div class="brand-logo m-auto">
             <a href="{{ url('/') }}">
-                <img src="{{ asset(config('base.logo.'.config('base.company.key'))) }}" alt="Image" style="max-width: 170px; max-height: 40px;"/>
+                <img src="{{ asset(config('base.logo.platinum')) }}" alt="Image" style="max-width: 170px; max-height: 40px;"/>
             </a>
         </div>
 

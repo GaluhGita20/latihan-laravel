@@ -15,11 +15,13 @@ return [
     ],
 
     'logo' => [
-        'favicon'       => 'assets/media/logos/pjnhk-favicon.ico',
+        'favicon'       => 'assets/media/logos/logo-platinum.ico',
         'auth'          => 'assets/media/logos/pjnhk-logo-auth.png',
         'aside'         => 'assets/media/logos/pjnhk-logo-aside.png',
         'print'         => 'assets/media/logos/pjnhk-logo-print.jpg',
         'hsse-ap2b-kal' => 'assets/media/logos/logo-pln.png',
+        'platinum'      => 'assets/media/logos/logo-platinum.png',
+        'cmms'          => 'assets/media/logos/Logo-CMMS.jpg',
         'pjnhk'         => 'assets/media/logos/logo-pjnhk.png',
         'kemenkes'      => 'assets/media/logos/logo-kemenkes.png',
         'barcode'       => 'assets/media/logos/pjnhk-logo-barcode.jpg',
