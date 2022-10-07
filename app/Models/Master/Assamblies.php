@@ -51,6 +51,10 @@ class Assamblies extends Model
     {
         return $this->belongsTo(SubLokasi::class, 'sub_lokasi_id');
     }
+    public function aset()
+    {
+        return $this->belongsTo(Aset::class, 'aset_id');
+    }
 
     /*******************************
      ** SCOPE

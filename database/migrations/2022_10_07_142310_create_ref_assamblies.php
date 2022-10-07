@@ -20,6 +20,7 @@ class CreateRefAssamblies extends Migration
         $table->unsignedBigInteger('tipe_aset_id');
         $table->unsignedBigInteger('location_id');
         $table->unsignedBigInteger('sub_lokasi_id');
+        $table->unsignedBigInteger('aset_id');
         $table->string('code');
         $table->string('name');
         $table->commonFields();
@@ -40,9 +41,13 @@ class CreateRefAssamblies extends Migration
             ->on('ref_location')
             ->references('id');
             
-            $table->foreign('sub_lokasi_id')
-                ->on('ref_sub_lokasi')
-                ->references('id');
+        $table->foreign('sub_lokasi_id')
+            ->on('ref_sub_lokasi')
+            ->references('id');
+
+        $table->foreign('aset_id')
+           ->on('ref_aset')
+           ->references('id');
                                 
             
         });

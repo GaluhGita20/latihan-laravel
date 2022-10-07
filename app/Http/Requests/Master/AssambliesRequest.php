@@ -17,6 +17,7 @@ class AssambliesRequest extends FormRequest
             'tipe_aset_id'     => 'required',
             'location_id'     => 'required',
             'sub_lokasi_id'     => 'required',
+            'aset_id'     => 'required',
             
         ];
 

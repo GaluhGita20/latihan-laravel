@@ -17,10 +17,10 @@
 		</div>
 	</div>
 	<div class="form-group row">
-		<label class="col-sm-12 col-form-label">{{ __('Status Aset') }}</label>
+		<label class="col-sm-12 col-form-label">{{ __('Status Assamblies') }}</label>
 		<div class="col-sm-12 parent-group">
             <select class="form-control base-plugin--select2" name="status_aset_id">
-                <option disabled selected value="">Pilih Status Aset</option>
+                <option disabled selected value="">Pilih Status Assamblies</option>
                 @foreach ($STATUSASET as $item)
                     <option value="{{ $item->id }}">{{ $item->name }}</option>
                 @endforeach
@@ -28,10 +28,10 @@
 		</div>
 	</div>
 	<div class="form-group row">
-		<label class="col-sm-12 col-form-label">{{ __('Kondisi Aset') }}</label>
+		<label class="col-sm-12 col-form-label">{{ __('Kondisi Assamblies') }}</label>
 		<div class="col-sm-12 parent-group">
             <select class="form-control base-plugin--select2" name="kondisi_aset_id">
-                <option disabled selected value="">Pilih Kondisi Aset</option>
+                <option disabled selected value="">Pilih Kondisi Assamblies</option>
                 @foreach ($KONDISIASET as $item)
                     <option value="{{ $item->id }}">{{ $item->name }}</option>
                 @endforeach
@@ -39,10 +39,10 @@
 		</div>
 	</div>
 	<div class="form-group row">
-		<label class="col-sm-12 col-form-label">{{ __('Tipe Aset') }}</label>
+		<label class="col-sm-12 col-form-label">{{ __('Tipe Assamblies') }}</label>
 		<div class="col-sm-12 parent-group">
             <select class="form-control base-plugin--select2" name="type_asset_id">
-                <option disabled selected value="">Pilih Tipe Aset</option>
+                <option disabled selected value="">Pilih Tipe Assamblies</option>
                 @foreach ($TIPEASET as $item)
                     <option value="{{ $item->id }}">{{ $item->name }}</option>
                 @endforeach
@@ -66,6 +66,17 @@
             <select class="form-control base-plugin--select2" name="sub_lokasi_id">
                 <option disabled selected value="">Pilih Sub Lokasi</option>
                 @foreach ($SUBLOKASI as $item)
+                    <option value="{{ $item->id }}">{{ $item->name }}</option>
+                @endforeach
+            </select>
+		</div>
+	</div> 
+	<div class="form-group row">
+		<label class="col-sm-12 col-form-label">{{ __('Id Aset') }}</label>
+		<div class="col-sm-12 parent-group">
+            <select class="form-control base-plugin--select2" name="aset_id">
+                <option disabled selected value="">Pilih Id Aset</option>
+                @foreach ($ASET as $item)
                     <option value="{{ $item->id }}">{{ $item->name }}</option>
                 @endforeach
             </select>

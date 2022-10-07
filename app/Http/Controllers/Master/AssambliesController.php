@@ -11,6 +11,7 @@ use App\Models\Master\KondisiAset;
 use App\Models\Master\TipeAset;
 use App\Models\Master\Lokasi;
 use App\Models\Master\SubLokasi;
+use App\Models\Master\Aset;
 use Illuminate\Http\Request;
 
 class AssambliesController extends Controller
@@ -60,7 +61,7 @@ class AssambliesController extends Controller
     public function grid()
     {
         $user = auth()->user();
-        $records = Assamblies::with('statusAset','kondisiAset','tipeAset','lokasi','subLokasi')
+        $records = Assamblies::with('statusAset','kondisiAset','tipeAset','lokasi','subLokasi','aset')
         ->grid()
         ->filters()
         ->dtGet();
@@ -106,6 +107,7 @@ class AssambliesController extends Controller
         $TIPEASET = TipeAset::orderBy('name', 'ASC')->get();
         $LOKASI = Lokasi::orderBy('name', 'ASC')->get();
         $SUBLOKASI = SubLokasi::orderBy('name', 'ASC')->get();
+        $ASET = Aset::orderBy('name', 'ASC')->get();
         return $this->render(
             $this->views . '.create',
             compact(
@@ -113,7 +115,8 @@ class AssambliesController extends Controller
                 'KONDISIASET',
                 'TIPEASET',
                 'LOKASI',
-                'SUBLOKASI'
+                'SUBLOKASI',
+                'ASET'
                 )
         );
     }
@@ -136,6 +139,7 @@ class AssambliesController extends Controller
         $TIPEASET = TioeAset::orderBy('name', 'ASC')->get();
         $LOKASI = Lokasi::orderBy('name', 'ASC')->get();
         $SUBLOKASI = SubLokasi::orderBy('name', 'ASC')->get();
+        $ASET = Aset::orderBy('name', 'ASC')->get();
         return $this->render(
             $this->views . '.edit',
             compact(
@@ -144,7 +148,8 @@ class AssambliesController extends Controller
                 'KONDISIASET',
                 'TIPEASET',
                 'LOKASI',
-                'SUBLOKASI'
+                'SUBLOKASI',
+                'ASET'
             )
         );
     }
