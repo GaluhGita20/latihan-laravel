@@ -170,6 +170,11 @@ return [
                 'title' => 'Tipe Maintenance',
                 'url' => '/master/tipe-maintenance',
             ],
+            [
+                'name' => 'master.assamblies',
+                'title' => 'Assamblies',
+                'url' => '/master/assamblies',
+            ],
         ]
     ],
 
