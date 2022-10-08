@@ -25,6 +25,10 @@ class TipeAset extends Model
     /*******************************
      ** RELATION
      *******************************/
+    public function aset()
+    {
+        return $this->hasMany(Aset::class, 'asset_type_id');
+    }
 
     /*******************************
      ** SCOPE

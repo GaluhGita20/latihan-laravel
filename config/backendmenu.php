@@ -104,6 +104,11 @@ return [
                 ]
             ],
             [
+                'name' => 'master.parts ',
+                'title' => 'Parts ',
+                'url' => '/master/parts ',
+            ],
+            [
                 'name' => 'master.lokasi',
                 'title' => 'Lokasi',
                 'url' => '/master/lokasi',
