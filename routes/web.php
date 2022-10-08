@@ -224,6 +224,7 @@ Route::middleware('auth')
                             Route::get('tipe-maintenance/import', 'TipeMaintenanceController@import')->name('tipe-maintenance.import');
                             Route::post('tipe-maintenance/importSave', 'TipeMaintenanceController@importSave')->name('tipe-maintenance.importSave');
                             Route::grid('tipe-maintenance', 'TipeMaintenanceController');
+                            
                     }
                 );
 

@@ -15,13 +15,13 @@ class CreateRefFailureCode extends Migration
     {
         Schema::create('ref_failure_code', function (Blueprint $table) {
             $table->id();
-                $table->unsignedBigInteger('province_id');
+                $table->unsignedBigInteger('aset_id');
                 $table->string('name');
                 $table->string('desc');
                 $table->commonFields();
 
-                $table->foreign('province_id')
-                    ->on('ref_province')
+                $table->foreign('aset_id')
+                    ->on('ref_aset')
                     ->references('id');
         });
     }

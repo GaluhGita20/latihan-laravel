@@ -31,11 +31,6 @@ class Province extends Model
         return $this->hasMany(City::class, 'province_id');
     }
     
-    public function failureCodes()
-    {
-        return $this->hasMany(FailureCode::class, 'province_id');
-    }
-
     public function location()
     {
         return $this->hasMany(Lokasi::class, 'province_id');
