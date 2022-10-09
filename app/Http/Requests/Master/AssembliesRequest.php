@@ -4,7 +4,7 @@ namespace App\Http\Requests\Master;
 
 use App\Http\Requests\FormRequest;
 
-class AssambliesRequest extends FormRequest
+class AssembliesRequest extends FormRequest
 {
     public function rules()
     {
@@ -18,7 +18,7 @@ class AssambliesRequest extends FormRequest
             'location_id'     => 'required',
             'sub_lokasi_id'     => 'required',
             'aset_id'     => 'required',
-            
+
         ];
 
         return $rules;

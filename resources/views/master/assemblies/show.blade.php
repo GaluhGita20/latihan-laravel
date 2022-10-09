@@ -2,33 +2,33 @@
 
 @section('modal-body')
 	<div class="form-group row">
-		<label class="col-sm-12 col-form-label">{{ __('Id Assamblies') }}</label>
+		<label class="col-sm-12 col-form-label">{{ __('Id Assemblies') }}</label>
 		<div class="col-sm-12 parent-group">
-			<input type="text" value="{{ $record->name }}" class="form-control" placeholder="{{ __('Id Assamblies') }}" disabled>
+			<input type="text" value="{{ $record->name }}" class="form-control" placeholder="{{ __('Id Assemblies') }}" disabled>
 		</div>
 	</div>
 	<div class="form-group row">
-		<label class="col-sm-12 col-form-label">{{ __('Nama Assamblies') }}</label>
+		<label class="col-sm-12 col-form-label">{{ __('Nama Assemblies') }}</label>
 		<div class="col-sm-12 parent-group">
-			<input type="text" value="{{ $record->name }}" class="form-control" placeholder="{{ __('Nama Assamblies') }}" disabled>
+			<input type="text" value="{{ $record->name }}" class="form-control" placeholder="{{ __('Nama Assemblies') }}" disabled>
 		</div>
 	</div>
 	<div class="form-group row">
-		<label class="col-sm-12 col-form-label">{{ __('Status Assamblies') }}</label>
+		<label class="col-sm-12 col-form-label">{{ __('Status Assemblies') }}</label>
 		<div class="col-sm-12 parent-group">
-			<input type="text" value="{{ $record->name }}" class="form-control" placeholder="{{ __('Status Assamblies') }}" disabled>
+			<input type="text" value="{{ $record->name }}" class="form-control" placeholder="{{ __('Status Assemblies') }}" disabled>
 		</div>
 	</div>
 	<div class="form-group row">
-		<label class="col-sm-12 col-form-label">{{ __('Kondisi Assamblies') }}</label>
+		<label class="col-sm-12 col-form-label">{{ __('Kondisi Assemblies') }}</label>
 		<div class="col-sm-12 parent-group">
-			<input type="text" value="{{ $record->kondisiAset->name }}" class="form-control" placeholder="{{ __('Kondisi Assamblies') }}" disabled>
+			<input type="text" value="{{ $record->kondisiAset->name }}" class="form-control" placeholder="{{ __('Kondisi Assemblies') }}" disabled>
 		</div>
 	</div>
 	<div class="form-group row">
-		<label class="col-sm-12 col-form-label">{{ __('Tipe Assamblies') }}</label>
+		<label class="col-sm-12 col-form-label">{{ __('Tipe Assemblies') }}</label>
 		<div class="col-sm-12 parent-group">
-			<input type="text" value="{{ $record->name }}" class="form-control" placeholder="{{ __('Kondisi Assamblies') }}" disabled>
+			<input type="text" value="{{ $record->name }}" class="form-control" placeholder="{{ __('Kondisi Assemblies') }}" disabled>
 		</div>
 	</div>
 	<div class="form-group row">
@@ -44,8 +44,8 @@
 			<input type="text" value="{{ $record->code }}" class="form-control" placeholder="{{ __('Id Aset') }}" disabled>
 		</div>
 	</div>
-	
-	
+
+
 @endsection
 
 @section('buttons')

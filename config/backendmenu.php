@@ -176,9 +176,9 @@ return [
                 'url' => '/master/tipe-maintenance',
             ],
             [
-                'name' => 'master.assamblies',
-                'title' => 'Assamblies',
-                'url' => '/master/assamblies',
+                'name' => 'master.assemblies',
+                'title' => 'Assemblies',
+                'url' => '/master/assemblies',
             ],
         ]
     ],
@@ -210,6 +210,6 @@ return [
                 'url' => '/setting/activity',
             ],
         ]
-        
+
     ],
 ];

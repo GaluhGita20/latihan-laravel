@@ -172,7 +172,7 @@ Route::middleware('auth')
                                     Route::grid('district', 'DistrictController');
                                 }
                             );
-                            
+
                             Route::get('parts/import', 'PartsController@import')->name('parts.import');
                             Route::post('parts/importSave', 'PartsController@importSave')->name('parts.importSave');
                             Route::grid('parts', 'PartsController');
@@ -192,7 +192,7 @@ Route::middleware('auth')
                             Route::get('sub-lokasi/import', 'SubLokasiController@import')->name('sub-lokasi.import');
                             Route::post('sub-lokasi/importSave', 'SubLokasiController@importSave')->name('sub-lokasi.importSave');
                             Route::grid('sub-lokasi', 'SubLokasiController');
-                            
+
                             Route::get('failure-code/import', 'FailureCodeController@import')->name('failure-code.import');
                             Route::post('failure-code/importSave', 'FailureCodeController@importSave')->name('failure-code.importSave');
                             Route::grid('failure-code', 'FailureCodeController');
@@ -208,7 +208,7 @@ Route::middleware('auth')
                             Route::get('status-aset/import', 'StatusAsetController@import')->name('status-aset.import');
                             Route::post('status-aset/importSave', 'StatusAsetController@importSave')->name('status-aset.importSave');
                             Route::grid('status-aset', 'StatusAsetController');
-                            
+
                             Route::get('kondisi-aset/import', 'KondisiAsetController@import')->name('kondisi-aset.import');
                             Route::post('kondisi-aset/importSave', 'KondisiAsetController@importSave')->name('kondisi-aset.importSave');
                             Route::grid('kondisi-aset', 'KondisiAsetController');
@@ -220,7 +220,7 @@ Route::middleware('auth')
                             Route::get('vendor-aset/import', 'VendorAsetController@import')->name('vendor-aset.import');
                             Route::post('vendor-aset/importSave', 'VendorAsetController@importSave')->name('vendor-aset.importSave');
                             Route::grid('vendor-aset', 'VendorAsetController');
-                            
+
                             Route::get('prioritas-aset/import', 'PrioritasAsetController@import')->name('prioritas-aset.import');
                             Route::post('prioritas-aset/importSave', 'PrioritasAsetController@importSave')->name('prioritas-aset.importSave');
                             Route::grid('prioritas-aset', 'PrioritasAsetController');
@@ -229,9 +229,9 @@ Route::middleware('auth')
                             Route::post('tipe-maintenance/importSave', 'TipeMaintenanceController@importSave')->name('tipe-maintenance.importSave');
                             Route::grid('tipe-maintenance', 'TipeMaintenanceController');
 
-                            Route::get('assamblies/import', 'AssambliesController@import')->name('assamblies.import');
-                            Route::post('assamblies/importSave', 'AssambliesController@importSave')->name('assamblies.importSave');
-                            Route::grid('assamblies', 'AssambliesController');
+                            Route::get('assamblies/import', 'AssembliesController@import')->name('assamblies.import');
+                            Route::post('assamblies/importSave', 'AssembliesController@importSave')->name('assamblies.importSave');
+                            Route::grid('assamblies', 'AssembliesController');
                     }
                 );
 

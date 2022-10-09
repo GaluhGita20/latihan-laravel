@@ -4,8 +4,8 @@ namespace App\Http\Controllers\Master;
 
 use App\Exports\GenerateExport;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Master\AssambliesRequest;
-use App\Models\Master\Assamblies;
+use App\Http\Requests\Master\AssembliesRequest;
+use App\Models\Master\Assemblies;
 use App\Models\Master\StatusAset;
 use App\Models\Master\KondisiAset;
 use App\Models\Master\TipeAset;
@@ -14,11 +14,11 @@ use App\Models\Master\SubLokasi;
 use App\Models\Master\Aset;
 use Illuminate\Http\Request;
 
-class AssambliesController extends Controller
+class AssembliesController extends Controller
 {
-    protected $module   = 'master.assamblies';
-    protected $routes   = 'master.assamblies';
-    protected $views    = 'master.assamblies';
+    protected $module   = 'master.assemblies';
+    protected $routes   = 'master.assemblies';
+    protected $views    = 'master.assemblies';
     protected $perms    = 'master';
 
     public function __construct()
@@ -30,10 +30,10 @@ class AssambliesController extends Controller
                 'views' => $this->views,
                 'perms' => $this->perms,
                 'permission' => $this->perms . '.view',
-                'title' => 'Assamblies',
+                'title' => 'Assemblies',
                 'breadcrumb' => [
                     'Data Master' => route($this->routes . '.index'),
-                    'Assamblies' => route($this->routes . '.index'),
+                    'Assemblies' => route($this->routes . '.index'),
                 ]
             ]
         );
@@ -46,8 +46,8 @@ class AssambliesController extends Controller
                 'tableStruct' => [
                     'datatable_1' => [
                         $this->makeColumn('name:num'),
-                        $this->makeColumn('name:code|label:Id Assamblies|className:text-left'),
-                        $this->makeColumn('name:name|label:Nama Assamblies|className:text-left'),
+                        $this->makeColumn('name:code|label:Id Assemblies|className:text-left'),
+                        $this->makeColumn('name:name|label:Nama Assemblies|className:text-left'),
                         $this->makeColumn('name:code|label:Id Aset|className:text-left'),
                         $this->makeColumn('name:updated_by'),
                         $this->makeColumn('name:action'),
@@ -61,10 +61,10 @@ class AssambliesController extends Controller
     public function grid()
     {
         $user = auth()->user();
-        $records = Assamblies::with('statusAset','kondisiAset','tipeAset','lokasi','subLokasi','aset')
-        ->grid()
-        ->filters()
-        ->dtGet();
+        $records = Assemblies::with('statusAset', 'kondisiAset', 'tipeAset', 'lokasi', 'subLokasi', 'aset')
+            ->grid()
+            ->filters()
+            ->dtGet();
 
         return \DataTables::of($records)
             ->addColumn(
@@ -117,22 +117,22 @@ class AssambliesController extends Controller
                 'LOKASI',
                 'SUBLOKASI',
                 'ASET'
-                )
+            )
         );
     }
 
-    public function store(AssambliesRequest $request)
+    public function store(AssembliesRequest $request)
     {
-        $record = new Assamblies;
+        $record = new Assemblies;
         return $record->handleStoreOrUpdate($request);
     }
 
-    public function show(Assamblies $record)
+    public function show(Assemblies $record)
     {
         return $this->render($this->views . '.show', compact('record'));
     }
 
-    public function edit(Assamblies $record)
+    public function edit(Assemblies $record)
     {
         $STATUSASET  = StatusAset::orderBy('name', 'ASC')->get();
         $KONDISIASET = KondisiAset::orderBy('name', 'ASC')->get();
@@ -154,12 +154,12 @@ class AssambliesController extends Controller
         );
     }
 
-    public function update(AssambliesRequest $request, Assamblies $record)
+    public function update(AssembliesRequest $request, Assemblies $record)
     {
         return $record->handleStoreOrUpdate($request);
     }
 
-    public function destroy(Assamblies $record)
+    public function destroy(Assemblies $record)
     {
         return $record->handleDestroy();
     }

@@ -6,9 +6,9 @@ use App\Imports\Master\ExampleImport;
 use App\Models\Model;
 use App\Models\Setting\Globals\TempFiles;
 
-class Assamblies extends Model
+class Assemblies extends Model
 {
-    protected $table = 'ref_Assamblies';
+    protected $table = 'ref_assemblies';
 
     protected $fillable = [
         'status_aset_id',
