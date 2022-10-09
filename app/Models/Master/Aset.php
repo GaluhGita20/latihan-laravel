@@ -13,7 +13,9 @@ class Aset extends Model
     protected $fillable = [
         'status_aset_id',
         'kondisi_aset_id',
-        // 'sub_lokasi_id',
+        'asset_type_id',
+        'location_id',
+        'sub_lokasi_id',
         'code',
         'name',
     ];
@@ -33,13 +35,29 @@ class Aset extends Model
     {
         return $this->belongsTo(KondisiAset::class, 'kondisi_aset_id');
     }
+
     public function statusAset()
     {
         return $this->belongsTo(StatusAset::class, 'status_aset_id');
     }
+
+    public function tipeAset()
+    {
+        return $this->belongsTo(TipeAset::class, 'asset_type_id');
+    }
+
+    public function lokasi()
+    {
+        return $this->belongsTo(Lokasi::class, 'location_id');
+    }
+
     public function subLokasi()
     {
         return $this->belongsTo(SubLokasi::class, 'sub_lokasi_id');
+    }
+    public function failureCodes()
+    {
+        return $this->hasMany(FailureCode::class, 'aset_id');
     }
 
     /*******************************

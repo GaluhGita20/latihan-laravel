@@ -33,6 +33,16 @@ class Lokasi extends Model
         return $this->belongsTo(Struct::class, 'struct_id');
     }
 
+    public function aset()
+    {
+        return $this->hasMany(Aset::class, 'aset_id');
+    }
+
+    public function subLokasi()
+    {
+        return $this->hasMany(SubLokasi::class, 'sub_lokasi_id');
+    }
+
     /*******************************
      ** SCOPE
      *******************************/

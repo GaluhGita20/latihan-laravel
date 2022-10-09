@@ -2,15 +2,15 @@
 
 @section('modal-body')
 	<div class="form-group row">
-		<label class="col-sm-12 col-form-label">{{ __('Id Aset') }}</label>
+		<label class="col-sm-12 col-form-label">{{ __('Id Parts') }}</label>
 		<div class="col-sm-12 parent-group">
-			<input type="text" value="{{ $record->code }}" class="form-control" placeholder="{{ __('Id Aset') }}" disabled>
+			<input type="text" value="{{ $record->code }}" class="form-control" placeholder="{{ __('Id Parts') }}" disabled>
 		</div>
 	</div>
 	<div class="form-group row">
-		<label class="col-sm-12 col-form-label">{{ __('Nama Aset') }}</label>
+		<label class="col-sm-12 col-form-label">{{ __('Nama Parts') }}</label>
 		<div class="col-sm-12 parent-group">
-			<input type="text" value="{{ $record->name }}" class="form-control" placeholder="{{ __('Nama Aset') }}" disabled>
+			<input type="text" value="{{ $record->name }}" class="form-control" placeholder="{{ __('Nama Parts') }}" disabled>
 		</div>
 	</div>
 	<div class="form-group row">

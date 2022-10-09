@@ -6,7 +6,7 @@ use App\Exports\GenerateExport;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Master\FailureCodeRequest;
 use App\Models\Master\FailureCode;
-use App\Models\Master\Geo\Province;
+use App\Models\Master\Aset;
 use Illuminate\Http\Request;
 
 class FailureCodeController extends Controller
@@ -41,7 +41,7 @@ class FailureCodeController extends Controller
                 'tableStruct' => [
                     'datatable_1' => [
                         $this->makeColumn('name:num'),
-                        $this->makeColumn('name:province.name|label:Id Aset|className:text-left'),
+                        $this->makeColumn('name:aset.code|label:Id Aset|className:text-left'),
                         $this->makeColumn('name:name|label:Failure Code|className:text-left'),
                         $this->makeColumn('name:desc|label:Deskripsi|className:text-left'),
                         $this->makeColumn('name:updated_by'),
@@ -56,7 +56,7 @@ class FailureCodeController extends Controller
     public function grid()
     {
         $user = auth()->user();
-        $records = FailureCode::with('province')
+        $records = FailureCode::with('aset')
             ->grid()
             ->filters()
             ->dtGet();
@@ -97,10 +97,10 @@ class FailureCodeController extends Controller
 
     public function create()
     {
-        $PROVINCES = Province::orderBy('name', 'ASC')->get();
+        $ASET = Aset::orderBy('code', 'ASC')->get();
         return $this->render(
             $this->views . '.create',
-            compact('PROVINCES')
+            compact('ASET')
         );
     }
 
@@ -117,10 +117,10 @@ class FailureCodeController extends Controller
 
     public function edit(FailureCode $record)
     {
-        $PROVINCES = Province::orderBy('name', 'ASC')->get();
+        $ASET = Aset::orderBy('code', 'ASC')->get();
         return $this->render(
             $this->views . '.edit',
-            compact('record', 'PROVINCES')
+            compact('record', 'ASET')
         );
     }
 

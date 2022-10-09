@@ -7,12 +7,12 @@
     <div class="form-group row">
 		<label class="col-sm-12 col-form-label">{{ __('id Aset') }}</label>
 		<div class="col-sm-12 parent-group">
-            <select class="form-control base-plugin--select2" name="province_id">
+            <select class="form-control base-plugin--select2" name="aset_id">
                 <option disabled selected value="">Pilih Id Aset</option>
-                @foreach ($PROVINCES as $item)
-                    <option @if($record->province_id == $item->id) selected @endif
+                @foreach ($ASET as $item)
+                    <option @if($record->aset_id == $item->id) selected @endif
                         value="{{ $item->id }}">
-                        {{ $item->name }}
+                        {{ $item->code }}
                     </option>
                 @endforeach
             </select>

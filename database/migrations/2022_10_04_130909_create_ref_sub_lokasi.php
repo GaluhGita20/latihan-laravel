@@ -16,7 +16,13 @@ class CreateRefSubLokasi extends Migration
         Schema::create('ref_sub_lokasi', function (Blueprint $table) {
             $table->id();
             $table->string('name', 32);
+            $table->unsignedBigInteger('struct_id')->nullable();
+            $table->unsignedBigInteger('location_id');
             $table->commonFields();
+
+            $table->foreign('location_id')
+                ->on('ref_location')
+                ->references('id');
         });
     }
 

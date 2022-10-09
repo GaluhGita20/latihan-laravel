@@ -10,7 +10,7 @@ class FailureCodeRequest extends FormRequest
     {
         $id = $this->record->id ?? 0;
         $rules = [
-            'province_id' => 'required',
+            'aset_id' => 'required',
             'name'        => 'required|string|max:225|unique:ref_failure_code,name,'.$id,
             'desc'        => 'required|string|max:225',
         ];

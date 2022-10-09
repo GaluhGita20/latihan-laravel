@@ -4,16 +4,21 @@ namespace App\Http\Controllers\Master;
 
 use App\Exports\GenerateExport;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Master\SubLokasiRequest;
-use App\Models\Master\SubLokasi;
+use App\Http\Requests\Master\PartsRequest;
+use App\Models\Master\Parts;
+use App\Models\Master\KondisiAset;
+use App\Models\Master\StatusAset;
+use App\Models\Master\TipeAset;
 use App\Models\Master\Lokasi;
+use App\Models\Master\SubLokasi;
+use App\Models\Master\Assemblies;
 use Illuminate\Http\Request;
 
-class SubLokasiController extends Controller
+class PartsController extends Controller
 {
-    protected $module   = 'master.sub-lokasi';
-    protected $routes   = 'master.sub-lokasi';
-    protected $views    = 'master.sub-lokasi';
+    protected $module   = 'master.parts';
+    protected $routes   = 'master.parts';
+    protected $views    = 'master.parts';
     protected $perms    = 'master';
 
     public function __construct()
@@ -25,10 +30,10 @@ class SubLokasiController extends Controller
                 'views' => $this->views,
                 'perms' => $this->perms,
                 'permission' => $this->perms . '.view',
-                'title' => 'Sub Lokasi',
+                'title' => 'Parts',
                 'breadcrumb' => [
                     'Data Master' => route($this->routes . '.index'),
-                    'Sub Lokasi' => route($this->routes . '.index'),
+                    'Parts' => route($this->routes . '.index'),
                 ]
             ]
         );
@@ -41,9 +46,9 @@ class SubLokasiController extends Controller
                 'tableStruct' => [
                     'datatable_1' => [
                         $this->makeColumn('name:num'),
-                        $this->makeColumn('name:struct.name|label:Struktur|className:text-left'),
-                        $this->makeColumn('name:subLokasi|label:Lokasi|className:text-left'),
-                        $this->makeColumn('name:name|label:Sub Lokasi|className:text-left'),
+                        $this->makeColumn('name:code|label:Id Parts|className:text-left'),
+                        $this->makeColumn('name:name|label:Nama Parts|className:text-left'),
+                        $this->makeColumn('name:code|label:Id Assemblies|className:text-left'),
                         $this->makeColumn('name:updated_by'),
                         $this->makeColumn('name:action'),
                     ],
@@ -56,7 +61,13 @@ class SubLokasiController extends Controller
     public function grid()
     {
         $user = auth()->user();
-        $records = SubLokasi::with('lokasi','struct')
+        $records = Parts::with(
+            'kondisiAset',
+            'statusAset',
+            'tipeAset',
+            'lokasi',
+            'subLokasi'
+            )
         ->grid()
         ->filters()
         ->dtGet();
@@ -97,35 +108,62 @@ class SubLokasiController extends Controller
 
     public function create()
     {
+        $STATUSASET  = StatusAset::orderBy('name', 'ASC')->get();
+        $KONDISIASET = KondisiAset::orderBy('name', 'ASC')->get();
+        $TIPEASET = TipeAset::orderBy('name', 'ASC')->get();
         $LOKASI = Lokasi::orderBy('name', 'ASC')->get();
+        $SUBLOKASI = SubLokasi::orderBy('name', 'ASC')->get();
+        // $ASSEMBLIES = Assemblies::orderBy('name', 'ASC')->get();
         return $this->render(
             $this->views . '.create',
-            compact('LOKASI')
+            compact(
+                'STATUSASET',
+                'KONDISIASET',
+                'TIPEASET',
+                'LOKASI',
+                'SUBLOKASI',
+                // 'ASSEMBLIES'
+                )
         );
     }
 
-    public function store(SubLokasiRequest $request)
+    public function store(PartsRequest $request)
     {
-        $record = new SubLokasi;
+        $record = new Parts;
         return $record->handleStoreOrUpdate($request);
     }
 
-    public function show(SubLokasi $record)
+    public function show(Parts $record)
     {
         return $this->render($this->views . '.show', compact('record'));
     }
 
-    public function edit(SubLokasi $record)
+    public function edit(Parts $record)
     {
-        return $this->render($this->views . '.edit', compact('record'));
+        $STATUSASET  = StatusAset::orderBy('name', 'ASC')->get();
+        $KONDISIASET = KondisiAset::orderBy('name', 'ASC')->get();
+        $TIPEASET = TipeAset::orderBy('name', 'ASC')->get();
+        $LOKASI = Lokasi::orderBy('name', 'ASC')->get();
+        $SUBLOKASI = SubLokasi::orderBy('name', 'ASC')->get();
+        return $this->render(
+            $this->views . '.edit',
+            compact(
+                'record',
+                'STATUSASET',
+                'KONDISIASET',
+                'TIPEASET',
+                'LOKASI',
+                'SUBLOKASI'
+            )
+        );
     }
 
-    public function update(SubLokasiRequest $request, SubLokasi $record)
+    public function update(PartsRequest $request, Parts $record)
     {
         return $record->handleStoreOrUpdate($request);
     }
 
-    public function destroy(SubLokasi $record)
+    public function destroy(Parts $record)
     {
         return $record->handleDestroy();
     }
@@ -160,7 +198,7 @@ class SubLokasiController extends Controller
             ]
         );
 
-        $record = new SubLokasi;
+        $record = new Example;
         return $record->handleImport($request);
     }
 }

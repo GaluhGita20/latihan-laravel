@@ -8,6 +8,8 @@ use App\Http\Requests\Master\AsetRequest;
 use App\Models\Master\Aset;
 use App\Models\Master\KondisiAset;
 use App\Models\Master\StatusAset;
+use App\Models\Master\TipeAset;
+use App\Models\Master\Lokasi;
 use App\Models\Master\SubLokasi;
 use Illuminate\Http\Request;
 
@@ -57,7 +59,13 @@ class AsetController extends Controller
     public function grid()
     {
         $user = auth()->user();
-        $records = Aset::with('kondisiAset','statusAset','subLokasi')
+        $records = Aset::with(
+            'kondisiAset',
+            'statusAset',
+            'tipeAset',
+            'lokasi',
+            'subLokasi'
+            )
         ->grid()
         ->filters()
         ->dtGet();
@@ -100,12 +108,16 @@ class AsetController extends Controller
     {
         $STATUSASET  = StatusAset::orderBy('name', 'ASC')->get();
         $KONDISIASET = KondisiAset::orderBy('name', 'ASC')->get();
+        $TIPEASET = TipeAset::orderBy('name', 'ASC')->get();
+        $LOKASI = Lokasi::orderBy('name', 'ASC')->get();
         $SUBLOKASI = SubLokasi::orderBy('name', 'ASC')->get();
         return $this->render(
             $this->views . '.create',
             compact(
                 'STATUSASET',
                 'KONDISIASET',
+                'TIPEASET',
+                'LOKASI',
                 'SUBLOKASI'
                 )
         );
@@ -126,13 +138,17 @@ class AsetController extends Controller
     {
         $STATUSASET  = StatusAset::orderBy('name', 'ASC')->get();
         $KONDISIASET = KondisiAset::orderBy('name', 'ASC')->get();
-        $SUBLOKASI = KondisiAset::orderBy('name', 'ASC')->get();
+        $TIPEASET = TipeAset::orderBy('name', 'ASC')->get();
+        $LOKASI = Lokasi::orderBy('name', 'ASC')->get();
+        $SUBLOKASI = SubLokasi::orderBy('name', 'ASC')->get();
         return $this->render(
             $this->views . '.edit',
             compact(
                 'record',
                 'STATUSASET',
                 'KONDISIASET',
+                'TIPEASET',
+                'LOKASI',
                 'SUBLOKASI'
             )
         );

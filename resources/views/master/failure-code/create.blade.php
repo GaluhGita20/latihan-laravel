@@ -8,10 +8,10 @@
 	<div class="form-group row">
 		<label class="col-sm-12 col-form-label">{{ __('Id Aset') }}</label>
 		<div class="col-sm-12 parent-group">
-            <select class="form-control base-plugin--select2" name="province_id">
+            <select class="form-control base-plugin--select2" name="aset_id">
                 <option disabled selected value="">Pilih Id Aset</option>
-                 @foreach ($PROVINCES as $item) 
-                    <option value="{{ $item->id }}">{{ $item->name }}</option>
+                 @foreach ($ASET as $item) 
+                    <option value="{{ $item->id }}">{{ $item->code }}</option>
                 @endforeach
             </select>
 		</div>
