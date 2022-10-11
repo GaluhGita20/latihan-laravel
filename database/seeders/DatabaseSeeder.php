@@ -25,6 +25,7 @@ class DatabaseSeeder extends Seeder
         $this->call(DummyAllSeeder::class);
         $this->call(MasterBiayaLainSeeder::class);
         $this->call(MasterKondisiAsetSeeder::class);
+        $this->call(MasterTeamSeeder::class);
 
         
     }
