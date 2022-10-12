@@ -23,10 +23,9 @@ class DatabaseSeeder extends Seeder
 
         // Dummy
         $this->call(DummyAllSeeder::class);
+        $this->call(MasterTipeMaintenanceSeeder::class);
         $this->call(MasterBiayaLainSeeder::class);
         $this->call(MasterKondisiAsetSeeder::class);
         $this->call(MasterTeamSeeder::class);
-
-        
     }
 }
