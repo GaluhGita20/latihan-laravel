@@ -23,5 +23,6 @@ class DatabaseSeeder extends Seeder
 
         // Dummy
         $this->call(DummyAllSeeder::class);
+        $this->call(MasterTipeAssetSeeder::class);
     }
 }
