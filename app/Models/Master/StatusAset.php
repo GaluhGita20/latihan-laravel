@@ -5,6 +5,7 @@ namespace App\Models\Master;
 use App\Imports\Master\ExampleImport;
 use App\Models\Model;
 use App\Models\Setting\Globals\TempFiles;
+use Database\Seeders\MasterAssetStatus;
 
 class StatusAset extends Model
 {
