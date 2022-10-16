@@ -26,7 +26,7 @@
             <tbody>
                 @foreach (config('backendmenu') as $menu)
                     @if (empty($menu['section']))
-                        @if (in_array($record->id, [2, 3]) && in_array($menu['name'], ['setting', 'master']))
+                        @if (in_array($record->id, [0]) && in_array($menu['name'], ['setting', 'master']))
                             @continue
                         @endif
                         @php
@@ -69,7 +69,7 @@
                                             <i class="far fa-check-circle fa-fw mr-1"></i>Create All
                                         </button>
                                     @elseif($p = $perms->where('name', $menu['perms'] . '.create')->first())
-                                        @if (!in_array($record->id, [2, 3]))
+                                        @if (!in_array($record->id, [0]))
                                             <div class="d-inline-block">
                                                 <label
                                                     class="checkbox checkbox-lg checkbox-light-primary checkbox-single flex-shrink-0">
@@ -88,7 +88,7 @@
                                             <i class="far fa-check-circle fa-fw mr-1"></i>Edit All
                                         </button>
                                     @elseif($p = $perms->where('name', $menu['perms'] . '.edit')->first())
-                                        @if (!in_array($record->id, [2, 3]))
+                                        @if (!in_array($record->id, [0]))
                                             <div class="d-inline-block">
                                                 <label
                                                     class="checkbox checkbox-lg checkbox-light-primary checkbox-single flex-shrink-0">
@@ -107,7 +107,7 @@
                                             <i class="far fa-check-circle fa-fw mr-1"></i>Delete All
                                         </button>
                                     @elseif($p = $perms->where('name', $menu['perms'] . '.delete')->first())
-                                        @if (!in_array($record->id, [2, 3]))
+                                        @if (!in_array($record->id, [0]))
                                             <div class="d-inline-block">
                                                 <label
                                                     class="checkbox checkbox-lg checkbox-light-primary checkbox-single flex-shrink-0">
@@ -126,7 +126,7 @@
                                             <i class="far fa-check-circle fa-fw mr-1"></i>Approve All
                                         </button>
                                     @elseif($p = $perms->where('name', $menu['perms'] . '.approve')->first())
-                                        @if (!in_array($record->id, [2, 3]))
+                                        @if (!in_array($record->id, [0]))
                                             <div class="d-inline-block">
                                                 <label
                                                     class="checkbox checkbox-lg checkbox-light-primary checkbox-single flex-shrink-0">
@@ -176,7 +176,7 @@
                                 @endif
                             </td>
                             <td class="text-center ">
-                                @if (!in_array($record->id, [2, 3]))
+                                @if (!in_array($record->id, [0]))
                                     @if ($p = $perms->where('name', $child['perms'] . '.create')->first())
                                         <div class="d-inline-block">
                                             <label class="checkbox checkbox-lg checkbox-light-primary checkbox-sing">
@@ -189,7 +189,7 @@
                                 @endif
                             </td>
                             <td class="text-center ">
-                                @if (!in_array($record->id, [2, 3]))
+                                @if (!in_array($record->id, [0]))
                                     @if ($p = $perms->where('name', $child['perms'] . '.edit')->first())
                                         <div class="d-inline-block">
                                             <label class="checkbox checkbox-lg checkbox-light-primary checkbox-sing">
@@ -202,7 +202,7 @@
                                 @endif
                             </td>
                             <td class="text-center ">
-                                @if (!in_array($record->id, [2, 3]))
+                                @if (!in_array($record->id, [0]))
                                     @if ($p = $perms->where('name', $child['perms'] . '.delete')->first())
                                         <div class="d-inline-block">
                                             <label class="checkbox checkbox-lg checkbox-light-primary checkbox-sing">
@@ -215,7 +215,7 @@
                                 @endif
                             </td>
                             <td class="text-center ">
-                                @if (!in_array($record->id, [2, 3]))
+                                @if (!in_array($record->id, [0]))
                                     @if ($p = $perms->where('name', $child['perms'] . '.approve')->first())
                                         <div class="d-inline-block">
                                             <label class="checkbox checkbox-lg checkbox-light-primary checkbox-sing">

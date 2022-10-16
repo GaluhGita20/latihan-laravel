@@ -45,6 +45,9 @@ Route::middleware('auth')
                         Route::post('{search}/selectPosition', 'AjaxController@selectPosition')->name('selectPosition');
                         Route::post('{search}/selectUser', 'AjaxController@selectUser')->name('selectUser');
                         Route::post('{search}/selectNip', 'AjaxController@selectNip')->name('selectNip');
+                        Route::post('{search}/selectAset', 'AjaxController@selectAset')->name('selectAset');
+                        Route::post('{search}/selectLocation', 'AjaxController@selectLocation')->name('selectLocation');
+                        Route::post('{search}/selectSubLocation', 'AjaxController@selectSubLocation')->name('selectSubLocation');
                     }
                 );
 

@@ -4,12 +4,15 @@ namespace App\Http\Controllers;
 
 use App\Models\Auth\Role;
 use App\Models\Auth\User;
+use App\Models\Master\Aset;
 use App\Models\Master\Geo\City;
+use App\Models\Master\Lokasi;
+use App\Models\Master\Org\Position;
+use App\Models\Master\Org\Struct;
+use App\Models\Master\Pegawai\Pegawai;
+use App\Models\Master\SubLokasi;
 use App\Models\Setting\Globals\Notification;
 use App\Models\Setting\Globals\TempFiles;
-use App\Models\Master\Org\Struct;
-use App\Models\Master\Org\Position;
-use App\Models\Master\Pegawai\Pegawai;
 use Illuminate\Http\Request;
 
 class AjaxController extends Controller
@@ -252,6 +255,75 @@ class AjaxController extends Controller
                 'nm_unit'       => $item->unit_kerja->name,
 
             ];
+        }
+        return response()->json(compact('results', 'more'));
+    }
+
+    public function selectAset($search, Request $request)
+    {
+        $items = Aset::keywordBy('name')->orderBy('name');
+        switch ($search) {
+            case 'all':
+                $items = $items;
+                break;
+
+            default:
+                $items = $items->whereNull('id');
+                break;
+        }
+        $items = $items->paginate();
+
+        $results = [];
+        $more = false;
+        foreach ($items as $item) {
+            $results[] = ['id' => $item->id, 'text' => $item->name];
+        }
+        return response()->json(compact('results', 'more'));
+    }
+
+    public function selectLocation($search, Request $request)
+    {
+        $items = Lokasi::keywordBy('name')->orderBy('name');
+        switch ($search) {
+            case 'all':
+                $items = $items;
+                break;
+
+            default:
+                $items = $items->whereNull('id');
+                break;
+        }
+        $items = $items->paginate();
+
+        $results = [];
+        $more = false;
+        foreach ($items as $item) {
+            $results[] = ['id' => $item->id, 'text' => $item->name];
+        }
+        return response()->json(compact('results', 'more'));
+    }
+
+    public function selectSubLocation($search, Request $request)
+    {
+        $items = SubLokasi::keywordBy('name')->orderBy('name');
+        switch ($search) {
+            case 'all':
+                $items = $items;
+                break;
+            case 'by_location':
+                $items = $items->where('location_id', $request->location_id);
+                break;
+
+            default:
+                $items = $items->whereNull('id');
+                break;
+        }
+        $items = $items->paginate();
+
+        $results = [];
+        $more = false;
+        foreach ($items as $item) {
+            $results[] = ['id' => $item->id, 'text' => $item->name];
         }
         return response()->json(compact('results', 'more'));
     }

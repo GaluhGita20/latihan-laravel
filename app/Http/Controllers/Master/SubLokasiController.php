@@ -42,7 +42,7 @@ class SubLokasiController extends Controller
                     'datatable_1' => [
                         $this->makeColumn('name:num'),
                         $this->makeColumn('name:struct.name|label:Struktur|className:text-left'),
-                        $this->makeColumn('name:subLokasi|label:Lokasi|className:text-left'),
+                        $this->makeColumn('name:lokasi.name|label:Lokasi|className:text-left'),
                         $this->makeColumn('name:name|label:Sub Lokasi|className:text-left'),
                         $this->makeColumn('name:updated_by'),
                         $this->makeColumn('name:action'),
