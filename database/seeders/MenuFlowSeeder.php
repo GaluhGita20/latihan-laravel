@@ -10,12 +10,21 @@ class MenuFlowSeeder extends Seeder
     public function run()
     {
         $data = [
-            // Example
+            // // Example
+            // [
+            //     'module'   => 'example',
+            //     'submenu'=> [
+            //         [
+            //             'module'   => 'example_crud',
+            //         ],
+            //     ]
+            // ],
+            // Work Manage
             [
-                'module'   => 'example',
+                'module'   => 'work-manage',
                 'submenu'=> [
                     [
-                        'module'   => 'example_crud',
+                        'module'   => 'work-manage_work-req',
                     ],
                 ]
             ],
