@@ -2,23 +2,26 @@
 
 namespace Database\Seeders;
 
-use App\Models\Master\Org\Struct;
+use App\Models\Master\TipeAset;
 use Illuminate\Database\Seeder;
 
-class StructSeeder extends Seeder
+class MasterTipeAssetSeeder extends Seeder
 {
+    /**
+     * Run the database seeds.
+     *
+     * @return void
+     */
     public function run()
     {
-        $structs = [
+        $tipeAssets = [
             // type => 1:presdir, 2:direktur, 3:ia division, 4:it division
             // Level Root
             [
-                'level'         => 'root',
-                'name'          => config('base.company.name'),
-                'phone'         => config('base.company.phone'),
-                'address'       => config('base.company.address'),
-                'code'          => 1001,
-                'type'          => null,
+                'name'          => 'rapli bct',
+            ],
+            [
+                'name'          => 'rapli bch',
             ],
             // // Level BOC
             // [
@@ -40,15 +43,15 @@ class StructSeeder extends Seeder
             //     'type'          => null,
             // ],
             // // Level BOD
-            [
-                'level'         => 'bod',
-                'name'          => 'Direktur Utama',
-                'phone'         => config('base.company.phone'),
-                'address'       => config('base.company.address'),
-                'parent_code'   => 1001,
-                'code'          => 2001,
-                'type'          => 'presdir',
-            ],
+            // [
+            //     'level'         => 'bod',
+            //     'name'          => 'Direktur Utama',
+            //     'phone'         => config('base.company.phone'),
+            //     'address'       => config('base.company.address'),
+            //     'parent_code'   => 1001,
+            //     'code'          => 2001,
+            //     'type'          => 'presdir',
+            // ],
             // // Level Division
             // [
             //     'level'         => 'division',
@@ -71,28 +74,22 @@ class StructSeeder extends Seeder
         ];
 
         // $this->command->getOutput()->progressStart($this->countActions($structs));
-        $this->generate($structs);
+        $this->generate($tipeAssets);
         // $this->command->getOutput()->progressFinish();
     }
-
-    public function generate($structs)
+    public function generate($tipeAssets)
     {
         ini_set("memory_limit", -1);
 
-        foreach ($structs as $val) {
+        foreach ($tipeAssets as $val) {
             // $this->command->getOutput()->progressAdvance();
-            $struct = Struct::firstOrNew(['code' => $val['code']]);
-            $struct->level   = $val['level'];
-            $struct->name    = $val['name'];
-            $struct->type    = $val['type'] ?? null;
-            $struct->phone   = $val['phone'] ?? null;
-            $struct->address = $val['address'] ?? null;
-            if (!empty($val['parent_code'])) {
-                if ($parent = Struct::where('code', $val['parent_code'])->first()) {
-                    $struct->parent_id = $parent->id;
-                }
-            }
-            $struct->save();
+            $tipeAsset = TipeAset::firstOrNew(['name' => $val['name']]);
+            // $tipeAsset->level   = $val['level'];
+            $tipeAsset->name    = $val['name'];
+            // $tipeAsset->type    = $val['type'] ?? null;
+            // $tipeAsset->phone   = $val['phone'] ?? null;
+            // $tipeAsset->address = $val['address'] ?? null;
+            $tipeAsset->save();
         }
     }
 

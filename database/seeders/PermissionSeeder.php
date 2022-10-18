@@ -29,6 +29,12 @@ class PermissionSeeder extends Seeder
                 'action'        => ['view', 'create', 'edit', 'delete', 'approve'],
             ],
 
+            /** WORK MANAGEMENT **/
+            [
+                'name'          => 'work-manage.work-req',
+                'action'        => ['view', 'create', 'edit', 'delete', 'approve'],
+            ],
+
             /** ADMIN CONSOLE **/
             [
                 'name'          => 'master',

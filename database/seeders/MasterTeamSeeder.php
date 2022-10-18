@@ -2,23 +2,21 @@
 
 namespace Database\Seeders;
 
-use App\Models\Master\Org\Struct;
+use App\Models\Master\Team;
 use Illuminate\Database\Seeder;
 
-class StructSeeder extends Seeder
+class MasterTeamSeeder extends Seeder
 {
     public function run()
     {
-        $structs = [
+        $team = [
             // type => 1:presdir, 2:direktur, 3:ia division, 4:it division
             // Level Root
             [
-                'level'         => 'root',
-                'name'          => config('base.company.name'),
-                'phone'         => config('base.company.phone'),
-                'address'       => config('base.company.address'),
-                'code'          => 1001,
-                'type'          => null,
+                'name'          => 'baoa',
+            ],
+            [
+                'name'          => 'jaag',
             ],
             // // Level BOC
             // [
@@ -40,15 +38,15 @@ class StructSeeder extends Seeder
             //     'type'          => null,
             // ],
             // // Level BOD
-            [
-                'level'         => 'bod',
-                'name'          => 'Direktur Utama',
-                'phone'         => config('base.company.phone'),
-                'address'       => config('base.company.address'),
-                'parent_code'   => 1001,
-                'code'          => 2001,
-                'type'          => 'presdir',
-            ],
+            // [
+            //     'level'         => 'bod',
+            //     'name'          => 'Direktur Utama',
+            //     'phone'         => config('base.company.phone'),
+            //     'address'       => config('base.company.address'),
+            //     'parent_code'   => 1001,
+            //     'code'          => 2001,
+            //     'type'          => 'presdir',
+            // ],
             // // Level Division
             // [
             //     'level'         => 'division',
@@ -70,29 +68,21 @@ class StructSeeder extends Seeder
             // ],
         ];
 
-        // $this->command->getOutput()->progressStart($this->countActions($structs));
-        $this->generate($structs);
+        // $this->command->getOutput()->progressStart($this->countActions($biayaLain));
+        $this->generate($team);
         // $this->command->getOutput()->progressFinish();
     }
 
-    public function generate($structs)
+    public function generate($team)
     {
         ini_set("memory_limit", -1);
 
-        foreach ($structs as $val) {
+        foreach ($team as $val) {
             // $this->command->getOutput()->progressAdvance();
-            $struct = Struct::firstOrNew(['code' => $val['code']]);
-            $struct->level   = $val['level'];
-            $struct->name    = $val['name'];
-            $struct->type    = $val['type'] ?? null;
-            $struct->phone   = $val['phone'] ?? null;
-            $struct->address = $val['address'] ?? null;
-            if (!empty($val['parent_code'])) {
-                if ($parent = Struct::where('code', $val['parent_code'])->first()) {
-                    $struct->parent_id = $parent->id;
-                }
-            }
-            $struct->save();
+            $team = Team::firstOrNew(['name' => $val['name']]);
+           // $team->level   = $val['level'];
+            $team->name    = $val['name'];
+            $team->save();
         }
     }
 

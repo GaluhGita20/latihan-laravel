@@ -3,6 +3,7 @@
 namespace App\Models\Master;
 
 use App\Imports\Master\SubLokasiImport;
+use App\Models\Master\Org\Struct;
 use App\Models\Model;
 use App\Models\Setting\Globals\TempFiles;
 

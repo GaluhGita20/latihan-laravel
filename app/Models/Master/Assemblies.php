@@ -5,13 +5,18 @@ namespace App\Models\Master;
 use App\Imports\Master\ExampleImport;
 use App\Models\Model;
 use App\Models\Setting\Globals\TempFiles;
-use Database\Seeders\MasterAssetStatus;
 
-class StatusAset extends Model
+class Assemblies extends Model
 {
-    protected $table = 'ref_status_aset';
+    protected $table = 'ref_assemblies';
 
     protected $fillable = [
+        'status_aset_id',
+        'kondisi_aset_id',
+        'tipe_aset_id',
+        'location_id',
+        'sub_lokasi_id',
+        'code',
         'name',
     ];
 
@@ -26,9 +31,29 @@ class StatusAset extends Model
     /*******************************
      ** RELATION
      *******************************/
+    public function kondisiAset()
+    {
+        return $this->belongsTo(KondisiAset::class, 'kondisi_aset_id');
+    }
+    public function statusAset()
+    {
+        return $this->belongsTo(StatusAset::class, 'status_aset_id');
+    }
+    public function tipeAset()
+    {
+        return $this->belongsTo(TipeAset::class, 'tipe_aset_id');
+    }
+    public function lokasi()
+    {
+        return $this->belongsTo(Lokasi::class, 'location_id');
+    }
+    public function subLokasi()
+    {
+        return $this->belongsTo(SubLokasi::class, 'sub_lokasi_id');
+    }
     public function aset()
     {
-        return $this->hasMany(Aset::class, 'status_aset_id');
+        return $this->belongsTo(Aset::class, 'aset_id');
     }
 
     /*******************************
@@ -41,7 +66,7 @@ class StatusAset extends Model
 
     public function scopeFilters($query)
     {
-        return $query->filterBy(['name']);
+        return $query->filterBy(['name','code']);
     }
 
     /*******************************
@@ -116,7 +141,7 @@ class StatusAset extends Model
      *******************************/
     public function canDeleted()
     {
-        // if($this->moduleRelations()->exists()) return false;
+         if($this->moduleRelations()->exists()) return false;
 
         return true;
     }

@@ -14,17 +14,31 @@ return [
         'icon' => 'fa fa-th-large',
         'url' => '/home',
     ],
-    // Transaction: Example
+    // // Transaction: Example
+    // [
+    //     'name' => 'example',
+    //     'title' => 'Example',
+    //     'icon' => 'fa fa-book',
+    //     'submenu' => [
+    //         [
+    //             'name' => 'example.crud',
+    //             'perms' => 'example.crud',
+    //             'title' => 'Crud',
+    //             'url' => '/example/crud',
+    //         ],
+    //     ]
+    // ],
+    // Transaction: Work Management
     [
-        'name' => 'example',
-        'title' => 'Example',
-        'icon' => 'fa fa-book',
+        'name' => 'work-manage',
+        'title' => 'Work Management',
+        'icon' => 'fas fa-swatchbook',
         'submenu' => [
             [
-                'name' => 'example.crud',
-                'perms' => 'example.crud',
-                'title' => 'Crud',
-                'url' => '/example/crud',
+                'name' => 'work-manage_work-req',
+                'perms' => 'work-manage.work-req',
+                'title' => 'Work Request',
+                'url' => '/work-manage/work-req',
             ],
         ]
     ],
@@ -190,6 +204,11 @@ return [
                 'title' => 'Tipe Maintenance',
                 'url' => '/master/tipe-maintenance',
             ],
+            [
+                'name' => 'master.assemblies',
+                'title' => 'Assemblies',
+                'url' => '/master/assemblies',
+            ],
         ]
     ],
 
@@ -220,6 +239,6 @@ return [
                 'url' => '/setting/activity',
             ],
         ]
-        
+
     ],
 ];
