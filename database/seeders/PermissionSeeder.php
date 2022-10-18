@@ -79,6 +79,12 @@ class PermissionSeeder extends Seeder
                 'action'        => ['view', 'create', 'edit', 'delete'],
             ],
 
+            /* Work Management */
+            [
+                'name'          => 'work_order',
+                'action'        => ['view', 'create', 'edit', 'delete'],
+            ],
+
             /** Example **/
             // [
             //     'name'           => 'setting.reportex',

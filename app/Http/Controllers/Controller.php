@@ -272,7 +272,7 @@ class Controller extends BaseController
                                     case 'show':
                                         $default['icon'] = 'fa fa-eye text-primary';
                                         $default['label'] = 'Lihat';
-                                        $default['url'] = route($this->prepared('routes').'.show', $item['id']);
+                                        $default['url'] = (!empty($item['routename'])) ? route($item['routename'], $item['id']) : route($this->prepared('routes').'.show', $item['id']);
                                         $default['attrs'] = 'data-modal-backdrop="true"';
                                         break;
                                     case 'approval':

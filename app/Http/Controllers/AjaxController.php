@@ -4,12 +4,16 @@ namespace App\Http\Controllers;
 
 use App\Models\Auth\Role;
 use App\Models\Auth\User;
+use App\Models\Master\Aset;
+use App\Models\Master\BiayaLain;
 use App\Models\Master\Geo\City;
 use App\Models\Setting\Globals\Notification;
 use App\Models\Setting\Globals\TempFiles;
 use App\Models\Master\Org\Struct;
 use App\Models\Master\Org\Position;
 use App\Models\Master\Pegawai\Pegawai;
+use App\Models\Master\PrioritasAset;
+use App\Models\Master\TipeMaintenance;
 use Illuminate\Http\Request;
 
 class AjaxController extends Controller
@@ -254,6 +258,70 @@ class AjaxController extends Controller
             ];
         }
         return response()->json(compact('results', 'more'));
+    }
+
+    public function selectMaintenanceType(Request $request, $search = 'all')
+    {
+        $items = TipeMaintenance::keywordBy('name')->orderBy('name');
+        switch ($search) {
+            case 'all':
+                $items = $items;
+                break;
+
+            default:
+                $items = $items->whereNull('id');
+                break;
+        }
+        $items = $items->paginate();
+        return $this->responseSelect2($items, 'name', 'id');
+    }
+
+    public function selectPriority(Request $request, $search = 'all')
+    {
+        $items = PrioritasAset::keywordBy('name')->orderBy('name');
+        switch ($search) {
+            case 'all':
+                $items = $items;
+                break;
+
+            default:
+                $items = $items->whereNull('id');
+                break;
+        }
+        $items = $items->paginate();
+        return $this->responseSelect2($items, 'name', 'id');
+    }
+
+    public function selectAsset(Request $request, $search = 'all')
+    {
+        $items = Aset::keywordBy('name')->orderBy('name');
+        switch ($search) {
+            case 'all':
+                $items = $items;
+                break;
+
+            default:
+                $items = $items->whereNull('id');
+                break;
+        }
+        $items = $items->paginate();
+        return $this->responseSelect2($items, 'name', 'id');
+    }
+
+    public function selectOthersCost(Request $request, $search = 'all')
+    {
+        $items = BiayaLain::keywordBy('name')->orderBy('name');
+        switch ($search) {
+            case 'all':
+                $items = $items;
+                break;
+
+            default:
+                $items = $items->whereNull('id');
+                break;
+        }
+        $items = $items->paginate();
+        return $this->responseSelect2($items, 'name', 'id');
     }
 
 }

@@ -28,6 +28,21 @@ return [
             ],
         ]
     ],
+
+    [
+        'name' => 'work_management',
+        'title' => 'Work Management',
+        'icon' => 'fa fa-briefcase',
+        'submenu' => [
+            [
+                'name' => 'work_order',
+                'perms' => 'work_order',
+                'title' => 'Work Order',
+                'url' => '/work-order',
+            ],
+        ]
+    ],
+
     // Admin Console
     [
         'section' => 'ADMIN KONSOL',

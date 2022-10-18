@@ -45,6 +45,10 @@ Route::middleware('auth')
                         Route::post('{search}/selectPosition', 'AjaxController@selectPosition')->name('selectPosition');
                         Route::post('{search}/selectUser', 'AjaxController@selectUser')->name('selectUser');
                         Route::post('{search}/selectNip', 'AjaxController@selectNip')->name('selectNip');
+                        Route::post('{search}/selectMaintenanceType', 'AjaxController@selectMaintenanceType')->name('selectMaintenanceType');
+                        Route::post('{search}/selectPriority', 'AjaxController@selectPriority')->name('selectPriority');
+                        Route::post('{search}/selectAsset', 'AjaxController@selectAsset')->name('selectAsset');
+                        Route::post('{search}/selectOthersCost', 'AjaxController@selectOthersCost')->name('selectOthersCost');
                     }
                 );
 
@@ -231,6 +235,34 @@ Route::middleware('auth')
                             
                     }
                 );
+
+            Route::namespace("WorkManagement")->prefix("work-order")->name("work.work_order.")
+                ->group(function () {
+                    Route::grid("/", "WorkOrderController");
+                    Route::post("/grid", "WorkOrderController@grid")->name("grid");    
+
+                    
+                    Route::get("/test", "WorkOrderController@test");
+                    
+                    Route::get("/get-parts", "WorkOrderController@getParts")->name("get.parts");    
+                    Route::get("/detail-parts", "WorkOrderController@showParts")->name("show.parts");  
+                    
+
+                    Route::post("/create/instruction", "WorkOrderController@storeInstruction")->name("create.instruction");    
+                    Route::post("/update/instruction", "WorkOrderController@updateInstruction")->name("update.instruction");    
+                    Route::get("/delete/instruction/{id}", "WorkOrderController@deleteInstruction")->name("delete.instruction"); 
+                    
+                    Route::post("/create/other-cost", "WorkOrderController@storeOtherCost")->name("create.other_cost");    
+                    Route::post("/update/other-cost", "WorkOrderController@updateOtherCost")->name("update.other_cost");    
+                    Route::get("/delete/other-cost/{id}", "WorkOrderController@deleteOtherCost")->name("delete.other_cost");  
+
+                    Route::get("{record}/edit", "WorkOrderController@edit")->name("update");
+                    Route::post("{record}/edit", "WorkOrderController@update");
+
+                    Route::get("{record}", "WorkOrderController@show")->name("show");
+
+                    Route::delete("{record}", "WorkOrderController@destroy")->name("delete");
+                });
 
             // Web Transaction Modules
             foreach (\File::allFiles(__DIR__ . '/webs') as $file) {
