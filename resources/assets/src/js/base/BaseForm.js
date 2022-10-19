@@ -732,7 +732,154 @@ const BaseForm = function () {
                 });
             }
         },
+        clearFilesData: function () {
+            filesData = [];
+        },
+        setFileIcon: function (file){
+            const extension = file.name.split(".").slice(-1)[0].toLowerCase();
+            switch(extension){
+                case "pdf": return 'text-danger far fa-file-pdf';
+                case "xlsx": return 'text-success far fa-file-excel';
+                case "jpg": return 'text-warning far fa-file-image';
+                case "png": return 'text-warning far fa-file-image';
+                case "ppt": return 'text-danger far fa-file-powerpoint';
+                case "docx": return 'text-primary far fa-file-word';
+                default : return "text-primary far fa-file";
+            }
+            
+        },
+        createListItemFile: function (file, parent, idx, showOnly =  false) {
+            parent.find('.file-list-container').prepend(`
+                <div class="alert alert-custom alert-light fade show py-2 px-4 mb-0 mt-2 success-uploaded" role="alert">
+                    <div class="alert-icon">
+                        <i class="${BaseForm.setFileIcon(file)}"></i>
+                    </div>
+                    <div class="alert-text text-left">
+                        <div>Upload File:</div>
+                        <a href="${URL.createObjectURL(file)}" target="_blank" class="text-primary">${file.name}</a>
+                    </div>
+                    <div class="alert-close" ${ showOnly ? 'hidden' : ''}>
+                        <button data-idx="${idx}" type="button" class="close base-form--remove-uploaded-files" data-toggle="tooltip" title="Remove">
+                            <span aria-hidden="true">
+                                <i class="ki ki-close"></i>
+                            </span>
+                        </button>
+                    </div>
+                </div>
+            `);
+        },
+        createListUploadedFiles: function(files, parent, showOnly = false) {
+            parent.find('.file-list-container').html("");
+            files.map((file, idx) => {
+                BaseForm.createListItemFile(file, parent, idx, showOnly)
+            })
+            if(files.length > 0) {
+                parent.find('.custom-file-label').text('Add File');
+            }else{
+                parent.find('.custom-file-label').text('Choose File');
+            }
+        },
+        appendUploadedFilesToFormData: function (formData, formEl){
+            const inputsFile = formEl.find('input[type="file"]');
+            inputsFile.each(function(){
+                const inputName = $(this).data("name");
+                const fileData = filesData.find((data) => data.name == inputName);
+                if(fileData){
+                    fileData.files.map((file) => {
+                        formData.append(`${inputName}[]`,file);
+                    })
+                }
+            })
+
+            return formData;
+        },
+        removeUploadedFiles: function(el){
+            const element = $(el);
+            const parent = element.parents().eq(3);
+            const inputName = parent.find('.base-form--upload-files').data("name");
+            const removedDataIdx = element.data("idx");
+
+            let fileData = filesData.find((data) => data.name == inputName);
+            if(fileData){
+                delete fileData.files[removedDataIdx];
+                fileData.files = fileData.files.filter(file => file);
+                BaseForm.createListUploadedFiles(fileData.files, parent);
+            }
+
+        },
+        convertLinkToFileObject: function(dataURI){
+            return new Promise((resolve, reject) =>{
+                fetch(dataURI).then( res => {
+                    // Get mimeType
+                    let mimeType = "";
+                    for (var pair of res.headers.entries()) {
+                        if(pair[0] == "content-type"){
+                            mimeType = pair[1];
+                            break;
+                        }
+                    }
+                    
+                    // Get file name
+                    const fileName =  dataURI.split("/").slice(-1)[0]
+
+                    // Convert to File Object
+                    res.arrayBuffer().then((buf)=>{
+                        resolve(new File([buf], fileName, {type:mimeType}))
+                    }).catch(reject)
+
+                }).catch(reject)
+            })
+        },
+        convertFilesPathsToFileObject: function(filePaths){
+            return new Promise((resolve, reject) => {
+                const arrFilePaths =  filePaths.split(",");
+                const promises = arrFilePaths.map((path) =>{
+                    const fullPath = window.location.origin + "/" + path;
+                    return BaseForm.convertLinkToFileObject(fullPath);
+                })
+                
+                Promise.all(promises).then(resolve).catch(reject);
+            })
+        },
+        renderExistingFiles: function(filePaths, inputName, showOnly = false){
+            if(filePaths){
+                BaseForm.convertFilesPathsToFileObject(filePaths).then((files) => {
+                    const el = "input.base-form--upload-files[data-name='"+ inputName +"']";
+                    BaseForm.displayFilesData(el, files, showOnly)
+                })
+            }
+        },
+        displayFilesData: function (el, files, showOnly = false) {
+            const element = $(el);
+            const inputName = element.data("name");
+            const parent = element.closest('.custom-file').parent();
+
+            let fileData = filesData.find((data) => data.name == inputName);
+            if(fileData){
+                fileData.files = [...fileData.files, ...files]
+            }else{
+                fileData = {
+                    name: inputName,
+                    files : files
+                }
+                filesData.push(fileData)
+            }
+
+            BaseForm.createListUploadedFiles(fileData.files, parent, showOnly);
+
+            element.val("");
+        },
         documentEvent: function () {
+            $(document).on('change', 'input.base-form--upload-files', function (e) {
+                const files = Array.from(e.target.files);
+                BaseForm.displayFilesData(this, files);
+            });
+
+            $(document).on('click', '.base-form--remove-uploaded-files', function (e) {
+                e.preventDefault();
+                BaseForm.removeUploadedFiles(this);
+            });
+            
             $(document).on('change', 'input.base-form--save-temp-files', function (e) {
                 BaseForm.saveTempFiles(this, e);
             });

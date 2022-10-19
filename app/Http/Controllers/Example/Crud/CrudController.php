@@ -130,8 +130,9 @@ class CrudController extends Controller
         return $this->render($this->views . '.create', compact('options', 'examples'));
     }
 
-    public function store(CrudRequest $request)
+    public function store(Request $request)
     {
+        dd($request->attachments);
         $record = new Crud;
         return $record->handleStoreOrUpdate($request);
     }

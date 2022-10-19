@@ -12,7 +12,7 @@
         <meta name="author" content="PT Pragma Informatika" />
         <meta name="description" content="Aplication by PT Pragma Informatika" />
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-
+        
         <link rel="shortcut icon" href="{{ asset(config('base.logo.favicon')) }}" />
         <link rel="stylesheet" href="{{ asset('assets/css/fonts/poppins/all.css') }}">
         <link rel="stylesheet" href="{{ asset(mix('assets/css/plugins.bundle.css')) }}">

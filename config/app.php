@@ -235,6 +235,9 @@ return [
         // Additional
         'Excel' => Maatwebsite\Excel\Facades\Excel::class,
         'Base' => App\Support\Base::class,
+
+        // Models
+        'WorkOrder' => App\Models\WorkManagement\WorkOrder::class,
     ],
 
 ];
