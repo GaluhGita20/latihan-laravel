@@ -14,3 +14,31 @@
 		@include('layouts.forms.btnAdd')
 	@endif
 @endsection
+
+@push('scripts')
+    <script>
+        $(document)
+            .on('change', '#lokasiCtrl', function($e) {
+                $.ajax({
+                    method: 'GET',
+                    url: '{{ url('ajax/sub-lokasi-options') }}',
+                    data: {
+                        location_id: $(this).val()
+                    },
+                    success: function(response, state, xhr) {
+                        let options = ``;
+                        for (let item of response) {
+                            options += `<option value='${item.id}'>${item.name}</option>`;
+                        }
+                        $('#subLokasiCtrl').select2('destroy');
+                        $('#subLokasiCtrl').html(options);
+                        $('#subLokasiCtrl').select2();
+                        console.log(54, response, options);
+                    },
+                    error: function(a, b, c) {
+                        console.log(a, b, c);
+                    }
+                });
+            });
+    </script>
+@endpush

@@ -65,10 +65,10 @@ class AsetController extends Controller
             'tipeAset',
             'lokasi',
             'subLokasi'
-            )
-        ->grid()
-        ->filters()
-        ->dtGet();
+        )
+            ->grid()
+            ->filters()
+            ->dtGet();
 
         return \DataTables::of($records)
             ->addColumn(
@@ -110,7 +110,6 @@ class AsetController extends Controller
         $KONDISIASET = KondisiAset::orderBy('name', 'ASC')->get();
         $TIPEASET = TipeAset::orderBy('name', 'ASC')->get();
         $LOKASI = Lokasi::orderBy('name', 'ASC')->get();
-        $SUBLOKASI = SubLokasi::orderBy('name', 'ASC')->get();
         return $this->render(
             $this->views . '.create',
             compact(
@@ -118,8 +117,7 @@ class AsetController extends Controller
                 'KONDISIASET',
                 'TIPEASET',
                 'LOKASI',
-                'SUBLOKASI'
-                )
+            )
         );
     }
 

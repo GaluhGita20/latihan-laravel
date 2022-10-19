@@ -106,8 +106,6 @@ class AssembliesController extends Controller
         $KONDISIASET = KondisiAset::orderBy('name', 'ASC')->get();
         $TIPEASET = TipeAset::orderBy('name', 'ASC')->get();
         $LOKASI = Lokasi::orderBy('name', 'ASC')->get();
-        $SUBLOKASI = SubLokasi::orderBy('name', 'ASC')->get();
-        $ASET = Aset::orderBy('name', 'ASC')->get();
         return $this->render(
             $this->views . '.create',
             compact(
@@ -115,8 +113,6 @@ class AssembliesController extends Controller
                 'KONDISIASET',
                 'TIPEASET',
                 'LOKASI',
-                'SUBLOKASI',
-                'ASET'
             )
         );
     }
@@ -136,10 +132,13 @@ class AssembliesController extends Controller
     {
         $STATUSASET  = StatusAset::orderBy('name', 'ASC')->get();
         $KONDISIASET = KondisiAset::orderBy('name', 'ASC')->get();
-        $TIPEASET = TioeAset::orderBy('name', 'ASC')->get();
+        $TIPEASET = TipeAset::orderBy('name', 'ASC')->get();
         $LOKASI = Lokasi::orderBy('name', 'ASC')->get();
-        $SUBLOKASI = SubLokasi::orderBy('name', 'ASC')->get();
-        $ASET = Aset::orderBy('name', 'ASC')->get();
+        $SUBLOKASI = SubLokasi::where('location_id', $record->location_id)
+            ->orderBy('name', 'ASC')
+            ->get();
+        $ASET = Aset::where('sub_lokasi_id', $record->sub_lokasi_id)
+            ->orderBy('name', 'ASC')->get();
         return $this->render(
             $this->views . '.edit',
             compact(

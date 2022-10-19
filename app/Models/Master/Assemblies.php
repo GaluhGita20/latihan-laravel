@@ -11,13 +11,14 @@ class Assemblies extends Model
     protected $table = 'ref_assemblies';
 
     protected $fillable = [
+        'code',
+        'name',
         'status_aset_id',
         'kondisi_aset_id',
         'tipe_aset_id',
         'location_id',
         'sub_lokasi_id',
-        'code',
-        'name',
+        'aset_id',
     ];
 
     /*******************************
@@ -141,7 +142,7 @@ class Assemblies extends Model
      *******************************/
     public function canDeleted()
     {
-         if($this->moduleRelations()->exists()) return false;
+        // if($this->moduleRelations()->exists()) return false;
 
         return true;
     }

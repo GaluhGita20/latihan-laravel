@@ -20,6 +20,19 @@ use Illuminate\Http\Request;
 
 class AjaxController extends Controller
 {
+    public function AsetOptions(Request $request)
+    {
+        return Aset::select('id', 'name')
+            ->when(
+                $sub_lokasi_id = $request->sub_lokasi_id,
+                function ($q) use ($sub_lokasi_id) {
+                    $q->where('sub_lokasi_id', $sub_lokasi_id);
+                }
+            )
+            ->orderBy('name', 'ASC')
+            ->get();
+    }
+
     public function cityOptions(Request $request)
     {
         return City::select('id', 'name')
@@ -32,6 +45,26 @@ class AjaxController extends Controller
             ->orderBy('name', 'ASC')
             ->get();
     }
+
+    public function subLokasiOptions(Request $request)
+    {
+        return SubLokasi::select('id', 'name')
+            ->when(
+                $location_id = $request->location_id,
+                function ($q) use ($location_id) {
+                    $q->where('location_id', $location_id);
+                }
+            )
+            ->when(
+                $struct_id = $request->struct_id,
+                function ($q) use ($struct_id) {
+                    $q->where('struct_id', $struct_id);
+                }
+            )
+            ->orderBy('name', 'ASC')
+            ->get();
+    }
+
     public function saveTempFiles(Request $request)
     {
         $this->beginTransaction();

@@ -61,7 +61,7 @@
 	<div class="form-group row">
 		<label class="col-sm-12 col-form-label">{{ __('Lokasi') }}</label>
 		<div class="col-sm-12 parent-group">
-            <select class="form-control base-plugin--select2" name="location_id">
+            <select class="form-control base-plugin--select2" id="lokasiCtrl" name="location_id">
                 <option disabled selected value="">Pilih Lokasi</option>
                 @foreach ($LOKASI as $item)
                     <option @if($record->location_id == $item->id) selected @endif
@@ -75,7 +75,7 @@
 	<div class="form-group row">
 		<label class="col-sm-12 col-form-label">{{ __('Sub Lokasi') }}</label>
 		<div class="col-sm-12 parent-group">
-            <select class="form-control base-plugin--select2" name="sub_lokasi_id">
+            <select class="form-control base-plugin--select2" id="subLokasiCtrl" name="sub_lokasi_id">
                 <option disabled selected value="">Pilih Sub Lokasi</option>
                 @foreach ($SUBLOKASI as $item)
                     <option @if($record->sub_lokasi_id == $item->id) selected @endif

@@ -34,7 +34,9 @@ Route::middleware('auth')
                 ->name('ajax.')
                 ->group(
                     function () {
+                        Route::get('aset-options', 'AjaxController@asetOptions')->name('aset-options');
                         Route::get('city-options', 'AjaxController@cityOptions')->name('city-options');
+                        Route::get('sub-lokasi-options', 'AjaxController@subLokasiOptions')->name('sub-lokasi-options');
                         Route::post('saveTempFiles', 'AjaxController@saveTempFiles')->name('saveTempFiles');
                         Route::get('testNotification/{emails}', 'AjaxController@testNotification')->name('testNotification');
                         Route::post('userNotification', 'AjaxController@userNotification')->name('userNotification');
@@ -147,7 +149,6 @@ Route::middleware('auth')
                                     Route::get('position/import', 'PositionController@import')->name('position.import');
                                     Route::post('position/importSave', 'PositionController@importSave')->name('position.importSave');
                                     Route::grid('position', 'PositionController');
-
                                 }
                             );
 
@@ -157,7 +158,6 @@ Route::middleware('auth')
                                     Route::get('example/import', 'ExampleController@import')->name('example.import');
                                     Route::post('example/importSave', 'ExampleController@importSave')->name('example.importSave');
                                     Route::grid('example', 'ExampleController');
-
                                 }
                             );
 
@@ -180,87 +180,87 @@ Route::middleware('auth')
                                 }
                             );
 
-                            Route::get('parts/import', 'PartsController@import')->name('parts.import');
-                            Route::post('parts/importSave', 'PartsController@importSave')->name('parts.importSave');
-                            Route::grid('parts', 'PartsController');
+                        Route::get('parts/import', 'PartsController@import')->name('parts.import');
+                        Route::post('parts/importSave', 'PartsController@importSave')->name('parts.importSave');
+                        Route::grid('parts', 'PartsController');
 
-                            Route::get('lokasi/import', 'LokasiController@import')->name('lokasi.import');
-                            Route::post('lokasi/importSave', 'LokasiController@importSave')->name('lokasi.importSave');
-                            Route::grid('lokasi', 'LokasiController');
+                        Route::get('lokasi/import', 'LokasiController@import')->name('lokasi.import');
+                        Route::post('lokasi/importSave', 'LokasiController@importSave')->name('lokasi.importSave');
+                        Route::grid('lokasi', 'LokasiController');
 
-                            Route::get('tipe-aset/import', 'TipeAsetController@import')->name('tipe-aset.import');
-                            Route::post('tipe-aset/importSave', 'TipeAsetController@importSave')->name('tipe-aset.importSave');
-                            Route::grid('tipe-aset', 'TipeAsetController');
+                        Route::get('tipe-aset/import', 'TipeAsetController@import')->name('tipe-aset.import');
+                        Route::post('tipe-aset/importSave', 'TipeAsetController@importSave')->name('tipe-aset.importSave');
+                        Route::grid('tipe-aset', 'TipeAsetController');
 
-                            Route::get('instruksi-kerja/import', 'InstruksiKerjaController@import')->name('instruksi-kerja.import');
-                            Route::post('instruksi-kerja/importSave', 'InstruksiKerjaController@importSave')->name('instruksi-kerja.importSave');
-                            Route::grid('instruksi-kerja', 'InstruksiKerjaController');
+                        Route::get('instruksi-kerja/import', 'InstruksiKerjaController@import')->name('instruksi-kerja.import');
+                        Route::post('instruksi-kerja/importSave', 'InstruksiKerjaController@importSave')->name('instruksi-kerja.importSave');
+                        Route::grid('instruksi-kerja', 'InstruksiKerjaController');
 
-                            Route::get('sub-lokasi/import', 'SubLokasiController@import')->name('sub-lokasi.import');
-                            Route::post('sub-lokasi/importSave', 'SubLokasiController@importSave')->name('sub-lokasi.importSave');
-                            Route::grid('sub-lokasi', 'SubLokasiController');
+                        Route::get('sub-lokasi/import', 'SubLokasiController@import')->name('sub-lokasi.import');
+                        Route::post('sub-lokasi/importSave', 'SubLokasiController@importSave')->name('sub-lokasi.importSave');
+                        Route::grid('sub-lokasi', 'SubLokasiController');
 
-                            Route::get('failure-code/import', 'FailureCodeController@import')->name('failure-code.import');
-                            Route::post('failure-code/importSave', 'FailureCodeController@importSave')->name('failure-code.importSave');
-                            Route::grid('failure-code', 'FailureCodeController');
+                        Route::get('failure-code/import', 'FailureCodeController@import')->name('failure-code.import');
+                        Route::post('failure-code/importSave', 'FailureCodeController@importSave')->name('failure-code.importSave');
+                        Route::grid('failure-code', 'FailureCodeController');
 
-                            Route::get('aset/import', 'AsetController@import')->name('aset.import');
-                            Route::post('aset/importSave', 'AsetController@importSave')->name('aset.importSave');
-                            Route::grid('aset', 'AsetController');
+                        Route::get('aset/import', 'AsetController@import')->name('aset.import');
+                        Route::post('aset/importSave', 'AsetController@importSave')->name('aset.importSave');
+                        Route::grid('aset', 'AsetController');
 
-                            Route::get('biaya-lain/import', 'BiayaLainController@import')->name('biaya-lain.import');
-                            Route::post('biaya-lain/importSave', 'BiayaLainController@importSave')->name('biaya-lain.importSave');
-                            Route::grid('biaya-lain', 'BiayaLainController');
+                        Route::get('biaya-lain/import', 'BiayaLainController@import')->name('biaya-lain.import');
+                        Route::post('biaya-lain/importSave', 'BiayaLainController@importSave')->name('biaya-lain.importSave');
+                        Route::grid('biaya-lain', 'BiayaLainController');
 
-                            Route::get('status-aset/import', 'StatusAsetController@import')->name('status-aset.import');
-                            Route::post('status-aset/importSave', 'StatusAsetController@importSave')->name('status-aset.importSave');
-                            Route::grid('status-aset', 'StatusAsetController');
+                        Route::get('status-aset/import', 'StatusAsetController@import')->name('status-aset.import');
+                        Route::post('status-aset/importSave', 'StatusAsetController@importSave')->name('status-aset.importSave');
+                        Route::grid('status-aset', 'StatusAsetController');
 
-                            Route::get('kondisi-aset/import', 'KondisiAsetController@import')->name('kondisi-aset.import');
-                            Route::post('kondisi-aset/importSave', 'KondisiAsetController@importSave')->name('kondisi-aset.importSave');
-                            Route::grid('kondisi-aset', 'KondisiAsetController');
+                        Route::get('kondisi-aset/import', 'KondisiAsetController@import')->name('kondisi-aset.import');
+                        Route::post('kondisi-aset/importSave', 'KondisiAsetController@importSave')->name('kondisi-aset.importSave');
+                        Route::grid('kondisi-aset', 'KondisiAsetController');
 
-                            Route::get('team/import', 'TeamController@import')->name('team.import');
-                            Route::post('team/importSave', 'TeamController@importSave')->name('team.importSave');
-                            Route::grid('team', 'TeamController');
+                        Route::get('team/import', 'TeamController@import')->name('team.import');
+                        Route::post('team/importSave', 'TeamController@importSave')->name('team.importSave');
+                        Route::grid('team', 'TeamController');
 
-                            Route::get('vendor-aset/import', 'VendorAsetController@import')->name('vendor-aset.import');
-                            Route::post('vendor-aset/importSave', 'VendorAsetController@importSave')->name('vendor-aset.importSave');
-                            Route::grid('vendor-aset', 'VendorAsetController');
+                        Route::get('vendor-aset/import', 'VendorAsetController@import')->name('vendor-aset.import');
+                        Route::post('vendor-aset/importSave', 'VendorAsetController@importSave')->name('vendor-aset.importSave');
+                        Route::grid('vendor-aset', 'VendorAsetController');
 
-                            Route::get('prioritas-aset/import', 'PrioritasAsetController@import')->name('prioritas-aset.import');
-                            Route::post('prioritas-aset/importSave', 'PrioritasAsetController@importSave')->name('prioritas-aset.importSave');
-                            Route::grid('prioritas-aset', 'PrioritasAsetController');
+                        Route::get('prioritas-aset/import', 'PrioritasAsetController@import')->name('prioritas-aset.import');
+                        Route::post('prioritas-aset/importSave', 'PrioritasAsetController@importSave')->name('prioritas-aset.importSave');
+                        Route::grid('prioritas-aset', 'PrioritasAsetController');
 
-                            Route::get('tipe-maintenance/import', 'TipeMaintenanceController@import')->name('tipe-maintenance.import');
-                            Route::post('tipe-maintenance/importSave', 'TipeMaintenanceController@importSave')->name('tipe-maintenance.importSave');
-                            Route::grid('tipe-maintenance', 'TipeMaintenanceController');
+                        Route::get('tipe-maintenance/import', 'TipeMaintenanceController@import')->name('tipe-maintenance.import');
+                        Route::post('tipe-maintenance/importSave', 'TipeMaintenanceController@importSave')->name('tipe-maintenance.importSave');
+                        Route::grid('tipe-maintenance', 'TipeMaintenanceController');
 
-                            Route::get('assamblies/import', 'AssembliesController@import')->name('assamblies.import');
-                            Route::post('assamblies/importSave', 'AssembliesController@importSave')->name('assamblies.importSave');
-                            Route::grid('assamblies', 'AssembliesController');
+                        Route::get('assemblies/import', 'AssembliesController@import')->name('assemblies.import');
+                        Route::post('assemblies/importSave', 'AssembliesController@importSave')->name('assemblies.importSave');
+                        Route::grid('assemblies', 'AssembliesController');
                     }
                 );
 
             Route::namespace("WorkManagement")->prefix("work-order")->name("work.work_order.")
                 ->group(function () {
                     Route::grid("/", "WorkOrderController");
-                    Route::post("/grid", "WorkOrderController@grid")->name("grid");    
+                    Route::post("/grid", "WorkOrderController@grid")->name("grid");
 
-                    
+
                     Route::get("/test", "WorkOrderController@test");
-                    
-                    Route::get("/get-parts", "WorkOrderController@getParts")->name("get.parts");    
-                    Route::get("/detail-parts", "WorkOrderController@showParts")->name("show.parts");  
-                    
 
-                    Route::post("/create/instruction", "WorkOrderController@storeInstruction")->name("create.instruction");    
-                    Route::post("/update/instruction", "WorkOrderController@updateInstruction")->name("update.instruction");    
-                    Route::get("/delete/instruction/{id}", "WorkOrderController@deleteInstruction")->name("delete.instruction"); 
-                    
-                    Route::post("/create/other-cost", "WorkOrderController@storeOtherCost")->name("create.other_cost");    
-                    Route::post("/update/other-cost", "WorkOrderController@updateOtherCost")->name("update.other_cost");    
-                    Route::get("/delete/other-cost/{id}", "WorkOrderController@deleteOtherCost")->name("delete.other_cost");  
+                    Route::get("/get-parts", "WorkOrderController@getParts")->name("get.parts");
+                    Route::get("/detail-parts", "WorkOrderController@showParts")->name("show.parts");
+
+
+                    Route::post("/create/instruction", "WorkOrderController@storeInstruction")->name("create.instruction");
+                    Route::post("/update/instruction", "WorkOrderController@updateInstruction")->name("update.instruction");
+                    Route::get("/delete/instruction/{id}", "WorkOrderController@deleteInstruction")->name("delete.instruction");
+
+                    Route::post("/create/other-cost", "WorkOrderController@storeOtherCost")->name("create.other_cost");
+                    Route::post("/update/other-cost", "WorkOrderController@updateOtherCost")->name("update.other_cost");
+                    Route::get("/delete/other-cost/{id}", "WorkOrderController@deleteOtherCost")->name("delete.other_cost");
 
                     Route::get("{record}/edit", "WorkOrderController@edit")->name("update");
                     Route::post("{record}/edit", "WorkOrderController@update");
