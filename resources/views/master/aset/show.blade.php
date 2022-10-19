@@ -37,12 +37,12 @@
 			<input type="text" value="{{ $record->lokasi->name }}" class="form-control" placeholder="{{ __('Lokasi') }}" disabled>
 		</div>
 	</div>
-	{{-- <div class="form-group row">
+	<div class="form-group row">
 		<label class="col-sm-12 col-form-label">{{ __('Sub Lokasi') }}</label>
 		<div class="col-sm-12 parent-group">
 			<input type="text" value="{{ $record->subLokasi->name }}" class="form-control" placeholder="{{ __('Sub Lokasi') }}" disabled>
 		</div>
-	</div> --}}
+	</div>
 
 @endsection
 

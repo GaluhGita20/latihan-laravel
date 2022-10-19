@@ -10,7 +10,7 @@ use Illuminate\Http\Request;
 
 class WorkReqController extends Controller
 {
-    protected $module   = 'work-manage_work-req';
+    protected $module   = 'work-manage.work-req';
     protected $routes   = 'work-manage.work-req';
     protected $views    = 'work-manage.work-req';
     protected $perms    = 'work-manage.work-req';
@@ -24,10 +24,10 @@ class WorkReqController extends Controller
                 'views' => $this->views,
                 'perms' => $this->perms,
                 'permission' => $this->perms . '.view',
-                'title' => 'WorkReq',
+                'title' => 'Work Request',
                 'breadcrumb' => [
-                    'WorkReq' => route($this->routes . '.index'),
-                    'WorkReq' => route($this->routes . '.index'),
+                    'Work Management'   => route($this->routes . '.index'),
+                    'Work Request'        => route($this->routes . '.index'),
                 ]
             ]
         );

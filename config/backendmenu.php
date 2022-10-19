@@ -35,22 +35,14 @@ return [
         'icon' => 'fas fa-swatchbook',
         'submenu' => [
             [
-                'name' => 'work-manage_work-req',
+                'name' => 'work-manage.work-req',
                 'perms' => 'work-manage.work-req',
                 'title' => 'Work Request',
                 'url' => '/work-manage/work-req',
             ],
-        ]
-    ],
-
-    [
-        'name' => 'work_management',
-        'title' => 'Work Management',
-        'icon' => 'fa fa-briefcase',
-        'submenu' => [
             [
-                'name' => 'work_order',
-                'perms' => 'work_order',
+                'name' => 'work-manage.work-order',
+                'perms' => 'work-manage.work-order',
                 'title' => 'Work Order',
                 'url' => '/work-order',
             ],
@@ -100,12 +92,12 @@ return [
                     ],
                 ]
             ],
-            [
-                'name' => 'master.example',
-                'perms' => 'master.example',
-                'title' => 'Example',
-                'url' => '/master/example',
-            ],
+            // [
+            //     'name' => 'master.example',
+            //     'perms' => 'master.example',
+            //     'title' => 'Example',
+            //     'url' => '/master/example',
+            // ],
             [
                 'name' => 'master.geo',
                 'perms' => 'master.geo',
@@ -133,16 +125,38 @@ return [
                 ]
             ],
             [
-                'name' => 'master.parts ',
-                'title' => 'Parts ',
-                'url' => '/master/parts ',
+                'name' => 'master',
+                'perms' => 'master',
+                'title' => 'Struktur Aset',
+                'url' => '',
+                'submenu' => [
+                    [
+                        'name' => 'master.lokasi',
+                        'title' => 'Lokasi',
+                        'url' => '/master/lokasi',
+                    ],
+                    [
+                        'name' => 'master.sub-lokasi',
+                        'title' => 'Sub Lokasi',
+                        'url' => '/master/sub-lokasi',
+                    ],
+                    [
+                        'name' => 'master.aset',
+                        'title' => 'Aset',
+                        'url' => '/master/aset',
+                    ],
+                    [
+                        'name' => 'master.parts ',
+                        'title' => 'Parts ',
+                        'url' => '/master/parts ',
+                    ],
+                    [
+                        'name' => 'master.assemblies',
+                        'title' => 'Assemblies',
+                        'url' => '/master/assemblies',
+                    ],
+                ]
             ],
-            [
-                'name' => 'master.lokasi',
-                'title' => 'Lokasi',
-                'url' => '/master/lokasi',
-            ],
-
             [
                 'name' => 'master.tipe-aset',
                 'title' => 'Tipe Aset',
@@ -152,16 +166,6 @@ return [
                 'name' => 'master.instruksi-kerja',
                 'title' => 'Instruksi Kerja',
                 'url' => '/master/instruksi-kerja',
-            ],
-            [
-                'name' => 'master.sub-lokasi',
-                'title' => 'Sub Lokasi',
-                'url' => '/master/sub-lokasi',
-            ],
-            [
-                'name' => 'master.aset',
-                'title' => 'Aset',
-                'url' => '/master/aset',
             ],
             [
                 'name' => 'master.failure-code',
@@ -203,11 +207,6 @@ return [
                 'name' => 'master.tipe-maintenance',
                 'title' => 'Tipe Maintenance',
                 'url' => '/master/tipe-maintenance',
-            ],
-            [
-                'name' => 'master.assemblies',
-                'title' => 'Assemblies',
-                'url' => '/master/assemblies',
             ],
         ]
     ],

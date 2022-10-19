@@ -24,7 +24,10 @@ class MenuFlowSeeder extends Seeder
                 'module'   => 'work-manage',
                 'submenu'=> [
                     [
-                        'module'   => 'work-manage_work-req',
+                        'module'   => 'work-manage.work-req',
+                    ],
+                    [
+                        'module'   => 'work-manage.work-order',
                     ],
                 ]
             ],

@@ -98,7 +98,10 @@ class DummyUserSeeder extends Seeder
         }
 
         // Kepala Divisi / Cabang
-        $objects = Struct::whereIn('level', ['division', 'branch'])->orderBy('level')->orderBy('name')->get();
+        $objects = Struct::whereIn('level', ['division', 'branch'])
+            ->orderBy('level')
+            ->orderBy('name')
+            ->get();
         foreach ($objects as $struct) {
             $position = $struct->positions()->where('name', $struct->nanme)->first();
             if (!$position) {
@@ -129,8 +132,7 @@ class DummyUserSeeder extends Seeder
             $role = Role::firstOrCreate(['name' => 'Kepala ' . $struct->show_level]);
             $perms = Permission::whereIn(
                 'name',
-                [
-                ]
+                []
             )
                 ->pluck('id')
                 ->toArray();

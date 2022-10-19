@@ -10,67 +10,18 @@ class MasterKondisiAsetSeeder extends Seeder
     public function run()
     {
         $kondisiAset = [
-            // type => 1:presdir, 2:direktur, 3:ia division, 4:it division
-            // Level Root
             [
-                'name'          => 'aku',
+                'name'          => 'Kondisi Aset 1',
             ],
             [
-                'name'          => 'neko',
+                'name'          => 'Kondisi Aset 2',
             ],
-            // // Level BOC
-            // [
-            //     'level'         => 'boc',
-            //     'name'          => 'Dewan Komisaris',
-            //     'phone'         => config('base.company.phone'),
-            //     'address'       => config('base.company.address'),
-            //     'parent_code'   => 1001,
-            //     'code'          => 1101,
-            //     'type'          => null,
-            // ],
-            // [
-            //     'level'         => 'boc',
-            //     'name'          => 'Komite Audit',
-            //     'phone'         => config('base.company.phone'),
-            //     'address'       => config('base.company.address'),
-            //     'parent_code'   => 1001,
-            //     'code'          => 1102,
-            //     'type'          => null,
-            // ],
-            // // Level BOD
-            // [
-            //     'level'         => 'bod',
-            //     'name'          => 'Direktur Utama',
-            //     'phone'         => config('base.company.phone'),
-            //     'address'       => config('base.company.address'),
-            //     'parent_code'   => 1001,
-            //     'code'          => 2001,
-            //     'type'          => 'presdir',
-            // ],
-            // // Level Division
-            // [
-            //     'level'         => 'division',
-            //     'name'          => 'Divisi Audit Internal',
-            //     'phone'         => config('base.company.phone'),
-            //     'address'       => config('base.company.address'),
-            //     'parent_code'   => 2001,
-            //     'code'          => 3001,
-            //     'type'          => 'ia',
-            // ],
-            // [
-            //     'level'         => 'division',
-            //     'name'          => 'Divisi Teknologi Informasi',
-            //     'phone'         => config('base.company.phone'),
-            //     'address'       => config('base.company.address'),
-            //     'parent_code'   => 2001,
-            //     'code'          => 3002,
-            //     'type'          => 'it',
-            // ],
+            [
+                'name'          => 'Kondisi Aset 3',
+            ],
         ];
 
-        // $this->command->getOutput()->progressStart($this->countActions($biayaLain));
         $this->generate($kondisiAset);
-        // $this->command->getOutput()->progressFinish();
     }
 
     public function generate($kondisiAset)
@@ -78,9 +29,7 @@ class MasterKondisiAsetSeeder extends Seeder
         ini_set("memory_limit", -1);
 
         foreach ($kondisiAset as $val) {
-            // $this->command->getOutput()->progressAdvance();
             $kondisiAset = KondisiAset::firstOrNew(['name' => $val['name']]);
-           // $kondisiAset->level   = $val['level'];
             $kondisiAset->name    = $val['name'];
             $kondisiAset->save();
         }
