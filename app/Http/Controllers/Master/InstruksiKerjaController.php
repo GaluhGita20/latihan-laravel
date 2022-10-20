@@ -5,8 +5,11 @@ namespace App\Http\Controllers\Master;
 use App\Exports\GenerateExport;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Master\InstruksiKerjaRequest;
+use App\Models\Master\Aset;
+use App\Models\Master\Assemblies;
 use App\Models\Master\InstruksiKerja;
 use App\Models\Master\Geo\Province;
+use App\Models\Master\Parts;
 use Illuminate\Http\Request;
 
 class InstruksiKerjaController extends Controller
@@ -94,7 +97,13 @@ class InstruksiKerjaController extends Controller
 
     public function create()
     {
-        return $this->render($this->views . '.create');
+        $ASETS      = Aset::orderBy('code', 'ASC')->get();
+        $PARTS      = Parts::orderBy('code', 'ASC')->get();
+        $ASSEMBLIES = Assemblies::orderBy('code', 'ASC')->get();
+        return $this->render(
+            $this->views . '.create',
+            compact('ASETS', 'PARTS', 'ASSEMBLIES')
+        );
     }
 
     public function store(InstruksiKerjaRequest $request)
@@ -110,7 +119,13 @@ class InstruksiKerjaController extends Controller
 
     public function edit(InstruksiKerja $record)
     {
-        return $this->render($this->views . '.edit', compact('record'));
+        $ASETS      = Aset::orderBy('code', 'ASC')->get();
+        $PARTS      = Parts::orderBy('code', 'ASC')->get();
+        $ASSEMBLIES = Assemblies::orderBy('code', 'ASC')->get();
+        return $this->render(
+            $this->views . '.edit',
+            compact('record', 'ASETS', 'PARTS', 'ASSEMBLIES')
+        );
     }
 
     public function update(InstruksiKerjaRequest $request, InstruksiKerja $record)

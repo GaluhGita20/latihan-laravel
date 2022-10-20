@@ -48,7 +48,7 @@ class AssembliesController extends Controller
                         $this->makeColumn('name:num'),
                         $this->makeColumn('name:code|label:Id Assemblies|className:text-left'),
                         $this->makeColumn('name:name|label:Nama Assemblies|className:text-left'),
-                        $this->makeColumn('name:code|label:Id Aset|className:text-left'),
+                        $this->makeColumn('name:aset.code|label:Id Aset|className:text-left'),
                         $this->makeColumn('name:updated_by'),
                         $this->makeColumn('name:action'),
                     ],
@@ -61,7 +61,7 @@ class AssembliesController extends Controller
     public function grid()
     {
         $user = auth()->user();
-        $records = Assemblies::with('statusAset', 'kondisiAset', 'tipeAset', 'lokasi', 'subLokasi', 'aset')
+        $records = Assemblies::with('aset')
             ->grid()
             ->filters()
             ->dtGet();

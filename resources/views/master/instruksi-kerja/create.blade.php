@@ -5,24 +5,42 @@
 @section('modal-body')
 	@method('POST')
 	<div class="form-group row">
-		<label class="col-sm-12 col-form-label">{{ __('Instruksi Kerja') }}</label>
+		<label class="col-sm-12 col-form-label">{{ __('Id Aset') }}</label>
 		<div class="col-sm-12 parent-group">
-			<select name="struct_id" class="form-control base-plugin--select2-ajax"
-				data-url="{{ route('ajax.selectStruct', 'parent_position') }}"
-				data-placeholder="{{ __('Pilih Salah Satu') }}">
-			</select>
+            <select class="form-control base-plugin--select2" name="aset_id">
+                <option disabled selected value="">Pilih Id Aset</option>
+                @foreach ($ASETS as $item)
+                    <option value="{{ $item->id }}">{{ $item->code }}</option>
+                @endforeach
+            </select>
+		</div>
+	</div>
+    <div class="form-group row">
+		<label class="col-sm-12 col-form-label">{{ __('Id Parts') }}</label>
+		<div class="col-sm-12 parent-group">
+            <select class="form-control base-plugin--select2" name="part_id">
+                <option disabled selected value="">Pilih Id Parts</option>
+                @foreach ($PARTS as $item)
+                    <option value="{{ $item->id }}">{{ $item->code }}</option>
+                @endforeach
+            </select>
+		</div>
+	</div>
+    <div class="form-group row">
+		<label class="col-sm-12 col-form-label">{{ __('Id Assemblies') }}</label>
+		<div class="col-sm-12 parent-group">
+            <select class="form-control base-plugin--select2" name="assemblies_id">
+                <option disabled selected value="">Pilih Id Assemblies</option>
+                @foreach ($ASSEMBLIES as $item)
+                    <option value="{{ $item->id }}">{{ $item->code }}</option>
+                @endforeach
+            </select>
 		</div>
 	</div>
     <div class="form-group row">
 		<label class="col-sm-12 col-form-label">{{ __('Id Instruksi') }}</label>
 		<div class="col-sm-12 parent-group">
-			<input type="text" name="code" class="form-control" placeholder="{{ __('Id Intruksi') }}">
-		</div>
-	</div>
-    <div class="form-group row">
-		<label class="col-sm-12 col-form-label">{{ __('Keterangan') }}</label>
-		<div class="col-sm-12 parent-group">
-			<input type="text" name="name" class="form-control" placeholder="{{ __('Ket.') }}">
+			<input name="name" class="form-control" placeholder="{{ __('Id Intruksi') }}">
 		</div>
 	</div>
 @endsection

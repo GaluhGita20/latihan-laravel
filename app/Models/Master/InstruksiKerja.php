@@ -13,6 +13,10 @@ class InstruksiKerja extends Model
 
     protected $fillable = [
         'struct_id',
+        'aset_id',
+        'part_id',
+        'assemblies_id',
+        'code',
         'name',
     ];
 
@@ -27,11 +31,21 @@ class InstruksiKerja extends Model
     /*******************************
      ** RELATION
      *******************************/
-    
-    public function struct()
+    public function aset()
     {
-        return $this->belongsTo(Struct::class, 'struct-id');
+        return $this->belongsTo(Aset::class, 'aset_id');
     }
+
+    public function part()
+    {
+        return $this->belongsTo(Parts::class, 'part_id');
+    }
+
+    public function assemblies()
+    {
+        return $this->belongsTo(Assemblies::class, 'assemblies_id');
+    }
+
     /*******************************
      ** SCOPE
      *******************************/

@@ -10,8 +10,10 @@ class InstruksiKerjaRequest extends FormRequest
     {
         $id = $this->record->id ?? 0;
         $rules = [
-            'struct_id' => 'required|exist:sys_struct,id',
-            'name'        => 'required|string|max:255|unique:ref_instruksi_kerja,name,'.$id,
+            'aset_id'       => 'required',
+            'part_id'       => 'required',
+            'assemblies_id' => 'required',
+            'name'          => 'required|string|max:255|unique:ref_instruksi_kerja,name,' . $id,
         ];
 
         return $rules;

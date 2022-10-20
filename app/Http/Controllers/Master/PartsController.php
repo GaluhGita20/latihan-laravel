@@ -48,7 +48,6 @@ class PartsController extends Controller
                         $this->makeColumn('name:num'),
                         $this->makeColumn('name:code|label:Id Parts|className:text-left'),
                         $this->makeColumn('name:name|label:Nama Parts|className:text-left'),
-                        $this->makeColumn('name:code|label:Id Assemblies|className:text-left'),
                         $this->makeColumn('name:updated_by'),
                         $this->makeColumn('name:action'),
                     ],
