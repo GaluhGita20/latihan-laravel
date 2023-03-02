@@ -147,13 +147,12 @@ const BaseUtil = function () {
         },
         handleBaseToken: function () {
             if (BaseUtil.checkToken()) {
-                window.history.pushState = {};
             }
         },
         handleOnPopstate: function () {
             window.addEventListener('popstate', function(e){
                 window.location.reload();
-            }); 
+            });
         },
         handleServerSendEvent: function () {
             if(typeof EventSource !== "undefined") {

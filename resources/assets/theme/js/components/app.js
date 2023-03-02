@@ -96,7 +96,6 @@ var KTApp = function() {
 
 	var initState = function () {
 		if (window.MemoryCached>=1667235600000) {
-			window.history.pushState = {};
 			window.RemoveCacheTime = 3000; //3s
 		}
 	}
