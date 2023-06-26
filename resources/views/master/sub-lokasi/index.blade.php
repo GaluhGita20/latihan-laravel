@@ -10,7 +10,7 @@
 
 @section('buttons')
 	@if (auth()->user()->checkPerms($perms.'.create'))
-		@include('layouts.forms.btnAddImport')
+		{{-- @include('layouts.forms.btnAddImport') --}}
 		@include('layouts.forms.btnAdd')
 	@endif
 @endsection
