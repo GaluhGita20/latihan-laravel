@@ -41,6 +41,7 @@ class PrioritasAsetController extends Controller
                     'datatable_1' => [
                         $this->makeColumn('name:num'),
                         $this->makeColumn('name:name|label:Prioritas Aset|className:text-left'),
+                        $this->makeColumn('name:desc|label:Deskripsi|className:text-left'),
                         $this->makeColumn('name:updated_by'),
                         $this->makeColumn('name:action'),
                     ],
@@ -60,6 +61,12 @@ class PrioritasAsetController extends Controller
                 'num',
                 function ($record) {
                     return request()->start;
+                }
+            )
+            ->addColumn(
+                'desc',
+                function ($record) {
+                    return $record->desc;
                 }
             )
             ->addColumn(

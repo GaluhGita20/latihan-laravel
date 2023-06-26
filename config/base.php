@@ -25,6 +25,7 @@ return [
         'pjnhk'         => 'assets/media/logos/logo-pjnhk.png',
         'kemenkes'      => 'assets/media/logos/logo-kemenkes.png',
         'barcode'       => 'assets/media/logos/pjnhk-logo-barcode.jpg',
+        'your_logo'     => 'assets/media/logos/your_logo_here.png',
     ],
 
     'mail' => [
