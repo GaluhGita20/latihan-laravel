@@ -24,10 +24,10 @@ class BiayaLainController extends Controller
                 'views' => $this->views,
                 'perms' => $this->perms,
                 'permission' => $this->perms . '.view',
-                'title' => 'Biaya Lain',
+                'title' => 'Komponen Biaya',
                 'breadcrumb' => [
                     'Data Master' => route($this->routes . '.index'),
-                    'Biaya Lain' => route($this->routes . '.index'),
+                    'Komponen Biaya' => route($this->routes . '.index'),
                 ]
             ]
         );
@@ -40,7 +40,7 @@ class BiayaLainController extends Controller
                 'tableStruct' => [
                     'datatable_1' => [
                         $this->makeColumn('name:num'),
-                        $this->makeColumn('name:name|label:Biaya Lain|className:text-left'),
+                        $this->makeColumn('name:name|label:Komponen Biaya|className:text-left'),
                         $this->makeColumn('name:updated_by'),
                         $this->makeColumn('name:action'),
                     ],

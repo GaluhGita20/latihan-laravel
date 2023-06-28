@@ -21,7 +21,7 @@
 						<td class="text-right td-btn-create text-nowrap">
 							@yield('buttons-before')
 							@section('buttons')
-								@include('layouts.forms.btnAdd')
+								{{-- @include('layouts.forms.btnAdd') --}}
 							@show
 							@yield('buttons-after')
 						</td>

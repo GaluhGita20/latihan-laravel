@@ -28,6 +28,28 @@ return [
     //         ],
     //     ]
     // ],
+
+    // Rencana Pemeliharaan
+    [
+        'name' => 'rencana-pemeliharaan',
+        'title' => 'Rencana Pemeliharaan',
+        // 'icon' => 'fas fa-swatchbook',
+        'submenu' => [
+            [
+                'name' => 'rencana-pemeliharaan.jadwal',
+                'perms' => 'rencana-pemeliharaan.jadwal',
+                'title' => 'Jadwal',
+                'url' => '/rencana-pemeliharaan/jadwal',
+            ],
+            // [
+            //     'name' => 'maintain.biaya',
+            //     'perms' => 'maintain.biaya',
+            //     'title' => 'Biaya',
+            //     'url' => '/maint/biaya',
+            // ],
+        ]
+    ],
+
     // Transaction: Work Management
     [
         'name' => 'work-manage',
@@ -116,12 +138,12 @@ return [
                         'title' => 'Kota',
                         'url' => '/master/geo/city'
                     ],
-                    [
-                        'name' => 'master.geo.district',
-                        'perms' => 'master.geo.district',
-                        'title' => 'Kecamatan',
-                        'url' => '/master/geo/district'
-                    ],
+                    // [
+                    //     'name' => 'master.geo.district',
+                    //     'perms' => 'master.geo.district',
+                    //     'title' => 'Kecamatan',
+                    //     'url' => '/master/geo/district'
+                    // ],
                 ]
             ],
             [
@@ -174,7 +196,7 @@ return [
             ],
             [
                 'name' => 'master.biaya-lain',
-                'title' => 'Biaya Lain',
+                'title' => 'Komponen Biaya',
                 'url' => '/master/biaya-lain',
             ],
             [
@@ -195,18 +217,28 @@ return [
 
             [
                 'name' => 'master.vendor-aset',
-                'title' => 'Vendor Aset',
+                'title' => 'Vendor',
                 'url' => '/master/vendor-aset',
             ],
             [
                 'name' => 'master.prioritas-aset',
-                'title' => 'Prioritas Aset',
+                'title' => 'Prioritas',
                 'url' => '/master/prioritas-aset',
             ],
             [
                 'name' => 'master.tipe-maintenance',
-                'title' => 'Tipe Maintenance',
+                'title' => 'Tipe Pemeliharaan',
                 'url' => '/master/tipe-maintenance',
+            ],
+            [
+                'name' => 'master.item-pemeliharaan',
+                'title' => 'Item Pemeliharaan',
+                'url' => '/master/item-pemeliharaan',
+            ],            
+            [
+                'name' => 'master.skillset',
+                'title' => 'Skillset',
+                'url' => '/master/skillset',
             ],
         ]
     ],

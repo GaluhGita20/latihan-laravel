@@ -29,6 +29,17 @@ class PermissionSeeder extends Seeder
                 'action'        => ['view', 'create', 'edit', 'delete', 'approve'],
             ],
 
+            /** MAINTENANCE PLAN **/
+            [
+                'name'          => 'rencana-pemeliharaan.jadwal',
+                'action'        => ['view', 'create', 'edit', 'delete', 'approve', 'history'],
+            ], // track-approve, history
+            // [
+            //     'name'          => 'maintain.biaya',
+            //     'action'        => ['view', 'edit', 'delete', 'detail', 'approve', 'history'],
+            // ], 
+            // track-approve, history
+
             /** WORK MANAGEMENT **/
             [
                 'name'          => 'work-manage.work-req',

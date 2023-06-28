@@ -51,6 +51,7 @@ Route::middleware('auth')
                         Route::post('{search}/selectLocation', 'AjaxController@selectLocation')->name('selectLocation');
                         Route::post('{search}/selectSubLocation', 'AjaxController@selectSubLocation')->name('selectSubLocation');
                         Route::post('{search}/selectMaintenanceType', 'AjaxController@selectMaintenanceType')->name('selectMaintenanceType');
+                        Route::post('{search}/selectMaintenanceItem', 'AjaxController@selectMaintenanceItem')->name('selectMaintenanceItem');
                         Route::post('{search}/selectPriority', 'AjaxController@selectPriority')->name('selectPriority');
                         Route::post('{search}/selectAsset', 'AjaxController@selectAsset')->name('selectAsset');
                         Route::post('{search}/selectOthersCost', 'AjaxController@selectOthersCost')->name('selectOthersCost');
@@ -239,6 +240,14 @@ Route::middleware('auth')
                         Route::get('assemblies/import', 'AssembliesController@import')->name('assemblies.import');
                         Route::post('assemblies/importSave', 'AssembliesController@importSave')->name('assemblies.importSave');
                         Route::grid('assemblies', 'AssembliesController');
+
+                        // Route::get('item-pemeliharaan/import', 'ItemPemeliharaanController@import')->name('item-pemeliharaan.import');
+                        // Route::post('item-pemeliharaan/importSave', 'ItemPemeliharaanController@importSave')->name('item-pemeliharaan.importSave');
+                        Route::grid('item-pemeliharaan', 'ItemPemeliharaanController');
+
+                        // Route::get('item-pemeliharaan/import', 'ItemPemeliharaanController@import')->name('item-pemeliharaan.import');
+                        // Route::post('item-pemeliharaan/importSave', 'ItemPemeliharaanController@importSave')->name('item-pemeliharaan.importSave');
+                        Route::grid('skillset', 'SkillsetController');
                     }
                 );
 
@@ -269,6 +278,35 @@ Route::middleware('auth')
 
                     Route::delete("{record}", "WorkOrderController@destroy")->name("delete");
                 });
+
+            Route::namespace('RencanaPemeliharaan')->prefix('rencana-pemeliharaan')->name('rencana-pemeliharaan.')->group(function () {
+                // Risk Register
+                Route::namespace('Jadwal')
+                ->group(
+                    function () {
+                        Route::get('jadwal/{record}/detail', 'JadwalController@detail')->name('jadwal.detail');
+                        Route::get('jadwal/{record}/detailShow', 'JadwalController@detailShow')->name('jadwal.detail.show');
+                        Route::post('jadwal/{record}/detailGrid', 'JadwalController@detailGrid')->name('jadwal.detailGrid');
+        
+                        // Grid
+                        Route::post('jadwal/{record}/detailJadwalGrid', 'JadwalController@detailJadwalGrid')->name('jadwal.detailJadwalGrid');
+                        Route::post('jadwal/{record}/detailJadwalGridShow', 'JadwalController@detailJadwalGridShow')->name('jadwal.detailJadwalGridShow');
+        
+                        // Detail
+                        Route::get('jadwal/{detail}/detailJadwal', 'JadwalController@detailJadwal')->name('jadwal.jadwal');
+                        Route::get('jadwal/{detail}/detailJadwalEdit', 'JadwalController@detailJadwalEdit')->name('jadwal.detailJadwalEdit');
+                        Route::get('jadwal/{detail}/detailJadwalShow', 'JadwalController@detailJadwalShow')->name('jadwal.detailJadwalShow');
+                        Route::patch('jadwal/detailJadwalStore', 'JadwalController@detailJadwalStore')->name('jadwal.detailJadwalStore');
+                        Route::patch('jadwal/{detail}/detailJadwalUpdate', 'JadwalController@detailJadwalUpdate')->name('jadwal.detailJadwalUpdate');
+                        Route::delete('jadwal/{detail}/detailJadwalDestroy', 'JadwalController@detailJadwalDestroy')->name('jadwal.detailJadwalDestroy');
+        
+                        Route::grid('jadwal', 'JadwalController', [
+                            'with' => ['submit', 'approval', 'history', 'tracking']
+                        ]);
+                    }
+                );
+                
+            });
 
             // Web Transaction Modules
             foreach (\File::allFiles(__DIR__ . '/webs') as $file) {

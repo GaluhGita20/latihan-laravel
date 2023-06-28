@@ -36,7 +36,7 @@
 	</div>
 @endsection
 
-@section('buttons')
+@section('buttons-right')
 	@if (auth()->user()->checkPerms($perms.'.create'))
 		{{-- @include('layouts.forms.btnAddImport') --}}
 		@include('layouts.forms.btnAdd')

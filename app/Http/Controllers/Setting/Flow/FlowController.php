@@ -39,7 +39,7 @@ class FlowController extends Controller
                     $this->makeColumn('name:num'),
                     $this->makeColumn('name:menu|label:Menu|className:text-left|sortable:false'),
                     $this->makeColumn('name:flows|label:Flow Approval|className:text-center|sortable:false'),
-                    $this->makeColumn('name:updated_by|label:Diperbarui Oleh|width:180px|sortable:false'),
+                    $this->makeColumn('name:updated_by|label:Diperbarui|width:180px|sortable:false'),
                     $this->makeColumn('name:action'),
                 ],
             ],

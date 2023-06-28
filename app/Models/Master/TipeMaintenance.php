@@ -12,6 +12,7 @@ class TipeMaintenance extends Model
 
     protected $fillable = [
         'name',
+        'desc'
     ];
 
     /*******************************

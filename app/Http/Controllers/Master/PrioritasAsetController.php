@@ -24,10 +24,10 @@ class PrioritasAsetController extends Controller
                 'views' => $this->views,
                 'perms' => $this->perms,
                 'permission' => $this->perms . '.view',
-                'title' => 'Prioritas Aset',
+                'title' => 'Prioritas',
                 'breadcrumb' => [
                     'Data Master' => route($this->routes . '.index'),
-                    'Prioritas Aset' => route($this->routes . '.index'),
+                    'Prioritas' => route($this->routes . '.index'),
                 ]
             ]
         );
@@ -40,7 +40,7 @@ class PrioritasAsetController extends Controller
                 'tableStruct' => [
                     'datatable_1' => [
                         $this->makeColumn('name:num'),
-                        $this->makeColumn('name:name|label:Prioritas Aset|className:text-left'),
+                        $this->makeColumn('name:name|label:Prioritas|className:text-left'),
                         $this->makeColumn('name:desc|label:Deskripsi|className:text-left'),
                         $this->makeColumn('name:updated_by'),
                         $this->makeColumn('name:action'),

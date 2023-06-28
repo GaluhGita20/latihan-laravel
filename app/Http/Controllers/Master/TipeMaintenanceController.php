@@ -24,10 +24,10 @@ class TipeMaintenanceController extends Controller
                 'views' => $this->views,
                 'perms' => $this->perms,
                 'permission' => $this->perms . '.view',
-                'title' => 'Tipe Maintenance',
+                'title' => 'Tipe Pemeliharaan',
                 'breadcrumb' => [
                     'Data Master' => route($this->routes . '.index'),
-                    'Tipe Maintenance' => route($this->routes . '.index'),
+                    'Tipe Pemeliharaan' => route($this->routes . '.index'),
                 ]
             ]
         );
@@ -40,7 +40,7 @@ class TipeMaintenanceController extends Controller
                 'tableStruct' => [
                     'datatable_1' => [
                         $this->makeColumn('name:num'),
-                        $this->makeColumn('name:name|label:Tipe Maintenance|className:text-left'),
+                        $this->makeColumn('name:name|label:Tipe Pemeliharaan|className:text-left'),
                         $this->makeColumn('name:desc|label:Deskripsi|className:text-left'),
                         $this->makeColumn('name:updated_by'),
                         $this->makeColumn('name:action'),
