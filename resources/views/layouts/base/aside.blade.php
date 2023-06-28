@@ -2,9 +2,12 @@
     {{-- Brand --}}
     <div class="brand flex-column-auto pr-3" id="kt_brand">
         <div class="brand-logo m-auto">
-            <a href="{{ url('/') }}">
+            {{-- <a href="{{ url('/') }}">
                 <img src="{{ asset(config('base.logo.platinum')) }}" alt="Image" style="max-width: 170px; max-height: 40px;"/>
-            </a>
+            </a> --}}
+            <div class="mb-10 mb-lg-15">
+                <h1 class="font-size-h1 font-weight-boldest"><br/><small><b>CMMS</b></small></h1>
+            </div>
         </div>
 
         <button class="brand-toggle btn btn-sm px-0" id="kt_aside_toggle">

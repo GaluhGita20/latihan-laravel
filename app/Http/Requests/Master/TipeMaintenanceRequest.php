@@ -11,6 +11,7 @@ class TipeMaintenanceRequest extends FormRequest
         $id = $this->record->id ?? 0;
         $rules = [
             'name'        => 'required|string|max:255|unique:ref_tipe_maintenance,name,'.$id,
+            'desc'        => 'max:225',
         ];
 
         return $rules;

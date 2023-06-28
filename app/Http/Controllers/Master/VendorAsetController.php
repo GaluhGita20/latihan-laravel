@@ -26,10 +26,10 @@ class VendorAsetController extends Controller
                 'views' => $this->views,
                 'perms' => $this->perms,
                 'permission' => $this->perms . '.view',
-                'title' => 'Vendor Aset',
+                'title' => 'Vendor',
                 'breadcrumb' => [
                     'Data Master' => route($this->routes . '.index'),
-                    'Vendor Aset' => route($this->routes . '.index'),
+                    'Vendor' => route($this->routes . '.index'),
                 ]
             ]
         );

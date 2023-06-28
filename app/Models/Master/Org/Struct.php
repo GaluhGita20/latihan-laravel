@@ -16,6 +16,8 @@ class Struct extends Model
         'type', //1:presdir, 2:direktur, 3: division, 4:it division
         'name',
         'code',
+        'website',
+        'email',
         'phone',
         'address',
     ];

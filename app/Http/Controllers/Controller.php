@@ -100,7 +100,7 @@ class Controller extends BaseController
             $params = 'name:created_at|label:Dibuat Pada|width:180px';
         }
         elseif ($params === 'name:updated_by') {
-            $params = 'name:updated_by|label:Diperbarui Oleh|width:180px';
+            $params = 'name:updated_by|label:Diperbarui|width:180px';
         }
         elseif ($params === 'name:updated_at') {
             $params = 'name:updated_at|label:Diperbarui Pada|width:180px';

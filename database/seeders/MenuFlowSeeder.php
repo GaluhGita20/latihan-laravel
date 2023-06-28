@@ -31,6 +31,17 @@ class MenuFlowSeeder extends Seeder
                     ],
                 ]
             ],
+            [
+                'module'   => 'rencana-pemeliharaan',
+                'submenu'=> [
+                    [
+                        'module'   => 'rencana-pemeliharaan.jadwal',
+                    ],
+            //         [
+            //             'module'   => 'maintain.biaya',
+            //         ],
+                ]
+            ],
         ];
 
         // $this->command->getOutput()->progressStart($this->countActions($data));

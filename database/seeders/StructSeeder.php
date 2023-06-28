@@ -87,6 +87,8 @@ class StructSeeder extends Seeder
             $struct->type    = $val['type'] ?? null;
             $struct->phone   = $val['phone'] ?? null;
             $struct->address = $val['address'] ?? null;
+            $struct->website = $val['website'] ?? null;
+            $struct->email = $val['email'] ?? null;
             if (!empty($val['parent_code'])) {
                 if ($parent = Struct::where('code', $val['parent_code'])->first()) {
                     $struct->parent_id = $parent->id;

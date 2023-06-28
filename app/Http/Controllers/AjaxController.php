@@ -15,6 +15,7 @@ use App\Models\Master\SubLokasi;
 use App\Models\Setting\Globals\Notification;
 use App\Models\Setting\Globals\TempFiles;
 use App\Models\Master\PrioritasAset;
+use App\Models\Master\ItemPemeliharaan;
 use App\Models\Master\TipeMaintenance;
 use Illuminate\Http\Request;
 
@@ -367,6 +368,22 @@ class AjaxController extends Controller
     public function selectMaintenanceType(Request $request, $search = 'all')
     {
         $items = TipeMaintenance::keywordBy('name')->orderBy('name');
+        switch ($search) {
+            case 'all':
+                $items = $items;
+                break;
+
+            default:
+                $items = $items->whereNull('id');
+                break;
+        }
+        $items = $items->paginate();
+        return $this->responseSelect2($items, 'name', 'id');
+    }
+
+    public function selectMaintenanceItem(Request $request, $search = 'all')
+    {
+        $items = ItemPemeliharaan::keywordBy('name')->orderBy('name');
         switch ($search) {
             case 'all':
                 $items = $items;

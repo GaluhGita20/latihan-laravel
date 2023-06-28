@@ -11,7 +11,7 @@
 		</div>
 		<label class="col-sm-12 col-form-label">{{ __('Deskripsi') }}</label>
 		<div class="col-sm-12 parent-group">
-			<textarea name="name" class="form-control" placeholder="{{ __('Deskripsi') }}"></textarea>
+			<textarea name="desc" class="form-control" placeholder="{{ __('Deskripsi') }}"></textarea>
 		</div>
 	</div>
 @endsection

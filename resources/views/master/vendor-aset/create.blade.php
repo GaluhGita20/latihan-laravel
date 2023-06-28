@@ -24,7 +24,7 @@
 			<input type="text" name="alamat" class="form-control" placeholder="{{ __('Alamat') }}">
 		</div>
 	</div>
-
+	
 	<div class="form-group row">
 		<label class="col-sm-12 col-form-label">{{ __('Provinsi') }}</label>
 		<div class="col-sm-12 parent-group">
@@ -33,7 +33,7 @@
                 @foreach ($PROVINCES as $item)
                     <option value="{{ $item->id }}">{{ $item->name }}</option>
                 @endforeach
-            </select>
+            </select> 
 		</div>
 	</div>
     <div class="form-group row">
