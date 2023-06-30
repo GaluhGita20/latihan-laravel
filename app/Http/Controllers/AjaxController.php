@@ -17,6 +17,7 @@ use App\Models\Setting\Globals\TempFiles;
 use App\Models\Master\PrioritasAset;
 use App\Models\Master\ItemPemeliharaan;
 use App\Models\Master\TipeMaintenance;
+use App\Models\Master\VendorAset;
 use Illuminate\Http\Request;
 
 class AjaxController extends Controller
@@ -32,6 +33,18 @@ class AjaxController extends Controller
             )
             ->orderBy('name', 'ASC')
             ->get();
+    }
+
+    public function getAsetOptions(Request $request)
+    {
+        return Aset::when(
+                $aset_id = $request->aset_id,
+                function ($q) use ($aset_id) {
+                    $q->where('id', $aset_id);
+                }
+            )
+            ->orderBy('name', 'ASC')
+            ->first();
     }
 
     public function cityOptions(Request $request)
@@ -368,6 +381,38 @@ class AjaxController extends Controller
     public function selectMaintenanceType(Request $request, $search = 'all')
     {
         $items = TipeMaintenance::keywordBy('name')->orderBy('name');
+        switch ($search) {
+            case 'all':
+                $items = $items;
+                break;
+
+            default:
+                $items = $items->whereNull('id');
+                break;
+        }
+        $items = $items->paginate();
+        return $this->responseSelect2($items, 'name', 'id');
+    }
+
+    public function selectAsetWithPrice(Request $request, $search = 'all')
+    {
+        $items = Aset::keywordBy('name')->orderBy('name');
+        switch ($search) {
+            case 'all':
+                $items = $items;
+                break;
+
+            default:
+                $items = $items->whereNull('id');
+                break;
+        }
+        $items = $items->paginate();
+        return $this->responseSelect2($items, 'name', 'id');
+    }
+
+    public function selectVendor(Request $request, $search = 'all')
+    {
+        $items = VendorAset::keywordBy('name')->orderBy('name');
         switch ($search) {
             case 'all':
                 $items = $items;

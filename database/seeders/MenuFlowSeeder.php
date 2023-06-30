@@ -42,6 +42,21 @@ class MenuFlowSeeder extends Seeder
             //         ],
                 ]
             ],
+
+            // PURCHASING
+            [
+                'module'   => 'purchasing',
+                'submenu'=> [
+                    [
+                        'module'   => 'purchasing.purchase-order',
+                        'name'      => 'Purchasing/Purchase Order',
+                    ],
+                    [
+                        'module'   => 'purchasing.good-receipt',
+                        'name'      => 'Purchasing/Good Receipt',
+                    ],
+                ]
+            ],
         ];
 
         // $this->command->getOutput()->progressStart($this->countActions($data));

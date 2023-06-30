@@ -50,6 +50,16 @@ class PermissionSeeder extends Seeder
                 'action'        => ['view', 'create', 'edit', 'delete', 'approve'],
             ],
 
+            // PURCHASE
+            [
+                'name'          => 'purchasing.purchase-order',
+                'action'        => ['view', 'create', 'edit', 'delete', 'approve'],
+            ],
+            [
+                'name'          => 'purchasing.good-receipt',
+                'action'        => ['view', 'create', 'edit', 'delete', 'approve'],
+            ],
+
             /** ADMIN CONSOLE **/
             [
                 'name'          => 'master',
