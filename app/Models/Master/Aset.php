@@ -18,6 +18,7 @@ class Aset extends Model
         'sub_lokasi_id',
         'code',
         'name',
+        'harga',
     ];
 
     /*******************************

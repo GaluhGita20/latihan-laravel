@@ -29,6 +29,54 @@ Route::middleware('auth')
                     }
                 );
 
+            // PURCHASING
+            Route::namespace('Purchasing')->prefix('purchasing')->name('purchasing.')->group(function () {
+                // PURCHASE ORDER
+                Route::namespace('PurchaseOrder')->group(function () {
+                    Route::get('purchase-order/{record}/detail', 'PurchaseOrderController@detail')->name('purchase-order.detail');
+                    Route::get('purchase-order/{record}/detailShow', 'PurchaseOrderController@detailShow')->name('purchase-order.detail.show');
+                    Route::post('purchase-order/{record}/detailGrid', 'PurchaseOrderController@detailGrid')->name('purchase-order.detailGrid');
+            
+                    // Grid
+                    Route::post('purchase-order/{record}/detailPurchaseGrid', 'PurchaseOrderController@detailPurchaseGrid')->name('purchase-order.detailPurchaseGrid');
+                    Route::post('purchase-order/{record}/detailPurchaseGridShow', 'PurchaseOrderController@detailPurchaseGridShow')->name('purchase-order.detailPurchaseGridShow');
+            
+                    // Detail 
+                    Route::get('purchase-order/{detail}/detailPurchase', 'PurchaseOrderController@detailPurchase')->name('purchase-order.detailPurchase');
+                    Route::get('purchase-order/{detail}/detailPurchaseEdit', 'PurchaseOrderController@detailPurchaseEdit')->name('purchase-order.detailPurchaseEdit');
+                    Route::get('purchase-order/{detail}/detailPurchaseShow', 'PurchaseOrderController@detailPurchaseShow')->name('purchase-order.detailPurchaseShow');
+                    Route::patch('purchase-order/detailPurchaseStore', 'PurchaseOrderController@detailPurchaseStore')->name('purchase-order.detailPurchaseStore');
+                    Route::patch('purchase-order/{detail}/detailPurchaseUpdate', 'PurchaseOrderController@detailPurchaseUpdate')->name('purchase-order.detailPurchaseUpdate');
+                    Route::delete('purchase-order/{detail}/detailPurchaseDestroy', 'PurchaseOrderController@detailPurchaseDestroy')->name('purchase-order.detailPurchaseDestroy');
+            
+                    Route::grid('purchase-order', 'PurchaseOrderController', [
+                        'with' => ['submit', 'approval', 'print', 'history', 'tracking']
+                    ]);
+                });
+
+                // GOOD RECEIPT
+                Route::namespace('GoodReceipt')->group(function () {
+                    Route::get('good-receipt/{record}/detail', 'GoodReceiptController@detail')->name('good-receipt.detail');
+                    Route::get('good-receipt/{record}/detailShow', 'GoodReceiptController@detailShow')->name('good-receipt.detail.show');
+                    Route::post('good-receipt/{record}/detailGrid', 'GoodReceiptController@detailGrid')->name('good-receipt.detailGrid');
+            
+                    // Grid
+                    Route::post('good-receipt/{record}/detailPurchaseGrid', 'GoodReceiptController@detailPurchaseGrid')->name('good-receipt.detailPurchaseGrid');
+                    Route::post('good-receipt/{record}/detailPurchaseGridShow', 'GoodReceiptController@detailPurchaseGridShow')->name('good-receipt.detailPurchaseGridShow');
+            
+                    // Detail 
+                    Route::get('good-receipt/{detail}/detailPurchase', 'GoodReceiptController@detailPurchase')->name('good-receipt.detailPurchase');
+                    Route::get('good-receipt/{detail}/detailPurchaseEdit', 'GoodReceiptController@detailPurchaseEdit')->name('good-receipt.detailPurchaseEdit');
+                    Route::get('good-receipt/{detail}/detailPurchaseShow', 'GoodReceiptController@detailPurchaseShow')->name('good-receipt.detailPurchaseShow');
+                    Route::patch('good-receipt/detailPurchaseStore', 'GoodReceiptController@detailPurchaseStore')->name('good-receipt.detailPurchaseStore');
+                    Route::patch('good-receipt/{detail}/detailPurchaseUpdate', 'GoodReceiptController@detailPurchaseUpdate')->name('good-receipt.detailPurchaseUpdate');
+                    Route::delete('good-receipt/{detail}/detailPurchaseDestroy', 'GoodReceiptController@detailPurchaseDestroy')->name('good-receipt.detailPurchaseDestroy');
+            
+                    Route::grid('good-receipt', 'GoodReceiptController', [
+                        'with' => ['submit', 'approval', 'print', 'history', 'tracking']
+                    ]);
+                });
+            });
             // Ajax
             Route::prefix('ajax')
                 ->name('ajax.')
@@ -48,10 +96,13 @@ Route::middleware('auth')
                         Route::post('{search}/selectUser', 'AjaxController@selectUser')->name('selectUser');
                         Route::post('{search}/selectNip', 'AjaxController@selectNip')->name('selectNip');
                         Route::post('{search}/selectAset', 'AjaxController@selectAset')->name('selectAset');
+                        Route::post('{search}/selectAsetWithPrice', 'AjaxController@selectAsetWithPrice')->name('selectAsetWithPrice');
+                        Route::get('getAsetOptions', 'AjaxController@getAsetOptions')->name('getAsetOptions');
                         Route::post('{search}/selectLocation', 'AjaxController@selectLocation')->name('selectLocation');
                         Route::post('{search}/selectSubLocation', 'AjaxController@selectSubLocation')->name('selectSubLocation');
                         Route::post('{search}/selectMaintenanceType', 'AjaxController@selectMaintenanceType')->name('selectMaintenanceType');
                         Route::post('{search}/selectMaintenanceItem', 'AjaxController@selectMaintenanceItem')->name('selectMaintenanceItem');
+                        Route::post('{search}/selectVendor', 'AjaxController@selectVendor')->name('selectVendor');
                         Route::post('{search}/selectPriority', 'AjaxController@selectPriority')->name('selectPriority');
                         Route::post('{search}/selectAsset', 'AjaxController@selectAsset')->name('selectAsset');
                         Route::post('{search}/selectOthersCost', 'AjaxController@selectOthersCost')->name('selectOthersCost');

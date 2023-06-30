@@ -14,6 +14,17 @@
 		</div>
 	</div>
 	<div class="form-group row">
+		<label class="col-md-12 col-form-label">{{ __('Harga') }}</label>
+		<div class="col-md-12 parent-group">
+			<div class="input-group">
+				<div class="input-group-prepend"><span
+						class="input-group-text font-weight-bolder">Rp.</span></div>
+				<input disabled value="{{ $record->harga }}" class="form-control base-plugin--inputmask_currency harga" id="harga" name="harga" inputmode="numeric"
+				placeholder="{{ __('Harga') }}">
+			</div>
+		</div>
+	</div>
+	<div class="form-group row">
 		<label class="col-sm-12 col-form-label">{{ __('Status Aset') }}</label>
 		<div class="col-sm-12 parent-group">
 			<input type="text" value="{{ $record->statusAset->name }}" class="form-control" placeholder="{{ __('Status Aset') }}" disabled>
