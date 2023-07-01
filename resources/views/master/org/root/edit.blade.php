@@ -35,25 +35,51 @@
 		</div>
 	</div>
 	<div class="form-group row">
-		<label class="col-sm-4 col-form-label">{{ __('Provinsi') }}</label>
-		<div class="col-sm-8 parent-group">
-		  <select name="province" class="form-control">
-			<option value="">-- Pilih Provinsi --</option>
-			<option value="province1">Provinsi 1</option>
-			<option value="province2">Provinsi 2</option>
-			<option value="province3">Provinsi 3</option>
-		  </select>
+		<label class="col-md-4 col-form-label">{{ __('Provinsi') }}</label>
+		<div class="col-md-8 parent-group">
+			<select class="form-control base-plugin--select2-ajax province_id" data-url="{{ route('ajax.selectProvince', [
+						'search'=>'all'
+					]) }}" data-url-origin="{{ route('ajax.selectProvince', [
+						'search'=>'all'
+					]) }}" placeholder="{{ __('Pilih Salah Satu') }}" required>
+				<option value="">{{ __('Pilih Salah Satu') }}</option>
+				@if (!empty($record->city_id))
+				<option value="{{ $record->city->province_id }}" selected>{{ $record->city->province->name }}</option>
+				@endif
+			</select>
 		</div>
 	</div>
 	<div class="form-group row">
-		<label class="col-sm-4 col-form-label">{{ __('Kota/Kabupaten') }}</label>
-		<div class="col-sm-8 parent-group">
-		  <select name="city" class="form-control">
-			<option value="">-- Pilih Kota--</option>
-			<option value="city1">Kota 1</option>
-			<option value="city2">Kabupaten 2</option>
-			<option value="city3">Kota 3</option>
-		  </select>
+		<label class="col-md-4 col-form-label">{{ __('Kota') }}</label>
+		<div class="col-md-8 parent-group">
+			<input type="hidden" name="city_id" value="{{ $record->city_id }}">
+			<select name="city_id" class="form-control base-plugin--select2-ajax city_id"
+				data-url="{{ route('ajax.cityOptionsRoot', ['province_id' => '']) }}"
+				data-url-origin="{{ route('ajax.cityOptionsRoot') }}" placeholder="{{ __('Pilih Salah Satu') }}" disabled
+				required>
+				<option value="">{{ __('Pilih Salah Satu') }}</option>
+				@if (!empty($record->city_id))
+					<option value="{{ $record->city_id }}" selected>{{ $record->city->name }}</option>
+				@endif
+			</select>
 		</div>
 	</div>
 @endsection
+
+@push('scripts')
+<script>
+	$(function () {
+			$('.content-page').on('change', 'select.province_id', function (e) {
+				var me = $(this);
+				if (me.val()) {
+					var objectId = $('select.city_id');
+					var urlOrigin = objectId.data('url-origin');
+					var urlParam = $.param({province_id: me.val()});
+					objectId.data('url', decodeURIComponent(decodeURIComponent(urlOrigin+'?'+urlParam)));
+					objectId.val(null).prop('disabled', false);
+				}
+				BasePlugin.initSelect2();
+			});
+		});
+</script>
+@endpush
