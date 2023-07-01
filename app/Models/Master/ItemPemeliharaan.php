@@ -2,8 +2,9 @@
 
 namespace App\Models\Master;
 
-use App\Imports\Master\ExampleImport;
 use App\Models\Model;
+use App\Imports\Master\ExampleImport;
+use App\Models\Master\TipeMaintenance;
 use App\Models\Setting\Globals\TempFiles;
 
 class ItemPemeliharaan extends Model
@@ -12,6 +13,7 @@ class ItemPemeliharaan extends Model
 
     protected $fillable = [
         'name',
+        'tipe_pemeliharaan_id',
         'description'
     ];
 
@@ -26,6 +28,10 @@ class ItemPemeliharaan extends Model
     /*******************************
      ** RELATION
      *******************************/
+    public function tipePemeliharaan()
+    {
+        return $this->belongsTo(TipeMaintenance::class, 'tipe_pemeliharaan_id');
+    }
 
     /*******************************
      ** SCOPE

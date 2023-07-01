@@ -28,5 +28,6 @@ class DatabaseSeeder extends Seeder
         $this->call(MasterKondisiAsetSeeder::class);
         $this->call(MasterTeamSeeder::class);
         $this->call(SkillsetSeeder::class);
+        $this->call(ItemPemeliharaanSeeder::class);
     }
 }

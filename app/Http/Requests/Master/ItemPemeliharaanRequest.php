@@ -11,6 +11,7 @@ class ItemPemeliharaanRequest extends FormRequest
         $id = $this->record->id ?? 0;
         $rules = [
             'name'        => 'required|string|max:255|unique:ref_item_pemeliharaan,name,'.$id,
+            'tipe_pemeliharaan_id'        => 'required',
         ];
 
         return $rules;

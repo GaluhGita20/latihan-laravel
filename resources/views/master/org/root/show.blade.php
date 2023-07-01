@@ -28,10 +28,41 @@
 			<input disabled type="text" name="email" value="{{ $record->email }}" class="form-control" placeholder="{{ __('Email') }}">
 		</div>
 	</div>
+	
 	<div class="form-group row">
 		<label class="col-sm-4 col-form-label">{{ __('Alamat') }}</label>
 		<div class="col-sm-8 parent-group">
 			<textarea type="text" name="address" class="form-control" placeholder="{{ __('Address') }}" disabled>{{ $record->address }}</textarea>
+		</div>
+	</div>
+	
+	<div class="form-group row">
+		<label class="col-md-4 col-form-label">{{ __('Provinsi') }}</label>
+		<div class="col-md-8 parent-group">
+			<select disabled class="form-control base-plugin--select2-ajax province_id" data-url="{{ route('ajax.selectProvince', [
+						'search'=>'all'
+					]) }}" data-url-origin="{{ route('ajax.selectProvince', [
+						'search'=>'all'
+					]) }}" placeholder="{{ __('Pilih Salah Satu') }}" required>
+				<option value="">{{ __('Pilih Salah Satu') }}</option>
+				@if (!empty($record->city_id))
+				<option value="{{ $record->city->province_id }}" selected>{{ $record->city->province->name }}</option>
+				@endif
+			</select>
+		</div>
+	</div>
+	<div class="form-group row">
+		<label class="col-md-4 col-form-label">{{ __('Kota') }}</label>
+		<div class="col-md-8 parent-group">
+			<select disabled name="city_id" class="form-control base-plugin--select2-ajax city_id"
+				data-url="{{ route('ajax.cityOptionsRoot', ['province_id' => '']) }}"
+				data-url-origin="{{ route('ajax.cityOptionsRoot') }}" placeholder="{{ __('Pilih Salah Satu') }}" disabled
+				required>
+				<option value="">{{ __('Pilih Salah Satu') }}</option>
+				@if (!empty($record->city_id))
+				<option value="{{ $record->city_id }}" selected>{{ $record->city->name }}</option>
+				@endif
+			</select>
 		</div>
 	</div>
 @endsection

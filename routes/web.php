@@ -84,6 +84,7 @@ Route::middleware('auth')
                     function () {
                         Route::get('aset-options', 'AjaxController@asetOptions')->name('aset-options');
                         Route::get('city-options', 'AjaxController@cityOptions')->name('city-options');
+                        Route::post('cityOptionsRoot', 'AjaxController@cityOptionsRoot')->name('cityOptionsRoot');
                         Route::get('sub-lokasi-options', 'AjaxController@subLokasiOptions')->name('sub-lokasi-options');
                         Route::post('saveTempFiles', 'AjaxController@saveTempFiles')->name('saveTempFiles');
                         Route::get('testNotification/{emails}', 'AjaxController@testNotification')->name('testNotification');
@@ -93,6 +94,7 @@ Route::middleware('auth')
                         Route::post('{search}/selectRole', 'AjaxController@selectRole')->name('selectRole');
                         Route::post('{search}/selectStruct', 'AjaxController@selectStruct')->name('selectStruct');
                         Route::post('{search}/selectPosition', 'AjaxController@selectPosition')->name('selectPosition');
+                        Route::post('{search}/selectProvince', 'AjaxController@selectProvince')->name('selectProvince');
                         Route::post('{search}/selectUser', 'AjaxController@selectUser')->name('selectUser');
                         Route::post('{search}/selectNip', 'AjaxController@selectNip')->name('selectNip');
                         Route::post('{search}/selectAset', 'AjaxController@selectAset')->name('selectAset');

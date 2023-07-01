@@ -2,9 +2,10 @@
 
 namespace App\Models\Master\Org;
 
+use App\Models\Model;
+use App\Models\Master\Geo\City;
 use App\Imports\Setting\StructImport;
 use App\Models\Setting\Globals\TempFiles;
-use App\Models\Model;
 
 class Struct extends Model
 {
@@ -20,6 +21,7 @@ class Struct extends Model
         'email',
         'phone',
         'address',
+        'city_id',
     ];
 
     /** MUTATOR **/
@@ -86,6 +88,11 @@ class Struct extends Model
     public function positions()
     {
         return $this->hasMany(Position::class, 'location_id');
+    }
+
+    public function city()
+    {
+        return $this->belongsTo(City::class, 'city_id');
     }
 
     /** SCOPE **/

@@ -40,7 +40,8 @@ class ItemPemeliharaanController extends Controller
                     'datatable_1' => [
                         $this->makeColumn('name:num'),
                         $this->makeColumn('name:name|label:Item Pemeliharaan|className:text-left'),
-                        $this->makeColumn('name:description|label:Deskripsi|className:text-left'),
+                        $this->makeColumn('name:tipe_pemeliharaan|label:Tipe Pemeliharaan|className:text-center'),
+                        $this->makeColumn('name:description|label:Deskripsi|className:text-center'),
                         $this->makeColumn('name:updated_by'),
                         $this->makeColumn('name:action'),
                     ],
@@ -63,9 +64,19 @@ class ItemPemeliharaanController extends Controller
                 }
             )
             ->addColumn(
+                'tipe_pemeliharaan',
+                function ($record) {
+                    if(!empty($record->tipe_pemeliharaan_id)){
+                        return '<span>'. $record->tipePemeliharaan->name .'</span>';
+                    }
+                    return '';
+                }
+            )
+            ->addColumn(
                 'description',
                 function ($record) {
-                    return $record->description;
+                    $totalWords = str_word_count($record->description);
+                    return '<span>'. $totalWords .' Words</span>';
                 }
             )
             ->addColumn(
@@ -91,7 +102,7 @@ class ItemPemeliharaanController extends Controller
                     return $this->makeButtonDropdown($actions);
                 }
             )
-            ->rawColumns(['action', 'updated_by'])
+            ->rawColumns(['action', 'updated_by', 'description', 'tipe_pemeliharaan'])
             ->make(true);
     }
 

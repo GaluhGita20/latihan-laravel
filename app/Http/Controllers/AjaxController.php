@@ -5,20 +5,21 @@ namespace App\Http\Controllers;
 use App\Models\Auth\Role;
 use App\Models\Auth\User;
 use App\Models\Master\Aset;
-use App\Models\Master\BiayaLain;
-use App\Models\Master\Geo\City;
-use App\Models\Master\Lokasi;
-use App\Models\Master\Org\Position;
-use App\Models\Master\Org\Struct;
-use App\Models\Master\Pegawai\Pegawai;
-use App\Models\Master\SubLokasi;
-use App\Models\Setting\Globals\Notification;
-use App\Models\Setting\Globals\TempFiles;
-use App\Models\Master\PrioritasAset;
-use App\Models\Master\ItemPemeliharaan;
-use App\Models\Master\TipeMaintenance;
-use App\Models\Master\VendorAset;
 use Illuminate\Http\Request;
+use App\Models\Master\Lokasi;
+use App\Models\Master\Geo\City;
+use App\Models\Master\BiayaLain;
+use App\Models\Master\SubLokasi;
+use App\Models\Master\Org\Struct;
+use App\Models\Master\VendorAset;
+use App\Models\Master\Geo\Province;
+use App\Models\Master\Org\Position;
+use App\Models\Master\PrioritasAset;
+use App\Models\Master\Pegawai\Pegawai;
+use App\Models\Master\TipeMaintenance;
+use App\Models\Master\ItemPemeliharaan;
+use App\Models\Setting\Globals\TempFiles;
+use App\Models\Setting\Globals\Notification;
 
 class AjaxController extends Controller
 {
@@ -47,6 +48,22 @@ class AjaxController extends Controller
             ->first();
     }
 
+    public function selectProvince($search, Request $request)
+    {
+        $items = Province::keywordBy('name')->orderBy('name');
+        switch ($search) {
+            case 'all':
+                $items = $items;
+                break;
+
+            default:
+                $items = $items->whereNull('id');
+                break;
+        }
+        $items = $items->paginate();
+        return $this->responseSelect2($items, 'name', 'id');
+    }
+
     public function cityOptions(Request $request)
     {
         return City::select('id', 'name')
@@ -58,6 +75,21 @@ class AjaxController extends Controller
             )
             ->orderBy('name', 'ASC')
             ->get();
+    }
+
+    public function cityOptionsRoot(Request $request)
+    {
+        $items = City::when(
+            $province_id = $request->province_id,
+            function ($q) use ($province_id) {
+                $q->where('province_id', $province_id);
+            }
+        )
+            ->orderBy('name', 'ASC')
+            ->get();
+
+        $items = $items->paginate();
+        return $this->responseSelect2($items, 'name', 'id');
     }
 
     public function subLokasiOptions(Request $request)
