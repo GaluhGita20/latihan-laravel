@@ -40,15 +40,15 @@ class StructSeeder extends Seeder
             //     'type'          => null,
             // ],
             // // Level BOD
-            [
-                'level'         => 'bod',
-                'name'          => 'Direktur Utama',
-                'phone'         => config('base.company.phone'),
-                'address'       => config('base.company.address'),
-                'parent_code'   => 1001,
-                'code'          => 2001,
-                'type'          => 'presdir',
-            ],
+            // [
+            //     'level'         => 'bod',
+            //     'name'          => 'Direktur Utama',
+            //     'phone'         => config('base.company.phone'),
+            //     'address'       => config('base.company.address'),
+            //     'parent_code'   => 1001,
+            //     'code'          => 2001,
+            //     'type'          => 'presdir',
+            // ],
             // // Level Division
             // [
             //     'level'         => 'division',

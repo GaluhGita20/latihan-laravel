@@ -12,7 +12,7 @@ class PrioritasAset extends Model
 
     protected $fillable = [
         'name',
-        'desc',
+        'description',
     ];
 
     /*******************************

@@ -23,11 +23,11 @@ class BodController extends Controller
             'views' => $this->views,
             'perms' => $this->perms,
             'permission' => $this->perms.'.view',
-            'title' => 'Direktur',
+            'title' => 'Direksi',
             'breadcrumb' => [
                 'Data Master' => route($this->routes . '.index'),
                 'Stuktur Organisasi' => route($this->routes . '.index'),
-                'Direktur' => route($this->routes.'.index'),
+                'Direksi' => route($this->routes.'.index'),
             ]
         ]);
     }

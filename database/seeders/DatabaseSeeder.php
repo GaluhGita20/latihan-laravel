@@ -21,13 +21,12 @@ class DatabaseSeeder extends Seeder
         $this->call(PermissionSeeder::class);
         $this->call(UserSeeder::class);
 
-        // Dummy
-        $this->call(DummyAllSeeder::class);
         $this->call(MasterAssetStatusSeeder::class);
         $this->call(MasterTipeAssetSeeder::class);
         $this->call(MasterTipeMaintenanceSeeder::class);
         $this->call(MasterBiayaLainSeeder::class);
         $this->call(MasterKondisiAsetSeeder::class);
         $this->call(MasterTeamSeeder::class);
+        $this->call(SkillsetSeeder::class);
     }
 }
