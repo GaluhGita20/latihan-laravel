@@ -41,7 +41,7 @@ class TipeMaintenanceController extends Controller
                     'datatable_1' => [
                         $this->makeColumn('name:num'),
                         $this->makeColumn('name:name|label:Tipe Pemeliharaan|className:text-left'),
-                        $this->makeColumn('name:desc|label:Deskripsi|className:text-left'),
+                        $this->makeColumn('name:description|label:Deskripsi|className:text-center'),
                         $this->makeColumn('name:updated_by'),
                         $this->makeColumn('name:action'),
                     ],
@@ -64,9 +64,10 @@ class TipeMaintenanceController extends Controller
                 }
             )
             ->addColumn(
-                'desc',
+                'description',
                 function ($record) {
-                    return $record->desc;
+                    $totalWords = str_word_count($record->description);
+                    return '<span>'. $totalWords .' Words</span>';
                 }
             )
             ->addColumn(
@@ -92,7 +93,7 @@ class TipeMaintenanceController extends Controller
                     return $this->makeButtonDropdown($actions);
                 }
             )
-            ->rawColumns(['action', 'updated_by', 'location'])
+            ->rawColumns(['action', 'updated_by', 'description'])
             ->make(true);
     }
 

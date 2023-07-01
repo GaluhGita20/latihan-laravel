@@ -40,7 +40,7 @@ class SkillsetController extends Controller
                     'datatable_1' => [
                         $this->makeColumn('name:num'),
                         $this->makeColumn('name:name|label:Nama|className:text-left'),
-                        $this->makeColumn('name:description|label:Deskripsi|className:text-left'),
+                        $this->makeColumn('name:description|label:Deskripsi|className:text-center'),
                         $this->makeColumn('name:updated_by'),
                         $this->makeColumn('name:action'),
                     ],
@@ -65,7 +65,8 @@ class SkillsetController extends Controller
             ->addColumn(
                 'description',
                 function ($record) {
-                    return $record->description;
+                    $totalWords = str_word_count($record->description);
+                    return '<span>'. $totalWords .' Words</span>';
                 }
             )
             ->addColumn(
@@ -91,7 +92,7 @@ class SkillsetController extends Controller
                     return $this->makeButtonDropdown($actions);
                 }
             )
-            ->rawColumns(['action', 'updated_by'])
+            ->rawColumns(['action', 'updated_by', 'description'])
             ->make(true);
     }
 

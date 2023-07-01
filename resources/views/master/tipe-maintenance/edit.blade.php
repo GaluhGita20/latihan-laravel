@@ -10,4 +10,10 @@
 			<input type="text" name="name" value="{{ $record->name }}" class="form-control" placeholder="{{ __('Tipe Maintenance') }}">
 		</div>
 	</div>
+	<div class="form-group row">
+		<label class="col-md-12 col-form-label">{{ __('Deskripsi') }}</label>
+		<div class="col-md-12 parent-group">
+			<textarea name="description" class="form-control" placeholder="{{ __('Deskripsi') }}">{{ $record->description }}</textarea>
+		</div>
+	</div>
 @endsection

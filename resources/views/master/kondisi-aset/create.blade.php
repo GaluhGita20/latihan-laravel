@@ -10,4 +10,10 @@
 			<input type="text" name="name" class="form-control" placeholder="{{ __('Kondisi Aset') }}">
 		</div>
 	</div>
+	<div class="form-group row">
+		<label class="col-md-12 col-form-label">{{ __('Deskripsi') }}</label>
+		<div class="col-md-12 parent-group">
+			<textarea required name="description" class="form-control" placeholder="{{ __('Deskripsi') }}"></textarea>
+		</div>
+	</div>
 @endsection

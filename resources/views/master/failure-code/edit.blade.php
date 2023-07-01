@@ -5,8 +5,8 @@
 @section('modal-body')
 	@method('PATCH')
     <div class="form-group row">
-		<label class="col-sm-12 col-form-label">{{ __('id Aset') }}</label>
-		<div class="col-sm-12 parent-group">
+		<label class="col-sm-3 col-form-label">{{ __('id Aset') }}</label>
+		<div class="col-sm-9 parent-group">
             <select class="form-control base-plugin--select2" name="aset_id">
                 <option disabled selected value="">Pilih Id Aset</option>
                 @foreach ($ASET as $item)
@@ -19,14 +19,14 @@
 		</div>
 	</div>
 	<div class="form-group row">
-		<label class="col-sm-12 col-form-label">{{ __('Failur Code') }}</label>
-		<div class="col-sm-12 parent-group">
+		<label class="col-sm-3 col-form-label">{{ __('Failur Code') }}</label>
+		<div class="col-sm-9 parent-group">
 			<input type="text" name="name" value="{{ $record->name }}" class="form-control" placeholder="{{ __('name') }}">
 		</div>
 	</div>
 	<div class="form-group row">
-		<label class="col-sm-12 col-form-label">{{ __('Deskripsi') }}</label>
-		<div class="col-sm-12 parent-group">
+		<label class="col-sm-3 col-form-label">{{ __('Deskripsi') }}</label>
+		<div class="col-sm-9 parent-group">
 			<input type="text" name="desc" value="{{ $record->desc }}" class="form-control" placeholder="{{ __('Deskripsi') }}">
 		</div>
 	</div>

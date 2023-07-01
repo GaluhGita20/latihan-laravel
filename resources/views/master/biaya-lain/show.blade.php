@@ -7,6 +7,12 @@
 			<input type="text" value="{{ $record->name }}" class="form-control" placeholder="{{ __('Komponen Biaya') }}" disabled>
 		</div>
 	</div>
+	<div class="form-group row">
+		<label class="col-md-12 col-form-label">{{ __('Deskripsi') }}</label>
+		<div class="col-md-12 parent-group">
+			<textarea disabled name="description" class="form-control" placeholder="{{ __('Deskripsi') }}">{{ $record->description }}</textarea>
+		</div>
+	</div>
 @endsection
 
 @section('buttons')

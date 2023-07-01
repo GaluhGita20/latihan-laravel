@@ -12,6 +12,7 @@ class BiayaLain extends Model
 
     protected $fillable = [
         'name',
+        'description'
     ];
 
     /*******************************

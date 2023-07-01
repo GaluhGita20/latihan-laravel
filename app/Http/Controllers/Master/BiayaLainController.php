@@ -41,6 +41,7 @@ class BiayaLainController extends Controller
                     'datatable_1' => [
                         $this->makeColumn('name:num'),
                         $this->makeColumn('name:name|label:Komponen Biaya|className:text-left'),
+                        $this->makeColumn('name:description|label:Deskripsi|className:text-center'),
                         $this->makeColumn('name:updated_by'),
                         $this->makeColumn('name:action'),
                     ],
@@ -60,6 +61,13 @@ class BiayaLainController extends Controller
                 'num',
                 function ($record) {
                     return request()->start;
+                }
+            )
+            ->addColumn(
+                'description',
+                function ($record) {
+                    $totalWords = str_word_count($record->description);
+                    return '<span>'. $totalWords .' Words</span>';
                 }
             )
             ->addColumn(
@@ -85,7 +93,7 @@ class BiayaLainController extends Controller
                     return $this->makeButtonDropdown($actions);
                 }
             )
-            ->rawColumns(['action', 'updated_by', 'location'])
+            ->rawColumns(['action', 'updated_by', 'description'])
             ->make(true);
     }
 
