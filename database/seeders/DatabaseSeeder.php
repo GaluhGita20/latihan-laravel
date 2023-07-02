@@ -18,6 +18,7 @@ class DatabaseSeeder extends Seeder
         // $this->call(DistrictTableSeeder::class);
         $this->call(MenuFlowSeeder::class);
         $this->call(StructSeeder::class);
+        $this->call(PositionSeeder::class);
         $this->call(PermissionSeeder::class);
         $this->call(UserSeeder::class);
 

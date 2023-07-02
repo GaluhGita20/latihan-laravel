@@ -174,30 +174,60 @@ return [
                 'url' => '',
                 'submenu' => [
                     [
-                        'name' => 'master.lokasi',
-                        'title' => 'Lokasi',
-                        'url' => '/master/lokasi',
+                        'name' => 'master.plant',
+                        'title' => 'Plant',
+                        'url' => '/master/plant',
                     ],
                     [
-                        'name' => 'master.sub-lokasi',
-                        'title' => 'Sub Lokasi',
-                        'url' => '/master/sub-lokasi',
+                        'name' => 'master.system',
+                        'title' => 'System',
+                        'url' => '/master/system',
                     ],
                     [
-                        'name' => 'master.aset',
-                        'title' => 'Aset',
-                        'url' => '/master/aset',
+                        'name' => 'master.equipment',
+                        'title' => 'Equipment',
+                        'url' => '/master/equipment',
                     ],
                     [
-                        'name' => 'master.parts ',
-                        'title' => 'Parts ',
-                        'url' => '/master/parts ',
+                        'name' => 'master.sub-unit',
+                        'title' => 'Sub Unit',
+                        'url' => '/master/sub-unit',
                     ],
                     [
-                        'name' => 'master.assemblies',
-                        'title' => 'Assemblies',
-                        'url' => '/master/assemblies',
+                        'name' => 'master.komponen',
+                        'title' => 'Komponen',
+                        'url' => '/master/komponen',
                     ],
+                    [
+                        'name' => 'master.parts',
+                        'title' => 'Parts',
+                        'url' => '/master/parts',
+                    ],
+                    // [
+                    //     'name' => 'master.lokasi',
+                    //     'title' => 'Lokasi',
+                    //     'url' => '/master/lokasi',
+                    // ],
+                    // [
+                    //     'name' => 'master.sub-lokasi',
+                    //     'title' => 'System',
+                    //     'url' => '/master/sub-lokasi',
+                    // ],
+                    // [
+                    //     'name' => 'master.aset',
+                    //     'title' => 'Aset',
+                    //     'url' => '/master/aset',
+                    // ],
+                    // [
+                    //     'name' => 'master.parts ',
+                    //     'title' => 'Parts ',
+                    //     'url' => '/master/parts ',
+                    // ],
+                    // [
+                    //     'name' => 'master.assemblies',
+                    //     'title' => 'Assemblies',
+                    //     'url' => '/master/assemblies',
+                    // ],
                 ]
             ],
             [

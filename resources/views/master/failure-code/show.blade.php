@@ -14,9 +14,9 @@
 		</div>
 	</div>
 	<div class="form-group row">
-		<label class="col-sm-3 col-form-label">{{ __('Decs') }}</label>
-		<div class="col-sm-9 parent-group">
-			<input type="text" value="{{ $record->desc }}" class="form-control" placeholder="{{ __('') }}" disabled>
+		<label class="col-md-3 col-form-label">{{ __('Deskripsi') }}</label>
+		<div class="col-md-9 parent-group">
+			<textarea disabled name="desc" rows="4" class="form-control" placeholder="{{ __('Deskripsi') }}">{{ $record->desc }}</textarea>
 		</div>
 	</div>
 @endsection

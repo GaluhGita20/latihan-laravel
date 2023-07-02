@@ -5,10 +5,13 @@ namespace App\Http\Controllers;
 use App\Models\Auth\Role;
 use App\Models\Auth\User;
 use App\Models\Master\Aset;
+use App\Models\Master\Plant;
 use Illuminate\Http\Request;
 use App\Models\Master\Lokasi;
+use App\Models\Master\System;
 use App\Models\Master\Geo\City;
 use App\Models\Master\BiayaLain;
+use App\Models\Master\Equipment;
 use App\Models\Master\SubLokasi;
 use App\Models\Master\Org\Struct;
 use App\Models\Master\VendorAset;
@@ -18,6 +21,8 @@ use App\Models\Master\PrioritasAset;
 use App\Models\Master\Pegawai\Pegawai;
 use App\Models\Master\TipeMaintenance;
 use App\Models\Master\ItemPemeliharaan;
+use App\Models\Master\Komponen;
+use App\Models\Master\SubUnit;
 use App\Models\Setting\Globals\TempFiles;
 use App\Models\Setting\Globals\Notification;
 
@@ -422,6 +427,146 @@ class AjaxController extends Controller
                 $items = $items->whereNull('id');
                 break;
         }
+        $items = $items->paginate();
+        return $this->responseSelect2($items, 'name', 'id');
+    }
+
+    public function selectPlant(Request $request, $search = 'all')
+    {
+        $items = Plant::keywordBy('name')->orderBy('name');
+        switch ($search) {
+            case 'all':
+                $items = $items;
+                break;
+
+            default:
+                $items = $items->whereNull('id');
+                break;
+        }
+        $items = $items->paginate();
+        return $this->responseSelect2($items, 'name', 'id');
+    }
+
+    public function selectSystem(Request $request, $search = 'all')
+    {
+        $items = System::keywordBy('name')->orderBy('name');
+        switch ($search) {
+            case 'all':
+                $items = $items;
+                break;
+
+            default:
+                $items = $items->whereNull('id');
+                break;
+        }
+        $items = $items->paginate();
+        return $this->responseSelect2($items, 'name', 'id');
+    }
+
+    public function systemOptions(Request $request)
+    {
+        $items = System::when(
+            $id = $request->id,
+            function ($q) use ($id) {
+                $q->where('plant_id', $id);
+            }
+        )
+            ->orderBy('name', 'ASC')
+            ->get();
+
+        $items = $items->paginate();
+        return $this->responseSelect2($items, 'name', 'id');
+    }
+
+    public function selectEquipment(Request $request, $search = 'all')
+    {
+        $items = Equipment::keywordBy('name')->orderBy('name');
+        switch ($search) {
+            case 'all':
+                $items = $items;
+                break;
+
+            default:
+                $items = $items->whereNull('id');
+                break;
+        }
+        $items = $items->paginate();
+        return $this->responseSelect2($items, 'name', 'id');
+    }
+
+    public function equipmentOptions(Request $request)
+    {
+        $items = Equipment::when(
+            $id = $request->id,
+            function ($q) use ($id) {
+                $q->where('system_id', $id);
+            }
+        )
+            ->orderBy('name', 'ASC')
+            ->get();
+
+        $items = $items->paginate();
+        return $this->responseSelect2($items, 'name', 'id');
+    }
+
+    public function selectSubUnit(Request $request, $search = 'all')
+    {
+        $items = SubUnit::keywordBy('name')->orderBy('name');
+        switch ($search) {
+            case 'all':
+                $items = $items;
+                break;
+
+            default:
+                $items = $items->whereNull('id');
+                break;
+        }
+        $items = $items->paginate();
+        return $this->responseSelect2($items, 'name', 'id');
+    }
+
+    public function subUnitOptions(Request $request)
+    {
+        $items = SubUnit::when(
+            $id = $request->id,
+            function ($q) use ($id) {
+                $q->where('equipment_id', $id);
+            }
+        )
+            ->orderBy('name', 'ASC')
+            ->get();
+
+        $items = $items->paginate();
+        return $this->responseSelect2($items, 'name', 'id');
+    }
+
+    public function selectKomponen(Request $request, $search = 'all')
+    {
+        $items = Komponen::keywordBy('name')->orderBy('name');
+        switch ($search) {
+            case 'all':
+                $items = $items;
+                break;
+
+            default:
+                $items = $items->whereNull('id');
+                break;
+        }
+        $items = $items->paginate();
+        return $this->responseSelect2($items, 'name', 'id');
+    }
+
+    public function komponenOptions(Request $request)
+    {
+        $items = Komponen::when(
+            $id = $request->id,
+            function ($q) use ($id) {
+                $q->where('sub_unit_id', $id);
+            }
+        )
+            ->orderBy('name', 'ASC')
+            ->get();
+
         $items = $items->paginate();
         return $this->responseSelect2($items, 'name', 'id');
     }

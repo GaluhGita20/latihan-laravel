@@ -25,10 +25,10 @@ class SubLokasiController extends Controller
                 'views' => $this->views,
                 'perms' => $this->perms,
                 'permission' => $this->perms . '.view',
-                'title' => 'Sub Lokasi',
+                'title' => 'System',
                 'breadcrumb' => [
                     'Data Master' => route($this->routes . '.index'),
-                    'Sub Lokasi' => route($this->routes . '.index'),
+                    'System' => route($this->routes . '.index'),
                 ]
             ]
         );

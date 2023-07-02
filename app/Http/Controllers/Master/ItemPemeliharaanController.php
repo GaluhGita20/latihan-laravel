@@ -39,7 +39,7 @@ class ItemPemeliharaanController extends Controller
                 'tableStruct' => [
                     'datatable_1' => [
                         $this->makeColumn('name:num'),
-                        $this->makeColumn('name:name|label:Item Pemeliharaan|className:text-left'),
+                        $this->makeColumn('name:name|label:Nama|className:text-left'),
                         $this->makeColumn('name:tipe_pemeliharaan|label:Tipe Pemeliharaan|className:text-center'),
                         $this->makeColumn('name:description|label:Deskripsi|className:text-center'),
                         $this->makeColumn('name:updated_by'),
