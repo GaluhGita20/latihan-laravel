@@ -46,8 +46,9 @@ class PartsController extends Controller
                 'tableStruct' => [
                     'datatable_1' => [
                         $this->makeColumn('name:num'),
-                        $this->makeColumn('name:code|label:Id Parts|className:text-left'),
-                        $this->makeColumn('name:name|label:Nama Parts|className:text-left'),
+                        $this->makeColumn('name:name|label:Nama|className:text-left'),
+                        $this->makeColumn('name:description|label:Deskripsi|className:text-center'),
+                        $this->makeColumn('name:komponen_id|label:Komponen|className:text-center'),
                         $this->makeColumn('name:updated_by'),
                         $this->makeColumn('name:action'),
                     ],
@@ -60,22 +61,27 @@ class PartsController extends Controller
     public function grid()
     {
         $user = auth()->user();
-        $records = Parts::with(
-            'kondisiAset',
-            'statusAset',
-            'tipeAset',
-            'lokasi',
-            'subLokasi'
-            )
-        ->grid()
-        ->filters()
-        ->dtGet();
+        $records = Parts::grid()->filters()->dtGet();
 
         return \DataTables::of($records)
             ->addColumn(
                 'num',
                 function ($record) {
                     return request()->start;
+                }
+            )
+            ->addColumn(
+                'description',
+                function ($record) {
+                    $totalWords = str_word_count($record->description);
+                    return '<span>'. $totalWords .' Words</span>';
+                }
+            )
+            
+            ->addColumn(
+                'komponen_id',
+                function ($record) {
+                    return '<span>'. $record->komponen->name .'</span>';
                 }
             )
             ->addColumn(
@@ -101,29 +107,13 @@ class PartsController extends Controller
                     return $this->makeButtonDropdown($actions);
                 }
             )
-            ->rawColumns(['action', 'updated_by', 'location'])
+            ->rawColumns(['action', 'updated_by', 'description', 'komponen_id'])
             ->make(true);
     }
 
     public function create()
     {
-        $STATUSASET  = StatusAset::orderBy('name', 'ASC')->get();
-        $KONDISIASET = KondisiAset::orderBy('name', 'ASC')->get();
-        $TIPEASET = TipeAset::orderBy('name', 'ASC')->get();
-        $LOKASI = Lokasi::orderBy('name', 'ASC')->get();
-        $SUBLOKASI = SubLokasi::orderBy('name', 'ASC')->get();
-        // $ASSEMBLIES = Assemblies::orderBy('name', 'ASC')->get();
-        return $this->render(
-            $this->views . '.create',
-            compact(
-                'STATUSASET',
-                'KONDISIASET',
-                'TIPEASET',
-                'LOKASI',
-                'SUBLOKASI',
-                // 'ASSEMBLIES'
-                )
-        );
+        return $this->render($this->views . '.create');
     }
 
     public function store(PartsRequest $request)
@@ -139,22 +129,7 @@ class PartsController extends Controller
 
     public function edit(Parts $record)
     {
-        $STATUSASET  = StatusAset::orderBy('name', 'ASC')->get();
-        $KONDISIASET = KondisiAset::orderBy('name', 'ASC')->get();
-        $TIPEASET = TipeAset::orderBy('name', 'ASC')->get();
-        $LOKASI = Lokasi::orderBy('name', 'ASC')->get();
-        $SUBLOKASI = SubLokasi::orderBy('name', 'ASC')->get();
-        return $this->render(
-            $this->views . '.edit',
-            compact(
-                'record',
-                'STATUSASET',
-                'KONDISIASET',
-                'TIPEASET',
-                'LOKASI',
-                'SUBLOKASI'
-            )
-        );
+        return $this->render($this->views . '.edit', compact('record'));
     }
 
     public function update(PartsRequest $request, Parts $record)
@@ -165,39 +140,5 @@ class PartsController extends Controller
     public function destroy(Parts $record)
     {
         return $record->handleDestroy();
-    }
-
-    public function import()
-    {
-        if (request()->get('download') == 'template') {
-            return $this->template();
-        }
-        return $this->render($this->views . '.import');
-    }
-
-    public function template()
-    {
-        $fileName = date('Y-m-d') . ' Template Import Data ' . $this->prepared('title') . '.xlsx';
-        $view = $this->views . '.template';
-        $data = [];
-        return \Excel::download(new GenerateExport($view, $data), $fileName);
-    }
-
-    public function importSave(Request $request)
-    {
-        $request->validate(
-            [
-                'uploads.uploaded' => 'required',
-                'uploads.temp_files_ids.*' => 'required',
-            ],
-            [],
-            [
-                'uploads.uploaded' => 'File',
-                'uploads.temp_files_ids.*' => 'File',
-            ]
-        );
-
-        $record = new Example;
-        return $record->handleImport($request);
     }
 }

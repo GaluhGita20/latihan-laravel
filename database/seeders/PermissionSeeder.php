@@ -125,7 +125,31 @@ class PermissionSeeder extends Seeder
 
         // $this->command->getOutput()->progressStart($this->countActions($permissions));
         $this->generate($permissions);
-        // $this->command->getOutput()->progressFinish();
+        
+        $ROLES = [
+            [
+                'name'  => 'Administrator',
+                'PERMISSIONS'   => [
+                    'dashboard'                 => ['view'],
+                    'master'                    => ['view', 'create', 'edit', 'delete'],
+                    'setting'                   => ['view', 'create', 'edit', 'delete'],
+                ],
+            ],
+        ];
+        foreach ($ROLES as $role) {
+            $record = Role::firstOrNew(['name' => $role['name']]);
+            $record->name = $role['name'];
+            $record->save();
+            $perms = [];
+            foreach ($role['PERMISSIONS'] as $module => $actions) {
+                foreach ($actions as $action) {
+                    $perms[] = $module . '.' . $action;
+                }
+            }
+            $perm_ids = Permission::whereIn('name', $perms)->pluck('id');
+            // dd($perm_ids);
+            $record->syncPermissions($perm_ids);
+        }
     }
 
     public function generate($permissions)

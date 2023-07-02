@@ -40,7 +40,7 @@ class BiayaLainController extends Controller
                 'tableStruct' => [
                     'datatable_1' => [
                         $this->makeColumn('name:num'),
-                        $this->makeColumn('name:name|label:Komponen Biaya|className:text-left'),
+                        $this->makeColumn('name:name|label:Nama|className:text-left'),
                         $this->makeColumn('name:description|label:Deskripsi|className:text-center'),
                         $this->makeColumn('name:updated_by'),
                         $this->makeColumn('name:action'),

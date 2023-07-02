@@ -43,7 +43,7 @@ class ItemPemeliharaan extends Model
 
     public function scopeFilters($query)
     {
-        return $query->filterBy(['name']);
+        return $query->filterBy(['name', 'tipe_pemeliharaan_id']);
     }
 
     /*******************************

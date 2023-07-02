@@ -108,6 +108,15 @@ Route::middleware('auth')
                         Route::post('{search}/selectPriority', 'AjaxController@selectPriority')->name('selectPriority');
                         Route::post('{search}/selectAsset', 'AjaxController@selectAsset')->name('selectAsset');
                         Route::post('{search}/selectOthersCost', 'AjaxController@selectOthersCost')->name('selectOthersCost');
+                        Route::post('{search}/selectPlant', 'AjaxController@selectPlant')->name('selectPlant');
+                        Route::post('{search}/selectSystem', 'AjaxController@selectSystem')->name('selectSystem');
+                        Route::post('systemOptions', 'AjaxController@systemOptions')->name('systemOptions');
+                        Route::post('{search}/selectEquipment', 'AjaxController@selectEquipment')->name('selectEquipment');
+                        Route::post('equipmentOptions', 'AjaxController@equipmentOptions')->name('equipmentOptions');
+                        Route::post('{search}/selectSubUnit', 'AjaxController@selectSubUnit')->name('selectSubUnit');
+                        Route::post('subUnitOptions', 'AjaxController@subUnitOptions')->name('subUnitOptions');
+                        Route::post('{search}/selectKomponen', 'AjaxController@selectKomponen')->name('selectKomponen');
+                        Route::post('komponenOptions', 'AjaxController@komponenOptions')->name('komponenOptions');
                     }
                 );
 
@@ -234,10 +243,6 @@ Route::middleware('auth')
                                 }
                             );
 
-                        Route::get('parts/import', 'PartsController@import')->name('parts.import');
-                        Route::post('parts/importSave', 'PartsController@importSave')->name('parts.importSave');
-                        Route::grid('parts', 'PartsController');
-
                         Route::get('lokasi/import', 'LokasiController@import')->name('lokasi.import');
                         Route::post('lokasi/importSave', 'LokasiController@importSave')->name('lokasi.importSave');
                         Route::grid('lokasi', 'LokasiController');
@@ -301,6 +306,14 @@ Route::middleware('auth')
                         // Route::get('item-pemeliharaan/import', 'ItemPemeliharaanController@import')->name('item-pemeliharaan.import');
                         // Route::post('item-pemeliharaan/importSave', 'ItemPemeliharaanController@importSave')->name('item-pemeliharaan.importSave');
                         Route::grid('skillset', 'SkillsetController');
+
+                        // STRUKTUR ASET
+                        Route::grid('plant', 'PlantController');
+                        Route::grid('system', 'SystemController');
+                        Route::grid('equipment', 'EquipmentController');
+                        Route::grid('sub-unit', 'SubUnitController');
+                        Route::grid('komponen', 'KomponenController');
+                        Route::grid('parts', 'PartsController');
                     }
                 );
 
