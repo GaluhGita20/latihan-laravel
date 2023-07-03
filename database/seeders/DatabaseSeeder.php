@@ -30,5 +30,12 @@ class DatabaseSeeder extends Seeder
         $this->call(MasterTeamSeeder::class);
         $this->call(SkillsetSeeder::class);
         $this->call(ItemPemeliharaanSeeder::class);
+
+        // Struktur Aset
+        $this->call(PlantSeeder::class);
+        $this->call(SystemSeeder::class);
+        $this->call(EquipmentSeeder::class);
+        $this->call(SubUnitSeeder::class);
+        $this->call(KomponenSeeder::class);
     }
 }

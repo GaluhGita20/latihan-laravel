@@ -41,9 +41,10 @@ class FailureCodeController extends Controller
                 'tableStruct' => [
                     'datatable_1' => [
                         $this->makeColumn('name:num'),
-                        $this->makeColumn('name:aset.code|label:Id Aset|className:text-left'),
-                        $this->makeColumn('name:name|label:Failure Code|className:text-left'),
-                        $this->makeColumn('name:desc|label:Deskripsi|className:text-left'),
+                        $this->makeColumn('name:name|label:Nama|className:text-left'),
+                        $this->makeColumn('name:description|label:Deskripsi|className:text-center'),
+                        $this->makeColumn('name:tipe_aset|label:Tipe Aset|className:text-center'),
+                        $this->makeColumn('name:aset_id|label:Aset|className:text-center'),
                         $this->makeColumn('name:updated_by'),
                         $this->makeColumn('name:action'),
                     ],
@@ -56,16 +57,52 @@ class FailureCodeController extends Controller
     public function grid()
     {
         $user = auth()->user();
-        $records = FailureCode::with('aset')
-            ->grid()
-            ->filters()
-            ->dtGet();
+        $records = FailureCode::grid()->filters()->dtGet();
 
         return \DataTables::of($records)
             ->addColumn(
                 'num',
                 function ($record) {
                     return request()->start;
+                }
+            )
+            ->addColumn(
+                'description',
+                function ($record) {
+                    $totalWords = str_word_count($record->description);
+                    return '<span>'. $totalWords .' Words</span>';
+                }
+            )
+            ->addColumn(
+                'tipe_aset',
+                function ($record) {
+                    return '<span>'. ucfirst(str_replace("-"," ",$record->tipe_aset)) .'</span>';
+                }
+            )
+            ->addColumn(
+                'aset_id',
+                function ($record) {
+                    switch ($record->tipe_aset) {
+                        case 'plant':
+                            $items = $record->plant->name;
+                            break;
+                        case 'system':
+                            $items = $record->system->name;
+                            break;
+                        case 'equipment':
+                            $items = $record->equipment->name;
+                            break;
+                        case 'sub-unit':
+                            $items = $record->subUnit->name;
+                            break;
+                        case 'komponen':
+                            $items = $record->komponen->name;
+                            break;
+                        case 'parts':
+                            $items = $record->parts->name;
+                            break;   
+                    }
+                    return '<span>'. $items .'</span>';
                 }
             )
             ->addColumn(
@@ -91,17 +128,13 @@ class FailureCodeController extends Controller
                     return $this->makeButtonDropdown($actions);
                 }
             )
-            ->rawColumns(['action', 'updated_by', 'location'])
+            ->rawColumns(['action', 'updated_by', 'description', 'aset_id', 'tipe_aset'])
             ->make(true);
     }
 
     public function create()
     {
-        $ASET = Aset::orderBy('code', 'ASC')->get();
-        return $this->render(
-            $this->views . '.create',
-            compact('ASET')
-        );
+        return $this->render($this->views . '.create');
     }
 
     public function store(FailureCodeRequest $request)
@@ -117,11 +150,7 @@ class FailureCodeController extends Controller
 
     public function edit(FailureCode $record)
     {
-        $ASET = Aset::orderBy('code', 'ASC')->get();
-        return $this->render(
-            $this->views . '.edit',
-            compact('record', 'ASET')
-        );
+        return $this->render($this->views . '.edit', compact('record'));
     }
 
     public function update(FailureCodeRequest $request, FailureCode $record)
@@ -132,39 +161,5 @@ class FailureCodeController extends Controller
     public function destroy(FailureCode $record)
     {
         return $record->handleDestroy();
-    }
-
-    public function import()
-    {
-        if (request()->get('download') == 'template') {
-            return $this->template();
-        }
-        return $this->render($this->views . '.import');
-    }
-
-    public function template()
-    {
-        $fileName = date('Y-m-d') . ' Template Import Data ' . $this->prepared('title') . '.xlsx';
-        $view = $this->views . '.template';
-        $data = [];
-        return \Excel::download(new GenerateExport($view, $data), $fileName);
-    }
-
-    public function importSave(Request $request)
-    {
-        $request->validate(
-            [
-                'uploads.uploaded' => 'required',
-                'uploads.temp_files_ids.*' => 'required',
-            ],
-            [],
-            [
-                'uploads.uploaded' => 'File',
-                'uploads.temp_files_ids.*' => 'File',
-            ]
-        );
-
-        $record = new Example;
-        return $record->handleImport($request);
     }
 }

@@ -5,11 +5,14 @@ namespace App\Http\Controllers;
 use App\Models\Auth\Role;
 use App\Models\Auth\User;
 use App\Models\Master\Aset;
+use App\Models\Master\Parts;
 use App\Models\Master\Plant;
 use Illuminate\Http\Request;
 use App\Models\Master\Lokasi;
 use App\Models\Master\System;
+use App\Models\Master\SubUnit;
 use App\Models\Master\Geo\City;
+use App\Models\Master\Komponen;
 use App\Models\Master\BiayaLain;
 use App\Models\Master\Equipment;
 use App\Models\Master\SubLokasi;
@@ -21,8 +24,6 @@ use App\Models\Master\PrioritasAset;
 use App\Models\Master\Pegawai\Pegawai;
 use App\Models\Master\TipeMaintenance;
 use App\Models\Master\ItemPemeliharaan;
-use App\Models\Master\Komponen;
-use App\Models\Master\SubUnit;
 use App\Models\Setting\Globals\TempFiles;
 use App\Models\Setting\Globals\Notification;
 
@@ -566,6 +567,57 @@ class AjaxController extends Controller
         )
             ->orderBy('name', 'ASC')
             ->get();
+
+        $items = $items->paginate();
+        return $this->responseSelect2($items, 'name', 'id');
+    }
+
+    public function asetStructureOptions(Request $request)
+    {
+        switch ($request->tipe_aset) {
+            case 'plant':
+                $items = Plant::orderBy('name', 'ASC')->get();
+                break;
+            case 'system':
+                $items = System::orderBy('name', 'ASC')->get();
+                break;
+            case 'equipment':
+                $items = Equipment::orderBy('name', 'ASC')->get();
+                break;
+            case 'sub-unit':
+                $items = SubUnit::orderBy('name', 'ASC')->get();
+                break;
+            case 'komponen':
+                $items = Komponen::orderBy('name', 'ASC')->get();
+                break;
+            case 'parts':
+                $items = Parts::orderBy('name', 'ASC')->get();
+                break;   
+        }
+
+        // if($request->tipe_aset == "plant"){
+        //     $items = Plant::orderBy('name', 'ASC')->get();
+        // }
+
+        // if($request->tipe_aset == "system"){
+        //     $items = System::orderBy('name', 'ASC')->get();
+        // }
+
+        // if($request->tipe_aset == "equipment"){
+        //     $items = Equipment::orderBy('name', 'ASC')->get();
+        // }
+
+        // if($request->tipe_aset == "sub-unit"){
+        //     $items = SubUnit::orderBy('name', 'ASC')->get();
+        // }
+
+        // if($request->tipe_aset == "komponen"){
+        //     $items = Komponen::orderBy('name', 'ASC')->get();
+        // }
+
+        // if($request->tipe_aset == "parts"){
+        //     $items = Parts::orderBy('name', 'ASC')->get();
+        // }
 
         $items = $items->paginate();
         return $this->responseSelect2($items, 'name', 'id');

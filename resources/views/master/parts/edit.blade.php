@@ -5,8 +5,8 @@
 @section('modal-body')
 	@method('PATCH')
 	<div class="form-group row">
-        <label class="col-md-12 col-form-label">{{ __('Plant') }}</label>
-        <div class="col-md-12 parent-group">
+        <label class="col-md-3 col-form-label">{{ __('Plant') }}</label>
+        <div class="col-md-9 parent-group">
             <select name="plant_id" class="form-control base-plugin--select2-ajax plant_id"
                 data-url="{{ route('ajax.selectPlant', ['search' => 'all']) }}"
                 placeholder="{{ __('Pilih Salah Satu') }}">
@@ -18,8 +18,8 @@
         </div>
     </div>
     <div class="form-group row">
-		<label class="col-md-12 col-form-label">{{ __('System') }}</label>
-		<div class="col-md-12 parent-group">
+		<label class="col-md-3 col-form-label">{{ __('System') }}</label>
+		<div class="col-md-9 parent-group">
 			<input type="hidden" name="system_id" value="{{ $record->komponen->subUnit->equipment->system_id }}">
 			<select name="system_id" class="form-control base-plugin--select2-ajax system_id"
 				data-url="{{ route('ajax.systemOptions', ['id' => '']) }}"
@@ -33,8 +33,8 @@
 		</div>
 	</div>
     <div class="form-group row">
-		<label class="col-md-12 col-form-label">{{ __('Equipment') }}</label>
-		<div class="col-md-12 parent-group">
+		<label class="col-md-3 col-form-label">{{ __('Equipment') }}</label>
+		<div class="col-md-9 parent-group">
 			<input type="hidden" name="equipment_id" value="{{ $record->komponen->subUnit->equipment_id }}">
 			<select name="equipment_id" class="form-control base-plugin--select2-ajax equipment_id"
 				data-url="{{ route('ajax.equipmentOptions', ['id' => '']) }}"
@@ -48,8 +48,8 @@
 		</div>
 	</div>
     <div class="form-group row">
-		<label class="col-md-12 col-form-label">{{ __('Sub Unit') }}</label>
-		<div class="col-md-12 parent-group">
+		<label class="col-md-3 col-form-label">{{ __('Sub Unit') }}</label>
+		<div class="col-md-9 parent-group">
 			<input type="hidden" name="sub_unit_id" value="{{ $record->komponen->sub_unit_id }}">
 			<select name="sub_unit_id" class="form-control base-plugin--select2-ajax sub_unit_id"
 				data-url="{{ route('ajax.subUnitOptions', ['id' => '']) }}"
@@ -63,8 +63,8 @@
 		</div>
 	</div>
     <div class="form-group row">
-		<label class="col-md-12 col-form-label">{{ __('Komponen') }}</label>
-		<div class="col-md-12 parent-group">
+		<label class="col-md-3 col-form-label">{{ __('Komponen') }}</label>
+		<div class="col-md-9 parent-group">
 			<input type="hidden" name="komponen_id" value="{{ $record->komponen_id }}">
 			<select name="komponen_id" class="form-control base-plugin--select2-ajax komponen_id"
 				data-url="{{ route('ajax.komponenOptions', ['id' => '']) }}"
@@ -78,14 +78,14 @@
 		</div>
 	</div>
     <div class="form-group row">
-        <label class="col-sm-12 col-form-label">{{ __('Nama') }}</label>
-        <div class="col-sm-12 parent-group">
+        <label class="col-sm-3 col-form-label">{{ __('Nama') }}</label>
+        <div class="col-sm-9 parent-group">
             <input type="text" name="name" value="{{ $record->name }}" class="form-control" placeholder="{{ __('Nama') }}">
         </div>
     </div>
     <div class="form-group row">
-        <label class="col-sm-12 col-form-label">{{ __('Deskripsi') }}</label>
-        <div class="col-sm-12 parent-group">
+        <label class="col-sm-3 col-form-label">{{ __('Deskripsi') }}</label>
+        <div class="col-sm-9 parent-group">
             <textarea name="description" class="form-control" placeholder="{{ __('Deskripsi') }}">{{ $record->description }}</textarea>
         </div>
     </div>

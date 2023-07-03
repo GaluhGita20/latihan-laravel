@@ -28,16 +28,26 @@ class PermissionSeeder extends Seeder
                 'name'          => 'example.crud',
                 'action'        => ['view', 'create', 'edit', 'delete', 'approve'],
             ],
+            
+            // PURCHASE
+            [
+                'name'          => 'purchasing.purchase-order',
+                'action'        => ['view', 'create', 'edit', 'delete', 'approve'],
+            ],
+            [
+                'name'          => 'purchasing.good-receipt',
+                'action'        => ['view', 'create', 'edit', 'delete', 'approve'],
+            ],
 
             /** MAINTENANCE PLAN **/
             [
                 'name'          => 'rencana-pemeliharaan.jadwal',
                 'action'        => ['view', 'create', 'edit', 'delete', 'approve', 'history'],
             ], // track-approve, history
-            // [
-            //     'name'          => 'maintain.biaya',
-            //     'action'        => ['view', 'edit', 'delete', 'detail', 'approve', 'history'],
-            // ], 
+            [
+                'name'          => 'rencana-pemeliharaan.biaya',
+                'action'        => ['view', 'edit', 'delete', 'detail', 'approve', 'history'],
+            ], 
             // track-approve, history
 
             /** WORK MANAGEMENT **/
@@ -47,16 +57,6 @@ class PermissionSeeder extends Seeder
             ],
             [
                 'name'          => 'work-manage.work-order',
-                'action'        => ['view', 'create', 'edit', 'delete', 'approve'],
-            ],
-
-            // PURCHASE
-            [
-                'name'          => 'purchasing.purchase-order',
-                'action'        => ['view', 'create', 'edit', 'delete', 'approve'],
-            ],
-            [
-                'name'          => 'purchasing.good-receipt',
                 'action'        => ['view', 'create', 'edit', 'delete', 'approve'],
             ],
 
