@@ -117,6 +117,8 @@ Route::middleware('auth')
                         Route::post('subUnitOptions', 'AjaxController@subUnitOptions')->name('subUnitOptions');
                         Route::post('{search}/selectKomponen', 'AjaxController@selectKomponen')->name('selectKomponen');
                         Route::post('komponenOptions', 'AjaxController@komponenOptions')->name('komponenOptions');
+
+                        Route::post('asetStructureOptions', 'AjaxController@asetStructureOptions')->name('asetStructureOptions');
                     }
                 );
 

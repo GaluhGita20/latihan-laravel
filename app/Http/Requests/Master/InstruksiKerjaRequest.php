@@ -10,10 +10,10 @@ class InstruksiKerjaRequest extends FormRequest
     {
         $id = $this->record->id ?? 0;
         $rules = [
-            'aset_id'       => 'required',
-            'part_id'       => 'required',
-            'assemblies_id' => 'required',
-            'name'          => 'required|string|max:255|unique:ref_instruksi_kerja,name,' . $id,
+            'aset_id' => 'required',
+            'tipe_aset' => 'required',
+            'name'        => 'required|string|max:225|unique:ref_failure_code,name,'.$id,
+            'desc'        => 'max:225',
         ];
 
         return $rules;

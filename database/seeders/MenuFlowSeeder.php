@@ -19,6 +19,21 @@ class MenuFlowSeeder extends Seeder
             //         ],
             //     ]
             // ],
+            // PURCHASING
+            [
+                'module'   => 'purchasing',
+                'submenu'=> [
+                    [
+                        'module'   => 'purchasing.purchase-order',
+                        'name'      => 'Purchasing/Purchase Order',
+                    ],
+                    [
+                        'module'   => 'purchasing.good-receipt',
+                        'name'      => 'Purchasing/Good Receipt',
+                    ],
+                ]
+            ],
+
             // Work Manage
             [
                 'module'   => 'work-manage',
@@ -37,24 +52,12 @@ class MenuFlowSeeder extends Seeder
                     [
                         'module'   => 'rencana-pemeliharaan.jadwal',
                     ],
+                    [
+                        'module'   => 'rencana-pemeliharaan.biaya',
+                    ],
             //         [
             //             'module'   => 'maintain.biaya',
             //         ],
-                ]
-            ],
-
-            // PURCHASING
-            [
-                'module'   => 'purchasing',
-                'submenu'=> [
-                    [
-                        'module'   => 'purchasing.purchase-order',
-                        'name'      => 'Purchasing/Purchase Order',
-                    ],
-                    [
-                        'module'   => 'purchasing.good-receipt',
-                        'name'      => 'Purchasing/Good Receipt',
-                    ],
                 ]
             ],
         ];

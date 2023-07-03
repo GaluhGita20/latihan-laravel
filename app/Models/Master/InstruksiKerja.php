@@ -2,22 +2,23 @@
 
 namespace App\Models\Master;
 
-use App\Imports\Master\ExampleImport;
 use App\Models\Model;
-use App\Models\Setting\Globals\TempFiles;
-use App\Models\Master\Org\Struct;
+use App\Models\Master\Parts;
+use App\Models\Master\Plant;
+use App\Models\Master\System;
+use App\Models\Master\SubUnit;
+use App\Models\Master\Komponen;
+use App\Models\Master\Equipment;
 
 class InstruksiKerja extends Model
 {
     protected $table = 'ref_instruksi_kerja';
 
     protected $fillable = [
-        'struct_id',
+        'tipe_aset',
         'aset_id',
-        'part_id',
-        'assemblies_id',
-        'code',
         'name',
+        'description'
     ];
 
     /*******************************
@@ -31,19 +32,29 @@ class InstruksiKerja extends Model
     /*******************************
      ** RELATION
      *******************************/
-    public function aset()
-    {
-        return $this->belongsTo(Aset::class, 'aset_id');
+
+    public function plant(){
+        return $this->belongsTo(Plant::class, 'aset_id');
     }
 
-    public function part()
-    {
-        return $this->belongsTo(Parts::class, 'part_id');
+    public function system(){
+        return $this->belongsTo(System::class, 'aset_id');
     }
 
-    public function assemblies()
-    {
-        return $this->belongsTo(Assemblies::class, 'assemblies_id');
+    public function equipment(){
+        return $this->belongsTo(Equipment::class, 'aset_id');
+    }
+    
+    public function subUnit(){
+        return $this->belongsTo(SubUnit::class, 'aset_id');
+    }
+
+    public function komponen(){
+        return $this->belongsTo(Komponen::class, 'aset_id');
+    }
+
+    public function parts(){
+        return $this->belongsTo(Parts::class, 'aset_id');
     }
 
     /*******************************
@@ -56,7 +67,34 @@ class InstruksiKerja extends Model
 
     public function scopeFilters($query)
     {
-        return $query->filterBy(['code', 'name']);
+        return $query->filterBy(['name', 'tipe_aset']);
+    }
+
+    public function asetName()
+    {
+        $data = $this->tipe_aset;
+        switch ($data) {
+            case 'plant':
+                $items = $this->plant->name;
+                break;
+            case 'system':
+                $items = $this->system->name;
+                break;
+            case 'equipment':
+                $items = $this->equipment->name;
+                break;
+            case 'sub-unit':
+                $items = $this->subUnit->name;
+                break;
+            case 'komponen':
+                $items = $this->komponen->name;
+                break;
+            case 'parts':
+                $items = $this->parts->name;
+                break;   
+        }
+
+        return $items;
     }
 
     /*******************************
@@ -89,26 +127,6 @@ class InstruksiKerja extends Model
         }
     }
 
-    public function handleImport($request)
-    {
-        $this->beginTransaction();
-        try {
-            $file = TempFiles::find($request->uploads['temp_files_ids'][0]);
-            if (!$file || !\Storage::disk('public')->exists($file->file_path)) {
-                $this->rollback('File tidak tersedia!');
-            }
-
-            $filePath = \Storage::disk('public')->path($file->file_path);
-            \Excel::import(new ExampleImport(), $filePath);
-
-            $this->saveLogNotify();
-
-            return $this->commitSaved();
-        } catch (\Exception $e) {
-            return $this->rollbackSaved($e);
-        }
-    }
-
     public function saveLogNotify()
     {
         $data = $this->name;
@@ -131,8 +149,6 @@ class InstruksiKerja extends Model
      *******************************/
     public function canDeleted()
     {
-        // if($this->districts()->exists()) return false;
-
         return true;
     }
 }

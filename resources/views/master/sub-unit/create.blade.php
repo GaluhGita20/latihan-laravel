@@ -5,8 +5,8 @@
 @section('modal-body')
     @method('POST')
     <div class="form-group row">
-        <label class="col-md-12 col-form-label">{{ __('Plant') }}</label>
-        <div class="col-md-12 parent-group">
+        <label class="col-md-3 col-form-label">{{ __('Plant') }}</label>
+        <div class="col-md-9 parent-group">
             <select name="plant_id" class="form-control base-plugin--select2-ajax plant_id"
                 data-url="{{ route('ajax.selectPlant', ['search' => 'all']) }}"
                 placeholder="{{ __('Pilih Salah Satu') }}">
@@ -15,8 +15,8 @@
         </div>
     </div>
     <div class="form-group row">
-		<label class="col-md-12 col-form-label">{{ __('System') }}</label>
-		<div class="col-md-12 parent-group">
+		<label class="col-md-3 col-form-label">{{ __('System') }}</label>
+		<div class="col-md-9 parent-group">
 			<select name="system_id" class="form-control base-plugin--select2-ajax system_id"
 				data-url="{{ route('ajax.systemOptions', ['id' => '']) }}"
 				data-url-origin="{{ route('ajax.systemOptions') }}" placeholder="{{ __('Pilih Salah Satu') }}" disabled
@@ -26,8 +26,8 @@
 		</div>
 	</div>
     <div class="form-group row">
-		<label class="col-md-12 col-form-label">{{ __('Equipment') }}</label>
-		<div class="col-md-12 parent-group">
+		<label class="col-md-3 col-form-label">{{ __('Equipment') }}</label>
+		<div class="col-md-9 parent-group">
 			<select name="equipment_id" class="form-control base-plugin--select2-ajax equipment_id"
 				data-url="{{ route('ajax.equipmentOptions', ['id' => '']) }}"
 				data-url-origin="{{ route('ajax.equipmentOptions') }}" placeholder="{{ __('Pilih Salah Satu') }}" disabled
@@ -37,14 +37,14 @@
 		</div>
 	</div>
     <div class="form-group row">
-        <label class="col-sm-12 col-form-label">{{ __('Nama') }}</label>
-        <div class="col-sm-12 parent-group">
+        <label class="col-sm-3 col-form-label">{{ __('Nama') }}</label>
+        <div class="col-sm-9 parent-group">
             <input type="text" name="name" class="form-control" placeholder="{{ __('Nama') }}">
         </div>
     </div>
     <div class="form-group row">
-        <label class="col-sm-12 col-form-label">{{ __('Deskripsi') }}</label>
-        <div class="col-sm-12 parent-group">
+        <label class="col-sm-3 col-form-label">{{ __('Deskripsi') }}</label>
+        <div class="col-sm-9 parent-group">
             <textarea name="description" class="form-control" placeholder="{{ __('Deskripsi') }}"></textarea>
         </div>
     </div>
