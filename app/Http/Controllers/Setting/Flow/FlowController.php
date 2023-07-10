@@ -39,7 +39,7 @@ class FlowController extends Controller
                     $this->makeColumn('name:num'),
                     $this->makeColumn('name:menu|label:Menu|className:text-left|sortable:false'),
                     $this->makeColumn('name:flows|label:Flow Approval|className:text-center|sortable:false'),
-                    $this->makeColumn('name:updated_by|label:Diperbarui|width:180px|sortable:false'),
+                    $this->makeColumn('name:updated_by|label:Diperbarui|width:130px|sortable:false'),
                     $this->makeColumn('name:action'),
                 ],
             ],
@@ -56,7 +56,8 @@ class FlowController extends Controller
                 return request()->start;
             })
             ->addColumn('menu', function ($record) {
-                return ($record->parent ? '<span class="pl-4">&#8627;</span> ' : '') . $record->show_module;
+                return ($record->parent ? "<span class=pl-4>&#8627; </span>" . "<span>$record->show_module</span>" : "<span class=text-bold>$record->show_module</span>");
+                // return ($record->parent ? '<span class="pl-4">&#8627;</span> ' : '') . $record->show_module;
             })
             ->addColumn('flows', function ($record) {
                 if($record->flows->count() == 0 ){

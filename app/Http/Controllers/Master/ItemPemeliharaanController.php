@@ -42,7 +42,7 @@ class ItemPemeliharaanController extends Controller
                         $this->makeColumn('name:name|label:Nama|className:text-left'),
                         $this->makeColumn('name:tipe_pemeliharaan|label:Tipe Pemeliharaan|className:text-center'),
                         $this->makeColumn('name:description|label:Deskripsi|className:text-center'),
-                        $this->makeColumn('name:updated_by'),
+                        $this->makeColumn('name:updated_by|label:Diperbarui|width:130px'),
                         $this->makeColumn('name:action'),
                     ],
                 ],

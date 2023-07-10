@@ -28,19 +28,19 @@
                 				</td>
                 				<td>
                 					<div class="row">
-                						<div class="col-12 col-sm-6 col-xl-3 pb-2">
+                						<div class="col-12 col-sm-6 col-xl-6 pb-2">
                 							<select class="form-control base-plugin--select2-ajax filter-control"
                 								data-post="module_name" 
                 								data-placeholder="{{ __('Semua Modul') }}">
                 								<option value="" selected>{{ __('Semua Modul') }}</option>
-                								@foreach (\Base::getModules() as $key => $name)
+                								@foreach (\Base::getMainModules() as $key => $name)
                                                     <option value="{{ $key }}">{{ $name }}</option>
                                                 @endforeach
                 							</select>
                 						</div>
-                						<div class="col-12 col-sm-6 col-xl-3 pb-2">
+                						{{-- <div class="col-12 col-sm-6 col-xl-3 pb-2">
                 							<input type="text" class="form-control filter-control" data-post="message" placeholder="{{ __('Deskripsi') }}">
-                						</div>
+                						</div> --}}
                 					</div>
                 				</td>
                 				<td class="text-right td-btn-create"></td>

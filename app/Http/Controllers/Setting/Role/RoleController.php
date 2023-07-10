@@ -44,7 +44,7 @@ class RoleController extends Controller
                         $this->makeColumn('name:name|label:Nama|className:text-left'),
                         $this->makeColumn('name:users|label:Jumlah User|className:text-center|width:200px'),
                         $this->makeColumn('name:permissions|label:Jumlah Akses|className:text-center|width:200px'),
-                        $this->makeColumn('name:updated_by'),
+                        $this->makeColumn('name:updated_by|label:Diperbarui|width:130px'),
                         $this->makeColumn('name:action'),
                     ],
                 ],

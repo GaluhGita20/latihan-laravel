@@ -44,7 +44,7 @@ class VendorAsetController extends Controller
                         $this->makeColumn('name:num'),
                         $this->makeColumn('name:code|label:Id Vendor|className:text-left'),
                         $this->makeColumn('name:name|label:Nama Vendor|className:text-left'),
-                        $this->makeColumn('name:updated_by'),
+                        $this->makeColumn('name:updated_by|label:Diperbarui|width:130px'),
                         $this->makeColumn('name:action'),
                     ],
                 ],

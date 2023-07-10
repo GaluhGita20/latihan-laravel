@@ -25,7 +25,7 @@ class DatabaseSeeder extends Seeder
         $this->call(MasterAssetStatusSeeder::class);
         $this->call(MasterTipeAssetSeeder::class);
         $this->call(MasterTipeMaintenanceSeeder::class);
-        $this->call(MasterBiayaLainSeeder::class);
+        // $this->call(MasterBiayaLainSeeder::class);
         $this->call(MasterKondisiAsetSeeder::class);
         $this->call(MasterTeamSeeder::class);
         $this->call(SkillsetSeeder::class);
@@ -37,5 +37,9 @@ class DatabaseSeeder extends Seeder
         $this->call(EquipmentSeeder::class);
         $this->call(SubUnitSeeder::class);
         $this->call(KomponenSeeder::class);
+
+        $this->call(FailureCodeSeeder::class);
+        $this->call(KomponenBiayaSeeder::class);
+        $this->call(PrioritasSeeder::class);
     }
 }

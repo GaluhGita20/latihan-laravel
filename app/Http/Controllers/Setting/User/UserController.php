@@ -44,7 +44,7 @@ class UserController extends Controller
                     $this->makeColumn('name:position|label:Jabatan|className:text-center'),
                     $this->makeColumn('name:role|label:Role|className:text-center'),
                     $this->makeColumn('name:status'),
-                    $this->makeColumn('name:updated_by'),
+                    $this->makeColumn('name:updated_by|label:Diperbarui|width:130px'),
                     $this->makeColumn('name:action'),
                 ],
             ],

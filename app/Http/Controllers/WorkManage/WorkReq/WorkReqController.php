@@ -46,7 +46,7 @@ class WorkReqController extends Controller
                         $this->makeColumn('name:aset|label:Aset|className:text-left'),
                         $this->makeColumn('name:subLocation|label:Lokasi|className:text-left'),
                         $this->makeColumn('name:status'),
-                        $this->makeColumn('name:updated_by'),
+                        $this->makeColumn('name:updated_by|label:Diperbarui|width:130px'),
                         $this->makeColumn('name:action'),
                     ],
                 ],

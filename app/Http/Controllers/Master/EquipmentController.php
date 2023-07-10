@@ -42,7 +42,7 @@ class EquipmentController extends Controller
                         $this->makeColumn('name:name|label:Nama|className:text-left'),
                         $this->makeColumn('name:description|label:Deskripsi|className:text-center'),
                         $this->makeColumn('name:system_id|label:System|className:text-center'),
-                        $this->makeColumn('name:updated_by'),
+                        $this->makeColumn('name:updated_by|label:Diperbarui|width:130px'),
                         $this->makeColumn('name:action'),
                     ],
                 ],
