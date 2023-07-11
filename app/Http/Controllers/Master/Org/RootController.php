@@ -40,7 +40,7 @@ class RootController extends Controller
                     $this->makeColumn('name:name|label:Nama|className:text-left'),
                     $this->makeColumn('name:phone|label:Telepon|className:text-center'),
                     $this->makeColumn('name:address|label:Alamat|className:text-left|width:400px'),
-                    $this->makeColumn('name:updated_by'),
+                    $this->makeColumn('name:updated_by|label:Diperbarui|width:130px'),
                     $this->makeColumn('name:action'),
                 ],
             ],

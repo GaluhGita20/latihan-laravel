@@ -49,7 +49,7 @@ class AssembliesController extends Controller
                         $this->makeColumn('name:code|label:Id Assemblies|className:text-left'),
                         $this->makeColumn('name:name|label:Nama Assemblies|className:text-left'),
                         $this->makeColumn('name:aset.code|label:Id Aset|className:text-left'),
-                        $this->makeColumn('name:updated_by'),
+                        $this->makeColumn('name:updated_by|label:Diperbarui|width:130px'),
                         $this->makeColumn('name:action'),
                     ],
                 ],

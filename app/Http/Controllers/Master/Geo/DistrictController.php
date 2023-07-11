@@ -47,7 +47,7 @@ class DistrictController extends Controller
                         $this->makeColumn('name:name|label:Nama|className:text-left'),
                         $this->makeColumn('name:city.name|label:Kota|className:text-left'),
                         $this->makeColumn('name:city.province.name|label:Provinsi|className:text-left'),
-                        $this->makeColumn('name:updated_by'),
+                        $this->makeColumn('name:updated_by|label:Diperbarui|width:130px'),
                         $this->makeColumn('name:action'),
                     ],
                 ],

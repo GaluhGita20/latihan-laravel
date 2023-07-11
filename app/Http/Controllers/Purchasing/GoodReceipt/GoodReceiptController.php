@@ -48,7 +48,7 @@ class GoodReceiptController extends Controller
                         $this->makeColumn('name:item|label:Item|className:text-center'),
                         $this->makeColumn('name:tgl_penerimaan|label:Tgl Penerimaan|className:text-center'),
                         $this->makeColumn('name:status'),
-                        $this->makeColumn('name:updated_by'),
+                        $this->makeColumn('name:updated_by|label:Diperbarui|width:130px'),
                         $this->makeColumn('name:action'),
                     ]
                 ]
@@ -217,7 +217,7 @@ class GoodReceiptController extends Controller
                         $this->makeColumn('name:jumlah|label:Jumlah|className:text-center|width:300px'),
                         $this->makeColumn('name:harga_per_unit|label:Harga Per Unit|className:text-center|width:300px'),
                         $this->makeColumn('name:total_harga|label:Total Harga|className:text-center|width:300px'),
-                        $this->makeColumn('name:updated_by'),
+                        $this->makeColumn('name:updated_by|label:Diperbarui|width:130px'),
                         $this->makeColumn('name:action'),
                     ]
                 ],
@@ -239,7 +239,7 @@ class GoodReceiptController extends Controller
                         $this->makeColumn('name:jumlah|label:Jumlah|className:text-center|width:300px'),
                         $this->makeColumn('name:harga_per_unit|label:Harga Per Unit|className:text-center|width:300px'),
                         $this->makeColumn('name:total_harga|label:Total Harga|className:text-center|width:300px'),
-                        $this->makeColumn('name:updated_by'),
+                        $this->makeColumn('name:updated_by|label:Diperbarui|width:130px'),
                         $this->makeColumn('name:action'),
                     ]
                 ],
@@ -304,7 +304,7 @@ class GoodReceiptController extends Controller
                         $this->makeColumn('name:jumlah|label:Jumlah|className:text-center|width:300px'),
                         $this->makeColumn('name:harga_per_unit|label:Harga Per Unit|className:text-center|width:300px'),
                         $this->makeColumn('name:total_harga|label:Total Harga|className:text-center|width:300px'),
-                        $this->makeColumn('name:updated_by'),
+                        $this->makeColumn('name:updated_by|label:Diperbarui|width:130px'),
                         $this->makeColumn('name:action'),
                     ]
                 ],

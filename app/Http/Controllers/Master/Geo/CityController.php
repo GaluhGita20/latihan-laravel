@@ -45,7 +45,7 @@ class CityController extends Controller
                         $this->makeColumn('name:code|label:Kode|className:text-left'),
                         $this->makeColumn('name:name|label:Nama|className:text-left'),
                         $this->makeColumn('name:province.name|label:Provinsi|className:text-left'),
-                        $this->makeColumn('name:updated_by'),
+                        $this->makeColumn('name:updated_by|label:Diperbarui|width:130px'),
                         $this->makeColumn('name:action'),
                     ],
                 ],

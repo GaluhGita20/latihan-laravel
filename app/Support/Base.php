@@ -43,6 +43,27 @@ class Base
         return $modules[$moduleName] ?? null;
     }
 
+    public static function getMainModules($moduleName = false)
+    {
+        $modules = [];
+        foreach (config('backendmenu') as $menu) {
+            if (!empty($menu['name']) && !empty($menu['title'])) {
+                $name = $menu['name'];
+                $title = __($menu['title']);
+                $modules[$name] = $title;
+            }
+        }
+        $modules['auth_login'] = 'Auth/Login';
+        $modules['auth_logout'] = 'Auth/Logout';
+
+        if ($moduleName === false) {
+            return $modules;
+        }
+
+        return $modules[$moduleName] ?? null;
+
+    }
+
     public static function getModulesPerms()
     {
         $modules = [];

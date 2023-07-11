@@ -52,7 +52,7 @@ class WorkOrderController extends Controller
                         $this->makeColumn('name:asset|label:Asset|className:text-left'),
                         $this->makeColumn('name:user|label:Pelaksana|className:text-left'),
                         $this->makeColumn('name:status'),
-                        $this->makeColumn('name:updated_by'),
+                        $this->makeColumn('name:updated_by|label:Diperbarui|width:130px'),
                         $this->makeColumn('name:action'),
                     ],
                 ],

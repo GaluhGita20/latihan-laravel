@@ -268,11 +268,18 @@ class AjaxController extends Controller
     public function selectPosition($search, Request $request)
     {
         $items = Position::keywordBy('name')->orderBy('name');
+        if(!empty($request->parent_id)){
+            $parents = Position::where('location_id', $request->parent_id)->get('id');
+            $parents->push($request->parent_id);
+        }
         switch ($search) {
             case 'all':
                 $items = $items;
                 break;
-
+            case 'parent_position_with_req':
+                $items = $items
+                    ->whereIn('location_id', $parents);
+                break;
             default:
                 $items = $items->whereNull('id');
                 break;

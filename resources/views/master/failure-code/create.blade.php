@@ -5,7 +5,7 @@
 @section('modal-body')
     @method('POST')
     <div class="form-group row">
-		<label class="col-md-3 col-form-label">{{ __('Tipe Aset') }}</label>
+		<label class="col-md-3 col-form-label">{{ __('Struktur Aset') }}</label>
 		<div class="col-md-9 parent-group">
 			<select name="tipe_aset" class="form-control base-plugin--select2-ajax tipe_aset"
 				placeholder="{{ __('Pilih Salah Satu') }}"

@@ -48,7 +48,7 @@ class InstruksiKerjaController extends Controller
                         $this->makeColumn('name:description|label:Deskripsi|className:text-center'),
                         $this->makeColumn('name:tipe_aset|label:Tipe Aset|className:text-center'),
                         $this->makeColumn('name:aset_id|label:Aset|className:text-center'),
-                        $this->makeColumn('name:updated_by'),
+                        $this->makeColumn('name:updated_by|label:Diperbarui|width:130px'),
                         $this->makeColumn('name:action'),
                     ],
                 ],

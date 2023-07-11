@@ -45,7 +45,7 @@ class CrudController extends Controller
                         $this->makeColumn('name:range|label:Rentang Tanggal|className:text-center'),
                         $this->makeColumn('name:input|label:Input|className:text-left'),
                         $this->makeColumn('name:status'),
-                        $this->makeColumn('name:updated_by'),
+                        $this->makeColumn('name:updated_by|label:Diperbarui|width:130px'),
                         $this->makeColumn('name:action'),
                     ],
                 ],
