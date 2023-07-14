@@ -135,6 +135,19 @@ class PermissionSeeder extends Seeder
                     'setting'                   => ['view', 'create', 'edit', 'delete'],
                 ],
             ],
+            [
+                'name'  => 'Manajer',
+                'PERMISSIONS'   => [
+                    
+                ],
+             ],
+             [
+                 'name'  => 'Officer',
+                'PERMISSIONS'   => [
+
+                ],
+                
+            ],
         ];
         foreach ($ROLES as $role) {
             $record = Role::firstOrNew(['name' => $role['name']]);

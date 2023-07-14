@@ -16,20 +16,33 @@
 			<input type="email" name="email" value="{{ $record->email }}" class="form-control" placeholder="{{ __('Email') }}">
 		</div>
 	</div>
-
 	<div class="form-group row">
-		<label class="col-sm-4 col-form-label">{{ __('Jabatan') }}</label>
+		<label class="col-sm-4 col-form-label">{{ __('Struktur') }}</label>
 		<div class="col-sm-8 parent-group">
-			<select name="position_id" class="form-control base-plugin--select2-ajax" 
-				data-url="{{ route('ajax.selectPosition', 'all') }}"
+			<select id="struktur_id" class="form-control base-plugin--select2-ajax"
+				data-url="{{ route('ajax.selectStruct', ['search'=>'parent_position']) }}"
+				data-url-origin="{{ route('ajax.selectStruct', ['search'=>'parent_position']) }}"
 				data-placeholder="{{ __('Pilih Salah Satu') }}">
-				<option value="">{{ __('Pilih Salah Satu') }}</option>
 				@if ($record->position)
-					<option value="{{ $record->position->id }}" selected>{{ $record->position->name }}</option>
+				<option value="{{ $record->position->location->id }}" selected>{{ $record->position->location->name }}</option>
 				@endif
 			</select>
 		</div>
 	</div>
+	<div class="form-group row">
+        <label class="col-sm-4 col-form-label">{{ __('Jabatan') }}</label>
+        <div class="col-sm-8 parent-group">
+            <select class="form-control base-plugin--select2-ajax" 
+				data-url="{{ route('ajax.selectPosition', 'parent_position_with_req') }}" id="position_id"
+                data-url-origin="{{ route('ajax.selectPosition', 'parent_position_with_req') }}" disabled name="position_id"
+                placeholder="{{ __('Pilih Salah Satu') }}">
+                <option value="">{{ __('Pilih Salah Satu') }}</option>
+				@if ($record->position)
+				<option value="{{ $record->position->id }}" selected>{{ $record->position->name }}</option>
+				@endif
+            </select>
+        </div>
+    </div>
 	<div class="form-group row">
 		<label class="col-sm-4 col-form-label">{{ __('Role') }}</label>
 		<div class="col-sm-8 parent-group">
@@ -58,3 +71,26 @@
 		</div>
 	@endif
 @endsection
+
+@push('scripts')
+
+<script>
+	$(function () {
+		$('.content-page').on('change', '#struktur_id', function (e) {
+			var me = $(this);
+			if (me.val()) {
+				var objectId = $('#position_id');
+				var urlOrigin = objectId.data('url-origin');
+				var urlParam = $.param({
+					parent_id: me.val(),
+				});
+				objectId.data('url', decodeURIComponent(decodeURIComponent(urlOrigin+'?'+urlParam)));
+				objectId.val(null).prop('disabled', false);
+			}
+			BasePlugin.initSelect2();
+		});
+	});
+	
+</script>
+	
+@endpush
