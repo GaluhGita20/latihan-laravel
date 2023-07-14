@@ -37,6 +37,7 @@ class DatabaseSeeder extends Seeder
         $this->call(EquipmentSeeder::class);
         $this->call(SubUnitSeeder::class);
         $this->call(KomponenSeeder::class);
+        $this->call(PartsSeeder::class);
 
         $this->call(FailureCodeSeeder::class);
         $this->call(KomponenBiayaSeeder::class);
