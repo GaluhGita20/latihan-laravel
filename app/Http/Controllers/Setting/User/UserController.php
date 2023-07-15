@@ -39,10 +39,11 @@ class UserController extends Controller
                     $this->makeColumn('name:num'),
                     $this->makeColumn('name:name|label:Nama|className:text-left'),
                     $this->makeColumn('name:username|label:Username|className:text-center'),
-                    $this->makeColumn('name:email|label:Email|className:text-center'),
+                    $this->makeColumn('name:struktur|label:Struktur|className:text-center'),
+                    // $this->makeColumn('name:email|label:Email|className:text-center'),
                     // $this->makeColumn('name:nik|label:NIK|className:text-center'),
                     $this->makeColumn('name:position|label:Jabatan|className:text-center'),
-                    $this->makeColumn('name:role|label:Role|className:text-center'),
+                    $this->makeColumn('name:role|label:Hak Akses|className:text-center'),
                     $this->makeColumn('name:status'),
                     $this->makeColumn('name:updated_by|label:Diperbarui|width:130px'),
                     $this->makeColumn('name:action'),
@@ -59,6 +60,9 @@ class UserController extends Controller
         return \DataTables::of($records)
             ->addColumn('num', function ($record) {
                 return request()->start;
+            })
+            ->addColumn('struktur', function ($record) {
+                return $record->position->location->name ?? '-';
             })
             ->addColumn('position', function ($record) {
                 return $record->position->name ?? '-';

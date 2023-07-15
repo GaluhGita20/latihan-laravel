@@ -17,7 +17,7 @@
 		class="form-control base-plugin--datepicker" 
 		value="{{ $record->tgl_purchase_order->format('d/m/Y') }}"
 		data-options='@json([
-			"startDate" => "", 
+			"startDate" => now()->format('d/m/Y'),
 			"endDate"=> ""
 		])'
 		placeholder="{{ __('Tanggal Purchase Order') }}">

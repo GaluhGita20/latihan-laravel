@@ -3,11 +3,11 @@
 @section('filters')
 	<div class="row">
 		<div class="col-12 col-sm-6 col-xl-2 pb-2">
-			<input type="text" class="form-control filter-control" data-post="name" placeholder="{{ __('Name') }}">
+			<input type="text" class="form-control filter-control" data-post="name" placeholder="{{ __('Nama & Email') }}">
 		</div>
-		<div class="col-12 col-sm-6 col-xl-2 pb-2">
+		{{-- <div class="col-12 col-sm-6 col-xl-2 pb-2">
 			<input type="text" class="form-control filter-control" data-post="email" placeholder="{{ __('Email') }}">
-		</div>
+		</div> --}}
 		<div class="col-12 col-sm-6 col-xl-2 pb-2">
 			<select class="form-control base-plugin--select2-ajax filter-control" 
 				data-post="position_id" 
@@ -20,8 +20,8 @@
 			<select class="form-control base-plugin--select2-ajax filter-control" 
 				data-post="role_id" 
 				data-url="{{ route('ajax.selectRole', 'all') }}"
-				data-placeholder="{{ __('Semua Role') }}">
-				<option value="" selected>{{ __('Semua Role') }}</option>
+				data-placeholder="{{ __('Semua Hak Akses') }}">
+				<option value="" selected>{{ __('Semua Hak Akses') }}</option>
 			</select>
 		</div>
 		<div class="col-12 col-sm-6 col-xl-2 pb-2">

@@ -125,7 +125,7 @@ class PermissionSeeder extends Seeder
 
         // $this->command->getOutput()->progressStart($this->countActions($permissions));
         $this->generate($permissions);
-        
+
         $ROLES = [
             [
                 'name'  => 'Administrator',
@@ -138,13 +138,25 @@ class PermissionSeeder extends Seeder
             [
                 'name'  => 'Manajer',
                 'PERMISSIONS'   => [
-                    
+                    'dashboard'                 => ['view'],
+
+                    'purchasing.purchase-order'  => ['view', 'create', 'edit', 'delete', 'approve'],
+                    'purchasing.good-receipt'  => ['view', 'create', 'edit', 'delete', 'approve'],
+                    'rencana-pemeliharaan.jadwal'  => ['view', 'create', 'edit', 'delete', 'approve'],
+                    'work-manage.work-req'  => ['view', 'create', 'edit', 'delete', 'approve'],
+                    'work-manage.work-order'  => ['view', 'create', 'edit', 'delete', 'approve'],
                 ],
              ],
              [
                  'name'  => 'Officer',
                 'PERMISSIONS'   => [
-
+                    'dashboard'                 => ['view'],
+                    
+                    'purchasing.purchase-order'  => ['view', 'create', 'edit', 'delete', 'approve'],
+                    'purchasing.good-receipt'  => ['view', 'create', 'edit', 'delete', 'approve'],
+                    'rencana-pemeliharaan.jadwal'  => ['view', 'create', 'edit', 'delete', 'approve'],
+                    'work-manage.work-req'  => ['view', 'create', 'edit', 'delete', 'approve'],
+                    'work-manage.work-order'  => ['view', 'create', 'edit', 'delete', 'approve'],
                 ],
                 
             ],

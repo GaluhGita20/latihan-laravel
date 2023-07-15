@@ -29,11 +29,32 @@ return [
     //     ]
     // ],
 
+    // PURCHASING
+    [
+        'name' => 'purchasing',
+        'title' => 'Purchasing',
+        'icon' => 'fa fa-tags',
+        'submenu' => [
+            [
+                'name' => 'purchasing.purchase-order',
+                'perms' => 'purchasing.purchase-order',
+                'title' => 'Purchase Order',
+                'url' => '/purchasing/purchase-order',
+            ],
+            [
+                'name' => 'purchasing.good-receipt',
+                'perms' => 'purchasing.good-receipt',
+                'title' => 'Good Receipt',
+                'url' => '/purchasing/good-receipt',
+            ],
+        ]
+    ],
+
     // Rencana Pemeliharaan
     [
         'name' => 'rencana-pemeliharaan',
         'title' => 'Rencana Pemeliharaan',
-        // 'icon' => 'fas fa-swatchbook',
+        'icon' => 'fa fa-calendar',
         'submenu' => [
             [
                 'name' => 'rencana-pemeliharaan.jadwal',
@@ -67,27 +88,6 @@ return [
                 'perms' => 'work-manage.work-order',
                 'title' => 'Work Order',
                 'url' => '/work-order',
-            ],
-        ]
-    ],
-
-    // PURCHASING
-    [
-        'name' => 'purchasing',
-        'title' => 'Purchasing',
-        'icon' => 'fa fa-tags',
-        'submenu' => [
-            [
-                'name' => 'purchasing.purchase-order',
-                'perms' => 'purchasing.purchase-order',
-                'title' => 'Purchase Order',
-                'url' => '/purchasing/purchase-order',
-            ],
-            [
-                'name' => 'purchasing.good-receipt',
-                'perms' => 'purchasing.good-receipt',
-                'title' => 'Good Receipt',
-                'url' => '/purchasing/good-receipt',
             ],
         ]
     ],
