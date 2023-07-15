@@ -16,7 +16,7 @@
 		<input type="text" name="tgl_purchase_order"
 		class="form-control base-plugin--datepicker" 
 		data-options='@json([
-			"startDate" => "", 
+			"startDate" => now()->format('d/m/Y'),
 			"endDate"=> ""
 		])'
 		placeholder="{{ __('Tanggal Purchase Order') }}">

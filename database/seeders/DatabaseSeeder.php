@@ -39,6 +39,7 @@ class DatabaseSeeder extends Seeder
         $this->call(KomponenSeeder::class);
         $this->call(PartsSeeder::class);
 
+        $this->call(InstruksiKerjaSeeder::class);
         $this->call(FailureCodeSeeder::class);
         $this->call(KomponenBiayaSeeder::class);
         $this->call(PrioritasSeeder::class);
