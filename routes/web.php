@@ -100,6 +100,7 @@ Route::middleware('auth')
                         Route::post('{search}/selectAset', 'AjaxController@selectAset')->name('selectAset');
                         Route::post('{search}/selectAsetWithPrice', 'AjaxController@selectAsetWithPrice')->name('selectAsetWithPrice');
                         Route::get('getAsetOptions', 'AjaxController@getAsetOptions')->name('getAsetOptions');
+                        Route::post('getAsetFromOptions', 'AjaxController@getAsetFromOptions')->name('getAsetFromOptions');
                         Route::post('{search}/selectLocation', 'AjaxController@selectLocation')->name('selectLocation');
                         Route::post('{search}/selectSubLocation', 'AjaxController@selectSubLocation')->name('selectSubLocation');
                         Route::post('{search}/selectMaintenanceType', 'AjaxController@selectMaintenanceType')->name('selectMaintenanceType');

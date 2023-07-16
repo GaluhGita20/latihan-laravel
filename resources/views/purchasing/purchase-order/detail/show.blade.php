@@ -1,13 +1,30 @@
 @extends('layouts.modal')
 
 @section('modal-body')
-
 <div class="form-group row">
-	<label class="col-sm-3 col-form-label">{{ __('Barang') }}</label>
-	<div class="col-sm-9 parent-group">
-		<select disabled name="barang_id" class="form-control base-plugin--select2-ajax barang_id" id="asetCtrl"
-			data-url="{{ route('ajax.selectAset', ['search' => 'all']) }}"
-			placeholder="{{ __('Pilih Salah Satu') }}">
+	<label class="col-md-3 col-form-label">{{ __('Struktur Aset') }}</label>
+	<div class="col-md-9 parent-group">
+		<select disabled name="tipe_aset" class="form-control base-plugin--select2-ajax tipe_aset"
+			placeholder="{{ __('Pilih Salah Satu') }}"
+			required>
+			<option value="">{{ __('Pilih Salah Satu') }}</option>
+			<option @if($detail->barang->struktur_aset == "plant") selected @endif value="plant">{{ __('Plant') }}</option>
+			<option @if($detail->barang->struktur_aset == "system") selected @endif value="system">{{ __('System') }}</option>
+			<option @if($detail->barang->struktur_aset == "equipment") selected @endif value="equipment">{{ __('Equipment') }}</option>
+			<option @if($detail->barang->struktur_aset == "sub-unit") selected @endif value="sub-unit">{{ __('Sub Unit') }}</option>
+			<option @if($detail->barang->struktur_aset == "komponen") selected @endif value="komponen">{{ __('Komponen') }}</option>
+			<option @if($detail->barang->struktur_aset == "parts") selected @endif value="parts">{{ __('Parts') }}</option>
+		</select>
+	</div>
+</div>
+<div class="form-group row">
+	<label class="col-md-3 col-form-label">{{ __('Aset') }}</label>
+	<div class="col-md-9 parent-group">
+		<input type="hidden" name="barang_id" value="{{ $detail->barang_id }}">
+		<select disabled name="barang_id" class="form-control base-plugin--select2-ajax barang_id"
+			data-url="{{ route('ajax.asetStructureOptions', ['tipe_aset' => '']) }}"
+			data-url-origin="{{ route('ajax.asetStructureOptions') }}" placeholder="{{ __('Pilih Salah Satu') }}" disabled
+			required>
 			<option value="">{{ __('Pilih Salah Satu') }}</option>
 			@if (!empty($detail->barang_id))
 				<option value="{{ $detail->barang_id }}" selected>{{ $detail->barang->name }}</option>

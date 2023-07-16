@@ -6,11 +6,28 @@
 @method('PATCH')
 <input type="hidden" name="purchase_order_id" value="{{ $detail->id }}">
 <div class="form-group row">
-	<label class="col-sm-3 col-form-label">{{ __('Barang') }}</label>
-	<div class="col-sm-9 parent-group">
+	<label class="col-md-3 col-form-label">{{ __('Struktur Aset') }}</label>
+	<div class="col-md-9 parent-group">
+		<select name="struktur_aset" class="form-control base-plugin--select2-ajax struktur_aset"
+			placeholder="{{ __('Pilih Salah Satu') }}" id="strukturCtrl"
+			required>
+			<option value="">{{ __('Pilih Salah Satu') }}</option>
+			<option value="plant">{{ __('Plant') }}</option>
+			<option value="system">{{ __('System') }}</option>
+			<option value="equipment">{{ __('Equipment') }}</option>
+			<option value="sub-unit">{{ __('Sub Unit') }}</option>
+			<option value="komponen">{{ __('Komponen') }}</option>
+			<option value="parts">{{ __('Parts') }}</option>
+		</select>
+	</div>
+</div>
+<div class="form-group row">
+	<label class="col-md-3 col-form-label">{{ __('Aset') }}</label>
+	<div class="col-md-9 parent-group">
 		<select name="barang_id" class="form-control base-plugin--select2-ajax barang_id" id="asetCtrl"
-			data-url="{{ route('ajax.selectAset', ['search' => 'all']) }}"
-			placeholder="{{ __('Pilih Salah Satu') }}">
+			data-url="{{ route('ajax.getAsetFromOptions', ['struktur_aset' => '']) }}"
+			data-url-origin="{{ route('ajax.getAsetFromOptions') }}" placeholder="{{ __('Pilih Salah Satu') }}" disabled
+			required>
 			<option value="">{{ __('Pilih Salah Satu') }}</option>
 		</select>
 	</div>
@@ -63,7 +80,7 @@
 					aset_id: $(this).val()
 				},
 				success: function(response, state, xhr) {
-					$('#harga_per_unit').val(response.harga);
+					$('#harga_per_unit').val(response.harga_per_unit);
 					console.log(response.harga);
 				},
 				error: function(a, b, c) {
@@ -74,6 +91,18 @@
 			$('#jumlahCtrl').val(null).prop('disabled', false);
 			$('#total_harga').val(null);
 			$('#harga_per_unit').val(null);
+		});
+		
+		$('.content-page').on('change', 'select.struktur_aset', function (e) {
+			var me = $(this);
+			if (me.val()) {
+				var objectId = $('select.barang_id');
+				var urlOrigin = objectId.data('url-origin');
+				var urlParam = $.param({struktur_aset: me.val()});
+				objectId.data('url', decodeURIComponent(decodeURIComponent(urlOrigin+'?'+urlParam)));
+				objectId.val(null).prop('disabled', false);
+			}
+			BasePlugin.initSelect2();
 		});
 	});
 

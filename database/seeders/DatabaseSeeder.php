@@ -21,6 +21,7 @@ class DatabaseSeeder extends Seeder
         $this->call(PositionSeeder::class);
         $this->call(PermissionSeeder::class);
         $this->call(UserSeeder::class);
+        $this->call(MenuFlowApprovalSeeder::class);
 
         $this->call(MasterAssetStatusSeeder::class);
         $this->call(MasterTipeAssetSeeder::class);
@@ -38,6 +39,7 @@ class DatabaseSeeder extends Seeder
         $this->call(SubUnitSeeder::class);
         $this->call(KomponenSeeder::class);
         $this->call(PartsSeeder::class);
+        $this->call(VendorSeeder::class);
 
         $this->call(InstruksiKerjaSeeder::class);
         $this->call(FailureCodeSeeder::class);

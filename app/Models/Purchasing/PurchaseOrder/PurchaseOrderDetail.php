@@ -4,7 +4,13 @@ namespace App\Models\Purchasing\PurchaseOrder;
 
 use App\Models\Model;
 use App\Models\Master\Aset;
+use App\Models\Master\Parts;
+use App\Models\Master\Plant;
+use App\Models\Master\System;
+use App\Models\Master\SubUnit;
 use Illuminate\Support\Carbon;
+use App\Models\Master\Komponen;
+use App\Models\Master\Equipment;
 use App\Models\Purchasing\PurchaseOrder\PurchaseOrder;
 
 class PurchaseOrderDetail extends Model
@@ -44,6 +50,7 @@ class PurchaseOrderDetail extends Model
     /*******************************
      ** SCOPE
      *******************************/
+    
     public function scopeGrid($query)
     {
         return $query->latest();
@@ -67,7 +74,7 @@ class PurchaseOrderDetail extends Model
             $this->saveLogNotify();
 
             $redirect = route(request()->get('routes') . '.detail', $this->purchaseOrder->id);
-            return $this->commitSaved(compact('redirect'));
+            return $this->commitSaved();
         } catch (\Exception $e) {
             return $this->rollbackSaved($e);
         }

@@ -7,7 +7,8 @@
 		</div>
 		<div class="col-12 col-sm-6 col-xl-3 pb-2">
 			<select class="form-control filter-control base-plugin--select2-ajax"
-				data-post="tipe_aset">
+				data-post="tipe_aset"
+				data-placeholder="{{ __('Struktur Aset') }}">
 				<option value="">{{ __('Pilih Salah Satu') }}</option>
 				<option value="plant">{{ __('Plant') }}</option>
 				<option value="system">{{ __('System') }}</option>

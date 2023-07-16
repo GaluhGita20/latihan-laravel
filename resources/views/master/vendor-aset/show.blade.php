@@ -1,39 +1,80 @@
 @extends('layouts.modal')
 
 @section('modal-body')
-	<div class="form-group row">
-		<label class="col-sm-3 col-form-label">{{ __('Kode') }}</label>
-		<div class="col-sm-9 parent-group">
-			<input disabled type="text" name="code" value="{{ $record->code }}" class="form-control" placeholder="{{ __('Kode') }}">
+	<div class="row">
+		<div class="col-md-6">
+			<div class="form-group row">
+				<label class="col-sm-3 col-form-label">{{ __('Kode') }}</label>
+				<div class="col-sm-9 parent-group">
+					<input disabled type="text" name="code" value="{{ $record->code }}" class="form-control" placeholder="{{ __('Kode') }}">
+				</div>
+			</div>
+		
+			<div class="form-group row">
+				<label class="col-sm-3 col-form-label">{{ __('Nama') }}</label>
+				<div class="col-sm-9 parent-group">
+					<input disabled type="text" name="name" value="{{ $record->name }}" class="form-control" placeholder="{{ __('Nama') }}">
+				</div>
+			</div>
+		
+			<div class="form-group row">
+				<label class="col-sm-3 col-form-label">{{ __('Alamat') }}</label>
+				<div class="col-sm-9 parent-group">
+					<textarea name="alamat" rows="3" class="form-control" placeholder="{{ __('Alamat') }}" disabled>{{ $record->alamat }}</textarea>
+					{{-- <input disabled type="text" name="alamat" value="{{ $record->alamat }}" class="form-control" placeholder="{{ __('Alamat') }}"> --}}
+				</div>
+			</div>
+			<div class="form-group row">
+				<label class="col-sm-3 col-form-label">{{ __('Provinsi') }}</label>
+				<div class="col-sm-9 parent-group">
+					<input disabled type="text" name="alamat" value="{{ $record->city->province->name }}" class="form-control" placeholder="{{ __('Provinsi') }}">
+				</div>
+			</div>
+			<div class="form-group row">
+				<label class="col-sm-3 col-form-label">{{ __('Kota') }}</label>
+				<div class="col-sm-9 parent-group">
+					<input disabled type="text" name="alamat" value="{{ $record->city->name }}" class="form-control" placeholder="{{ __('Kota') }}">
+				</div>
+			</div>
+		</div>
+		<div class="col-md-6">
+			<div class="form-group row">
+				<label class="col-sm-3 col-form-label">{{ __('Kode Pos') }}</label>
+				<div class="col-sm-9 parent-group">
+					<input disabled type="text" name="kodepos" value="{{ $record->kodepos }}" class="form-control" placeholder="{{ __('Kode Pos') }}">
+				</div>
+			</div>
+		
+			<div class="form-group row">
+				<label class="col-sm-3 col-form-label">{{ __('Telepon') }}</label>
+				<div class="col-sm-9 parent-group">
+					<input disabled type="text" name="telepon" value="{{ $record->telepon }}" class="form-control" placeholder="{{ __('Telepon') }}">
+				</div>
+			</div>
+		
+			<div class="form-group row">
+				<label class="col-sm-3 col-form-label">{{ __('Email') }}</label>
+				<div class="col-sm-9 parent-group">
+					<input disabled type="text" name="email" value="{{ $record->email }}" class="form-control" placeholder="{{ __('Email') }}">
+				</div>
+			</div>
+		
+			<div class="form-group row">
+				<label class="col-sm-3 col-form-label">{{ __('PIC') }}</label>
+				<div class="col-sm-9 parent-group">
+					<input disabled type="text" name="pic" value="{{ $record->pic }}" class="form-control" placeholder="{{ __('PIC') }}">
+				</div>
+			</div>
+		
+		
+			<div class="form-group row">
+				<label class="col-sm-3 col-form-label">{{ __('Website') }}</label>
+				<div class="col-sm-9 parent-group">
+					<input disabled type="text" name="website" value="{{ $record->website }}" class="form-control" placeholder="{{ __('Website') }}">
+				</div>
+			</div>
 		</div>
 	</div>
-
-	<div class="form-group row">
-		<label class="col-sm-3 col-form-label">{{ __('Nama') }}</label>
-		<div class="col-sm-9 parent-group">
-			<input disabled type="text" name="name" value="{{ $record->name }}" class="form-control" placeholder="{{ __('Nama') }}">
-		</div>
-	</div>
-
-	<div class="form-group row">
-		<label class="col-sm-3 col-form-label">{{ __('Alamat') }}</label>
-		<div class="col-sm-9 parent-group">
-			<input disabled type="text" name="alamat" value="{{ $record->alamat }}" class="form-control" placeholder="{{ __('Alamat') }}">
-		</div>
-	</div>
-	<div class="form-group row">
-		<label class="col-sm-3 col-form-label">{{ __('Provinsi') }}</label>
-		<div class="col-sm-9 parent-group">
-			<input disabled type="text" name="alamat" value="{{ $record->city->province->name }}" class="form-control" placeholder="{{ __('Provinsi') }}">
-		</div>
-	</div>
-	<div class="form-group row">
-		<label class="col-sm-3 col-form-label">{{ __('Kota') }}</label>
-		<div class="col-sm-9 parent-group">
-			<input disabled type="text" name="alamat" value="{{ $record->city->name }}" class="form-control" placeholder="{{ __('Kota') }}">
-		</div>
-	</div>
-	
 	{{-- <div class="form-group row">
 		<label class="col-sm-3 col-form-label">{{ __('Provinsi') }}</label>
 		<div class="col-sm-9 parent-group">
@@ -62,42 +103,11 @@
 			</select>
 		</div>
 	</div> --}}
-	<div class="form-group row">
-		<label class="col-sm-3 col-form-label">{{ __('Kode Pos') }}</label>
-		<div class="col-sm-9 parent-group">
-			<input disabled type="text" name="kodepos" value="{{ $record->kodepos }}" class="form-control" placeholder="{{ __('Kode Pos') }}">
-		</div>
-	</div>
-
-	<div class="form-group row">
-		<label class="col-sm-3 col-form-label">{{ __('Telepon') }}</label>
-		<div class="col-sm-9 parent-group">
-			<input disabled type="text" name="telepon" value="{{ $record->telepon }}" class="form-control" placeholder="{{ __('Telepon') }}">
-		</div>
-	</div>
-
-	<div class="form-group row">
-		<label class="col-sm-3 col-form-label">{{ __('Email') }}</label>
-		<div class="col-sm-9 parent-group">
-			<input disabled type="text" name="email" value="{{ $record->email }}" class="form-control" placeholder="{{ __('Email') }}">
-		</div>
-	</div>
-
-	<div class="form-group row">
-		<label class="col-sm-3 col-form-label">{{ __('PIC') }}</label>
-		<div class="col-sm-9 parent-group">
-			<input disabled type="text" name="pic" value="{{ $record->pic }}" class="form-control" placeholder="{{ __('PIC') }}">
-		</div>
-	</div>
-
-
-	<div class="form-group row">
-		<label class="col-sm-3 col-form-label">{{ __('Website') }}</label>
-		<div class="col-sm-9 parent-group">
-			<input disabled type="text" name="website" value="{{ $record->website }}" class="form-control" placeholder="{{ __('Website') }}">
-		</div>
-	</div>
 @endsection
 
 @section('buttons')
 @endsection
+
+<script>
+	$('.modal-dialog').removeClass('modal-md').addClass('modal-lg');
+</script>

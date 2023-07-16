@@ -54,6 +54,14 @@ class AjaxController extends Controller
             ->first();
     }
 
+    public function getAsetFromOptions(Request $request)
+    {
+        $items = Aset::where('struktur_aset', $request->struktur_aset)->orderBy('name', 'ASC')->get();
+
+        $items = $items->paginate();
+        return $this->responseSelect2($items, 'name', 'id');
+    }
+
     public function selectProvince($search, Request $request)
     {
         $items = Province::keywordBy('name')->orderBy('name');
@@ -601,30 +609,6 @@ class AjaxController extends Controller
                 $items = Parts::orderBy('name', 'ASC')->get();
                 break;   
         }
-
-        // if($request->tipe_aset == "plant"){
-        //     $items = Plant::orderBy('name', 'ASC')->get();
-        // }
-
-        // if($request->tipe_aset == "system"){
-        //     $items = System::orderBy('name', 'ASC')->get();
-        // }
-
-        // if($request->tipe_aset == "equipment"){
-        //     $items = Equipment::orderBy('name', 'ASC')->get();
-        // }
-
-        // if($request->tipe_aset == "sub-unit"){
-        //     $items = SubUnit::orderBy('name', 'ASC')->get();
-        // }
-
-        // if($request->tipe_aset == "komponen"){
-        //     $items = Komponen::orderBy('name', 'ASC')->get();
-        // }
-
-        // if($request->tipe_aset == "parts"){
-        //     $items = Parts::orderBy('name', 'ASC')->get();
-        // }
 
         $items = $items->paginate();
         return $this->responseSelect2($items, 'name', 'id');
