@@ -34,18 +34,7 @@ class MenuFlowSeeder extends Seeder
                 ]
             ],
 
-            // Work Manage
-            [
-                'module'   => 'work-manage',
-                'submenu'=> [
-                    [
-                        'module'   => 'work-manage.work-req',
-                    ],
-                    [
-                        'module'   => 'work-manage.work-order',
-                    ],
-                ]
-            ],
+            // Rencana Pemeliharaan
             [
                 'module'   => 'rencana-pemeliharaan',
                 'submenu'=> [
@@ -58,6 +47,19 @@ class MenuFlowSeeder extends Seeder
             //         [
             //             'module'   => 'maintain.biaya',
             //         ],
+                ]
+            ],
+
+            // Work Manage
+            [
+                'module'   => 'work-manage',
+                'submenu'=> [
+                    [
+                        'module'   => 'work-manage.work-req',
+                    ],
+                    [
+                        'module'   => 'work-manage.work-order',
+                    ],
                 ]
             ],
         ];

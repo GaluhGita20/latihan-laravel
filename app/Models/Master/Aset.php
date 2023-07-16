@@ -8,17 +8,13 @@ use App\Models\Setting\Globals\TempFiles;
 
 class Aset extends Model
 {
-    protected $table = 'ref_aset';
+    protected $table = 'ref_asets';
 
     protected $fillable = [
-        'status_aset_id',
-        'kondisi_aset_id',
-        'asset_type_id',
-        'location_id',
-        'sub_lokasi_id',
-        'code',
+        'id_aset',
         'name',
-        'harga',
+        'struktur_aset',
+        'harga_per_unit',
     ];
 
     /*******************************
@@ -32,34 +28,6 @@ class Aset extends Model
     /*******************************
      ** RELATION
      *******************************/
-    public function kondisiAset()
-    {
-        return $this->belongsTo(KondisiAset::class, 'kondisi_aset_id');
-    }
-
-    public function statusAset()
-    {
-        return $this->belongsTo(StatusAset::class, 'status_aset_id');
-    }
-
-    public function tipeAset()
-    {
-        return $this->belongsTo(TipeAset::class, 'asset_type_id');
-    }
-
-    public function lokasi()
-    {
-        return $this->belongsTo(Lokasi::class, 'location_id');
-    }
-
-    public function subLokasi()
-    {
-        return $this->belongsTo(SubLokasi::class, 'sub_lokasi_id');
-    }
-    public function failureCodes()
-    {
-        return $this->hasMany(FailureCode::class, 'aset_id');
-    }
 
     /*******************************
      ** SCOPE
@@ -104,26 +72,6 @@ class Aset extends Model
         }
     }
 
-    public function handleImport($request)
-    {
-        $this->beginTransaction();
-        try {
-            $file = TempFiles::find($request->uploads['temp_files_ids'][0]);
-            if (!$file || !\Storage::disk('public')->exists($file->file_path)) {
-                $this->rollback('File tidak tersedia!');
-            }
-
-            $filePath = \Storage::disk('public')->path($file->file_path);
-            \Excel::import(new ExampleImport(), $filePath);
-
-            $this->saveLogNotify();
-
-            return $this->commitSaved();
-        } catch (\Exception $e) {
-            return $this->rollbackSaved($e);
-        }
-    }
-
     public function saveLogNotify()
     {
         $data = $this->name;
@@ -146,8 +94,6 @@ class Aset extends Model
      *******************************/
     public function canDeleted()
     {
-        // if($this->moduleRelations()->exists()) return false;
-
         return true;
     }
 }

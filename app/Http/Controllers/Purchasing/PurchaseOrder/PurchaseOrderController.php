@@ -41,8 +41,8 @@ class PurchaseOrderController extends Controller
                 'tableStruct' => [
                     'datatable_1' => [
                         $this->makeColumn('name:num'),
-                        $this->makeColumn('name:id_purchase_order|label:ID Purchase Order|className:text-center'),
-                        $this->makeColumn('name:tgl_purchase_order|label:Tgl Purchase Order|className:text-center'),
+                        $this->makeColumn('name:purchase_order|label:Purchase Order|className:text-center'),
+                        // $this->makeColumn('name:tgl_purchase_order|label:Tgl Purchase Order|className:text-center'),
                         $this->makeColumn('name:tgl_kirim|label:Tgl Kirim|className:text-center'),
                         $this->makeColumn('name:vendor_id|label:Vendor|className:text-center'),
                         $this->makeColumn('name:item|label:Item|className:text-center'),
@@ -70,15 +70,9 @@ class PurchaseOrderController extends Controller
                 }
             )
             ->addColumn(
-                'id_purchase_order',
+                'purchase_order',
                 function ($records) use ($user) {
-                    return '<span class="badge badge-danger">' . $records->id_purchase_order . '</span>';
-                }
-            )
-            ->addColumn(
-                'tgl_purchase_order',
-                function ($records) use ($user) {
-                    return '<span class="badge badge-warning">' . $records->tgl_purchase_order->format('d/m/Y') . '</span>';
+                    return '<span class="badge badge-danger mb-1">' . $records->id_purchase_order . '</span><br><span class="badge badge-warning">' . $records->tgl_purchase_order->format('d/m/Y') . '</span>';
                 }
             )
             ->addColumn(
@@ -163,8 +157,7 @@ class PurchaseOrderController extends Controller
             )
             ->rawColumns(
                 [
-                    'id_purchase_order',
-                    'tgl_purchase_order',
+                    'purchase_order',
                     'tgl_kirim',
                     'vendor_id',
                     'item',

@@ -45,8 +45,10 @@ class AsetController extends Controller
                 'tableStruct' => [
                     'datatable_1' => [
                         $this->makeColumn('name:num'),
-                        $this->makeColumn('name:code|label:Id Aset|className:text-left'),
-                        $this->makeColumn('name:name|label:Nama Aset|className:text-left'),
+                        $this->makeColumn('name:id_aset|label:Id Aset|className:text-center'),
+                        $this->makeColumn('name:name|label:Nama Aset|className:text-center'),
+                        $this->makeColumn('name:struktur_aset|label:Struktur Aset|className:text-center'),
+                        $this->makeColumn('name:harga_per_unit|label:Harga Per Unit|className:text-center'),
                         $this->makeColumn('name:updated_by|label:Diperbarui|width:130px'),
                         $this->makeColumn('name:action'),
                     ],
@@ -59,14 +61,7 @@ class AsetController extends Controller
     public function grid()
     {
         $user = auth()->user();
-        $records = Aset::with(
-            'kondisiAset',
-            'statusAset',
-            'tipeAset',
-            'lokasi',
-            'subLokasi'
-        )
-            ->grid()
+        $records = Aset::grid()
             ->filters()
             ->dtGet();
 
@@ -75,6 +70,18 @@ class AsetController extends Controller
                 'num',
                 function ($record) {
                     return request()->start;
+                }
+            )
+            ->addColumn(
+                'harga_per_unit',
+                function ($record) {
+                    return 'Rp. '.$record->harga_per_unit;
+                }
+            )
+            ->addColumn(
+                'struktur_aset',
+                function ($record) {
+                    return ucfirst($record->struktur_aset);
                 }
             )
             ->addColumn(
@@ -106,19 +113,7 @@ class AsetController extends Controller
 
     public function create()
     {
-        $STATUSASET  = StatusAset::orderBy('name', 'ASC')->get();
-        $KONDISIASET = KondisiAset::orderBy('name', 'ASC')->get();
-        $TIPEASET = TipeAset::orderBy('name', 'ASC')->get();
-        $LOKASI = Lokasi::orderBy('name', 'ASC')->get();
-        return $this->render(
-            $this->views . '.create',
-            compact(
-                'STATUSASET',
-                'KONDISIASET',
-                'TIPEASET',
-                'LOKASI',
-            )
-        );
+        return $this->render($this->views . '.create');
     }
 
     public function store(AsetRequest $request)
@@ -134,22 +129,7 @@ class AsetController extends Controller
 
     public function edit(Aset $record)
     {
-        $STATUSASET  = StatusAset::orderBy('name', 'ASC')->get();
-        $KONDISIASET = KondisiAset::orderBy('name', 'ASC')->get();
-        $TIPEASET = TipeAset::orderBy('name', 'ASC')->get();
-        $LOKASI = Lokasi::orderBy('name', 'ASC')->get();
-        $SUBLOKASI = SubLokasi::orderBy('name', 'ASC')->get();
-        return $this->render(
-            $this->views . '.edit',
-            compact(
-                'record',
-                'STATUSASET',
-                'KONDISIASET',
-                'TIPEASET',
-                'LOKASI',
-                'SUBLOKASI'
-            )
-        );
+        return $this->render($this->views . '.edit', compact('record'));
     }
 
     public function update(AsetRequest $request, Aset $record)
@@ -160,39 +140,5 @@ class AsetController extends Controller
     public function destroy(Aset $record)
     {
         return $record->handleDestroy();
-    }
-
-    public function import()
-    {
-        if (request()->get('download') == 'template') {
-            return $this->template();
-        }
-        return $this->render($this->views . '.import');
-    }
-
-    public function template()
-    {
-        $fileName = date('Y-m-d') . ' Template Import Data ' . $this->prepared('title') . '.xlsx';
-        $view = $this->views . '.template';
-        $data = [];
-        return \Excel::download(new GenerateExport($view, $data), $fileName);
-    }
-
-    public function importSave(Request $request)
-    {
-        $request->validate(
-            [
-                'uploads.uploaded' => 'required',
-                'uploads.temp_files_ids.*' => 'required',
-            ],
-            [],
-            [
-                'uploads.uploaded' => 'File',
-                'uploads.temp_files_ids.*' => 'File',
-            ]
-        );
-
-        $record = new Example;
-        return $record->handleImport($request);
     }
 }

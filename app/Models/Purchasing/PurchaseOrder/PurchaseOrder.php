@@ -53,6 +53,7 @@ class PurchaseOrder extends Model
     /*******************************
      ** RELATION
      *******************************/
+    
     public function vendor()
     {
         return $this->belongsTo(VendorAset::class, 'vendor_id');
@@ -70,6 +71,7 @@ class PurchaseOrder extends Model
     /*******************************
      ** SCOPE
      *******************************/
+
     public function scopeGrid($query)
     {
         return $query->latest();
@@ -127,6 +129,13 @@ class PurchaseOrder extends Model
         $this->beginTransaction();
         try {
             $menu = \App\Models\Setting\Globals\Menu::where('module', 'purchasing.purchase-order')->first();
+            if ($this->detail()->count() == 0) {
+                return $this->rollback(
+                    [
+                        'message' => 'Detail Harus Terisi Terlebih Dahulu!'
+                    ]
+                );
+            }
             if ($request->is_submit == 1) {
                 if ($menu->flows()->get()->groupBy('order')->count() == null) {
                     return $this->rollback(

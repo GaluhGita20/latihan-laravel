@@ -231,6 +231,11 @@ return [
                 ]
             ],
             [
+                'name' => 'master.aset',
+                'title' => 'Aset',
+                'url' => '/master/aset',
+            ],
+            [
                 'name' => 'master.tipe-aset',
                 'title' => 'Tipe Aset',
                 'url' => '/master/tipe-aset',
