@@ -23,27 +23,5 @@ class DatabaseSeeder extends Seeder
         $this->call(UserSeeder::class);
         $this->call(MenuFlowApprovalSeeder::class);
 
-        $this->call(MasterAssetStatusSeeder::class);
-        $this->call(MasterTipeAssetSeeder::class);
-        $this->call(MasterTipeMaintenanceSeeder::class);
-        // $this->call(MasterBiayaLainSeeder::class);
-        $this->call(MasterKondisiAsetSeeder::class);
-        $this->call(MasterTeamSeeder::class);
-        $this->call(SkillsetSeeder::class);
-        $this->call(ItemPemeliharaanSeeder::class);
-
-        // Struktur Aset
-        $this->call(PlantSeeder::class);
-        $this->call(SystemSeeder::class);
-        $this->call(EquipmentSeeder::class);
-        $this->call(SubUnitSeeder::class);
-        $this->call(KomponenSeeder::class);
-        $this->call(PartsSeeder::class);
-        $this->call(VendorSeeder::class);
-
-        $this->call(InstruksiKerjaSeeder::class);
-        $this->call(FailureCodeSeeder::class);
-        $this->call(KomponenBiayaSeeder::class);
-        $this->call(PrioritasSeeder::class);
     }
 }

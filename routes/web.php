@@ -28,55 +28,6 @@ Route::middleware('auth')
                         Route::get('language/{lang}/setLang', 'DashboardController@setLang')->name('setLang');
                     }
                 );
-
-            // PURCHASING
-            Route::namespace('Purchasing')->prefix('purchasing')->name('purchasing.')->group(function () {
-                // PURCHASE ORDER
-                Route::namespace('PurchaseOrder')->group(function () {
-                    Route::get('purchase-order/{record}/detail', 'PurchaseOrderController@detail')->name('purchase-order.detail');
-                    Route::get('purchase-order/{record}/detailShow', 'PurchaseOrderController@detailShow')->name('purchase-order.detail.show');
-                    Route::post('purchase-order/{record}/detailGrid', 'PurchaseOrderController@detailGrid')->name('purchase-order.detailGrid');
-            
-                    // Grid
-                    Route::post('purchase-order/{record}/detailPurchaseGrid', 'PurchaseOrderController@detailPurchaseGrid')->name('purchase-order.detailPurchaseGrid');
-                    Route::post('purchase-order/{record}/detailPurchaseGridShow', 'PurchaseOrderController@detailPurchaseGridShow')->name('purchase-order.detailPurchaseGridShow');
-            
-                    // Detail 
-                    Route::get('purchase-order/{detail}/detailPurchase', 'PurchaseOrderController@detailPurchase')->name('purchase-order.detailPurchase');
-                    Route::get('purchase-order/{detail}/detailPurchaseEdit', 'PurchaseOrderController@detailPurchaseEdit')->name('purchase-order.detailPurchaseEdit');
-                    Route::get('purchase-order/{detail}/detailPurchaseShow', 'PurchaseOrderController@detailPurchaseShow')->name('purchase-order.detailPurchaseShow');
-                    Route::patch('purchase-order/detailPurchaseStore', 'PurchaseOrderController@detailPurchaseStore')->name('purchase-order.detailPurchaseStore');
-                    Route::patch('purchase-order/{detail}/detailPurchaseUpdate', 'PurchaseOrderController@detailPurchaseUpdate')->name('purchase-order.detailPurchaseUpdate');
-                    Route::delete('purchase-order/{detail}/detailPurchaseDestroy', 'PurchaseOrderController@detailPurchaseDestroy')->name('purchase-order.detailPurchaseDestroy');
-            
-                    Route::grid('purchase-order', 'PurchaseOrderController', [
-                        'with' => ['submit', 'approval', 'print', 'history', 'tracking']
-                    ]);
-                });
-
-                // GOOD RECEIPT
-                Route::namespace('GoodReceipt')->group(function () {
-                    Route::get('good-receipt/{record}/detail', 'GoodReceiptController@detail')->name('good-receipt.detail');
-                    Route::get('good-receipt/{record}/detailShow', 'GoodReceiptController@detailShow')->name('good-receipt.detail.show');
-                    Route::post('good-receipt/{record}/detailGrid', 'GoodReceiptController@detailGrid')->name('good-receipt.detailGrid');
-            
-                    // Grid
-                    Route::post('good-receipt/{record}/detailPurchaseGrid', 'GoodReceiptController@detailPurchaseGrid')->name('good-receipt.detailPurchaseGrid');
-                    Route::post('good-receipt/{record}/detailPurchaseGridShow', 'GoodReceiptController@detailPurchaseGridShow')->name('good-receipt.detailPurchaseGridShow');
-            
-                    // Detail 
-                    Route::get('good-receipt/{detail}/detailPurchase', 'GoodReceiptController@detailPurchase')->name('good-receipt.detailPurchase');
-                    Route::get('good-receipt/{detail}/detailPurchaseEdit', 'GoodReceiptController@detailPurchaseEdit')->name('good-receipt.detailPurchaseEdit');
-                    Route::get('good-receipt/{detail}/detailPurchaseShow', 'GoodReceiptController@detailPurchaseShow')->name('good-receipt.detailPurchaseShow');
-                    Route::patch('good-receipt/detailPurchaseStore', 'GoodReceiptController@detailPurchaseStore')->name('good-receipt.detailPurchaseStore');
-                    Route::patch('good-receipt/{detail}/detailPurchaseUpdate', 'GoodReceiptController@detailPurchaseUpdate')->name('good-receipt.detailPurchaseUpdate');
-                    Route::delete('good-receipt/{detail}/detailPurchaseDestroy', 'GoodReceiptController@detailPurchaseDestroy')->name('good-receipt.detailPurchaseDestroy');
-            
-                    Route::grid('good-receipt', 'GoodReceiptController', [
-                        'with' => ['submit', 'approval', 'print', 'history', 'tracking']
-                    ]);
-                });
-            });
             // Ajax
             Route::prefix('ajax')
                 ->name('ajax.')
@@ -218,15 +169,6 @@ Route::middleware('auth')
                                 }
                             );
 
-                        Route::namespace('Example')
-                            ->group(
-                                function () {
-                                    Route::get('example/import', 'ExampleController@import')->name('example.import');
-                                    Route::post('example/importSave', 'ExampleController@importSave')->name('example.importSave');
-                                    Route::grid('example', 'ExampleController');
-                                }
-                            );
-
                         Route::namespace('Geo')
                             ->name('geo.')
                             ->prefix('geo')
@@ -244,138 +186,19 @@ Route::middleware('auth')
                                     Route::post('district/importSave', 'DistrictController@importSave')->name('district.importSave');
                                     Route::grid('district', 'DistrictController');
                                 }
-                            );
+                        );
+                        Route::namespace('Pendidikan')
+                            ->name('pendidikan.')
+                            ->prefix('pendidikan')
+                            ->group(
+                                function () {
+                                    Route::grid('pendidikan', 'PendidikanController');
+                                    Route::grid('jurusan', 'JurusanController');
 
-                        Route::get('lokasi/import', 'LokasiController@import')->name('lokasi.import');
-                        Route::post('lokasi/importSave', 'LokasiController@importSave')->name('lokasi.importSave');
-                        Route::grid('lokasi', 'LokasiController');
-
-                        Route::get('tipe-aset/import', 'TipeAsetController@import')->name('tipe-aset.import');
-                        Route::post('tipe-aset/importSave', 'TipeAsetController@importSave')->name('tipe-aset.importSave');
-                        Route::grid('tipe-aset', 'TipeAsetController');
-
-                        Route::get('instruksi-kerja/import', 'InstruksiKerjaController@import')->name('instruksi-kerja.import');
-                        Route::post('instruksi-kerja/importSave', 'InstruksiKerjaController@importSave')->name('instruksi-kerja.importSave');
-                        Route::grid('instruksi-kerja', 'InstruksiKerjaController');
-
-                        Route::get('sub-lokasi/import', 'SubLokasiController@import')->name('sub-lokasi.import');
-                        Route::post('sub-lokasi/importSave', 'SubLokasiController@importSave')->name('sub-lokasi.importSave');
-                        Route::grid('sub-lokasi', 'SubLokasiController');
-
-                        Route::get('failure-code/import', 'FailureCodeController@import')->name('failure-code.import');
-                        Route::post('failure-code/importSave', 'FailureCodeController@importSave')->name('failure-code.importSave');
-                        Route::grid('failure-code', 'FailureCodeController');
-
-                        Route::get('aset/import', 'AsetController@import')->name('aset.import');
-                        Route::post('aset/importSave', 'AsetController@importSave')->name('aset.importSave');
-                        Route::grid('aset', 'AsetController');
-
-                        Route::get('biaya-lain/import', 'BiayaLainController@import')->name('biaya-lain.import');
-                        Route::post('biaya-lain/importSave', 'BiayaLainController@importSave')->name('biaya-lain.importSave');
-                        Route::grid('biaya-lain', 'BiayaLainController');
-
-                        Route::get('status-aset/import', 'StatusAsetController@import')->name('status-aset.import');
-                        Route::post('status-aset/importSave', 'StatusAsetController@importSave')->name('status-aset.importSave');
-                        Route::grid('status-aset', 'StatusAsetController');
-
-                        Route::get('kondisi-aset/import', 'KondisiAsetController@import')->name('kondisi-aset.import');
-                        Route::post('kondisi-aset/importSave', 'KondisiAsetController@importSave')->name('kondisi-aset.importSave');
-                        Route::grid('kondisi-aset', 'KondisiAsetController');
-
-                        Route::get('team/import', 'TeamController@import')->name('team.import');
-                        Route::post('team/importSave', 'TeamController@importSave')->name('team.importSave');
-                        Route::grid('team', 'TeamController');
-
-                        Route::get('vendor-aset/import', 'VendorAsetController@import')->name('vendor-aset.import');
-                        Route::post('vendor-aset/importSave', 'VendorAsetController@importSave')->name('vendor-aset.importSave');
-                        Route::grid('vendor-aset', 'VendorAsetController');
-
-                        Route::get('prioritas-aset/import', 'PrioritasAsetController@import')->name('prioritas-aset.import');
-                        Route::post('prioritas-aset/importSave', 'PrioritasAsetController@importSave')->name('prioritas-aset.importSave');
-                        Route::grid('prioritas-aset', 'PrioritasAsetController');
-
-                        Route::get('tipe-maintenance/import', 'TipeMaintenanceController@import')->name('tipe-maintenance.import');
-                        Route::post('tipe-maintenance/importSave', 'TipeMaintenanceController@importSave')->name('tipe-maintenance.importSave');
-                        Route::grid('tipe-maintenance', 'TipeMaintenanceController');
-
-                        Route::get('assemblies/import', 'AssembliesController@import')->name('assemblies.import');
-                        Route::post('assemblies/importSave', 'AssembliesController@importSave')->name('assemblies.importSave');
-                        Route::grid('assemblies', 'AssembliesController');
-
-                        // Route::get('item-pemeliharaan/import', 'ItemPemeliharaanController@import')->name('item-pemeliharaan.import');
-                        // Route::post('item-pemeliharaan/importSave', 'ItemPemeliharaanController@importSave')->name('item-pemeliharaan.importSave');
-                        Route::grid('item-pemeliharaan', 'ItemPemeliharaanController');
-
-                        // Route::get('item-pemeliharaan/import', 'ItemPemeliharaanController@import')->name('item-pemeliharaan.import');
-                        // Route::post('item-pemeliharaan/importSave', 'ItemPemeliharaanController@importSave')->name('item-pemeliharaan.importSave');
-                        Route::grid('skillset', 'SkillsetController');
-
-                        // STRUKTUR ASET
-                        Route::grid('plant', 'PlantController');
-                        Route::grid('system', 'SystemController');
-                        Route::grid('equipment', 'EquipmentController');
-                        Route::grid('sub-unit', 'SubUnitController');
-                        Route::grid('komponen', 'KomponenController');
-                        Route::grid('parts', 'PartsController');
+                                }
+                        );
                     }
                 );
-
-            Route::namespace("WorkManagement")->prefix("work-order")->name("work.work_order.")
-                ->group(function () {
-                    Route::grid("/", "WorkOrderController");
-                    Route::post("/grid", "WorkOrderController@grid")->name("grid");
-
-
-                    Route::get("/test", "WorkOrderController@test");
-
-                    Route::get("/get-parts", "WorkOrderController@getParts")->name("get.parts");
-                    Route::get("/detail-parts", "WorkOrderController@showParts")->name("show.parts");
-
-
-                    Route::post("/create/instruction", "WorkOrderController@storeInstruction")->name("create.instruction");
-                    Route::post("/update/instruction", "WorkOrderController@updateInstruction")->name("update.instruction");
-                    Route::get("/delete/instruction/{id}", "WorkOrderController@deleteInstruction")->name("delete.instruction");
-
-                    Route::post("/create/other-cost", "WorkOrderController@storeOtherCost")->name("create.other_cost");
-                    Route::post("/update/other-cost", "WorkOrderController@updateOtherCost")->name("update.other_cost");
-                    Route::get("/delete/other-cost/{id}", "WorkOrderController@deleteOtherCost")->name("delete.other_cost");
-
-                    Route::get("{record}/edit", "WorkOrderController@edit")->name("update");
-                    Route::post("{record}/edit", "WorkOrderController@update");
-
-                    Route::get("{record}", "WorkOrderController@show")->name("show");
-
-                    Route::delete("{record}", "WorkOrderController@destroy")->name("delete");
-                });
-
-            Route::namespace('RencanaPemeliharaan')->prefix('rencana-pemeliharaan')->name('rencana-pemeliharaan.')->group(function () {
-                // Risk Register
-                Route::namespace('Jadwal')
-                ->group(
-                    function () {
-                        Route::get('jadwal/{record}/detail', 'JadwalController@detail')->name('jadwal.detail');
-                        Route::get('jadwal/{record}/detailShow', 'JadwalController@detailShow')->name('jadwal.detail.show');
-                        Route::post('jadwal/{record}/detailGrid', 'JadwalController@detailGrid')->name('jadwal.detailGrid');
-        
-                        // Grid
-                        Route::post('jadwal/{record}/detailJadwalGrid', 'JadwalController@detailJadwalGrid')->name('jadwal.detailJadwalGrid');
-                        Route::post('jadwal/{record}/detailJadwalGridShow', 'JadwalController@detailJadwalGridShow')->name('jadwal.detailJadwalGridShow');
-        
-                        // Detail
-                        Route::get('jadwal/{detail}/detailJadwal', 'JadwalController@detailJadwal')->name('jadwal.jadwal');
-                        Route::get('jadwal/{detail}/detailJadwalEdit', 'JadwalController@detailJadwalEdit')->name('jadwal.detailJadwalEdit');
-                        Route::get('jadwal/{detail}/detailJadwalShow', 'JadwalController@detailJadwalShow')->name('jadwal.detailJadwalShow');
-                        Route::patch('jadwal/detailJadwalStore', 'JadwalController@detailJadwalStore')->name('jadwal.detailJadwalStore');
-                        Route::patch('jadwal/{detail}/detailJadwalUpdate', 'JadwalController@detailJadwalUpdate')->name('jadwal.detailJadwalUpdate');
-                        Route::delete('jadwal/{detail}/detailJadwalDestroy', 'JadwalController@detailJadwalDestroy')->name('jadwal.detailJadwalDestroy');
-        
-                        Route::grid('jadwal', 'JadwalController', [
-                            'with' => ['submit', 'approval', 'history', 'tracking']
-                        ]);
-                    }
-                );
-                
-            });
 
             // Web Transaction Modules
             foreach (\File::allFiles(__DIR__ . '/webs') as $file) {

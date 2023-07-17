@@ -18,8 +18,8 @@ class AlterSysStructsTable extends Migration
             function (Blueprint $table) {
                 $table->string('website')->after('address')->nullable();
                 $table->string('email')->after('phone')->nullable();
-                // $table->unsignedBigInteger('province_id')->unique();
-                // $table->unsignedBigInteger('city_id');
+                $table->string('province')->after('phone')->nullable();
+                $table->string('city')->after('phone')->nullable();
 
                 // $table->foreign('province_id')->references('id')->on('ref_province');
                 // $table->foreign('city_id')->references('id')->on('ref_city');

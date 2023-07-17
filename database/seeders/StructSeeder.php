@@ -12,126 +12,170 @@ class StructSeeder extends Seeder
         $structs = [
             // type => 1:presdir, 2:direktur, 3:ia division, 4:it division
             // Level Root
-            [ 
-                "parent_id" => null,
-                "level" => "root",
-                "type" => null,
-                "name" => "Pragma Informatika",
-                "code" => 1001,
-                "phone" => "08119050707",
-                "email" => "zacky@pragmainf.id",
-                "address" => "Komplek bumi panyawangan Jl. Garcinia I No. 34",
-                "website" => "pragmainf.id",
-                "city_id" => 3204
-            ],
-            [ 
-                "parent_id" => 1,
-                "level" => "bod",
-                "type" => null,
-                "name" => "Direktur utama",
-                "code" => 2001,
-                "phone" => "08119050707",
-                "email" => null,
-                "address" => "Komplek bumi panyawangan Jl. Garcinia I No. 34",
-                "website" => null,
-                "city_id" => null
-            ],
-            [ 
-                "parent_id" => 2,
-                "level" => "bod",
-                "type" => null,
-                "name" => "Direktur keuangan",
-                "code" => 2002,
-                "phone" => "08119050707",
-                "email" => null,
-                "address" => "Komplek bumi panyawangan Jl. Garcinia I No. 34",
-                "website" => null,
-                "city_id" => null
-            ],
-            [ 
-                "parent_id" => 3,
-                "level" => "division",
-                "type" => null,
-                "name" => "Divisi produksi",
-                "code" => 4001,
-                "phone" => "08119050707",
-                "email" => null,
-                "address" => "Komplek bumi panyawangan Jl. Garcinia I No. 34",
-                "website" => null,
-                "city_id" => null
-            ],
-            [ 
-                "parent_id" => 3,
-                "level" => "division",
-                "type" => null,
-                "name" => "Divisi pemeliharaan",
-                "code" => 4002,
-                "phone" => "08119050707",
-                "email" => null,
-                "address" => "Komplek bumi panyawangan Jl. Garcinia I No. 34",
-                "website" => null,
-                "city_id" => null
-            ],
-            [ 
-                "parent_id" => 3,
-                "level" => "division",
-                "type" => null,
-                "name" => "Divisi human capital",
-                "code" => 4003,
-                "phone" => "08119050707",
-                "email" => null,
-                "address" => "Komplek bumi panyawangan Jl. Garcinia I No. 34",
-                "website" => null,
-                "city_id" => null
-            ],
-            [ 
-                "parent_id" => 5,
-                "level" => "department",
-                "type" => null,
-                "name" => "Departemen pemeliharaan alat berat",
-                "code" => 5001,
-                "phone" => null,
-                "email" => null,
-                "address" => null,
-                "website" => null,
-                "city_id" => null
-            ],
-            [ 
-                "parent_id" => 5,
-                "level" => "department",
-                "type" => null,
-                "name" => "Departemen pemeliharaan mesin",
-                "code" => 5002,
-                "phone" => null,
-                "email" => null,
-                "address" => null,
-                "website" => null,
-                "city_id" => null
-            ],
-            [ 
-                "parent_id" => 6,
-                "level" => "department",
-                "type" => null,
-                "name" => "Departemen training",
-                "code" => 5003,
-                "phone" => null,
-                "email" => null,
-                "address" => null,
-                "website" => null,
-                "city_id" => null
-            ],
-            [ 
-                "parent_id" => 6,
-                "level" => "department",
-                "type" => null,
-                "name" => "Departemen administrasi SDM",
-                "code" => 5004,
-                "phone" => null,
-                "email" => null,
-                "address" => null,
-                "website" => null,
-                "city_id" => null
-            ]
+                [ 
+                    "parent_id" => null,
+                    "level" => "root",
+                    "type" => null,
+                    "name" => "PT. Pragma Informatika",
+                    "code" => 1001,
+                    "phone" => "0811 9050 707",
+                    "address" => "Komplek Bumi Panyawangan Jl. Garcinia I No. 34 Ds. Cimekar Kec. Cileunyi",
+                    "province" => "JAWA BARAT",
+                    "city" => "KAB. BANDUNG",
+                    "website" => "https://pragmainf.id",
+                    "email" => "zacky.pragma@gmail.com"
+                ],
+
+            // Level BOD
+                [ 
+                    "parent_id" => 1,
+                    "level" => "bod",
+                    "type" => null,
+                    "name" => "Direktur Utama",
+                    "code" => 2001,
+                    "phone" => "0811 9050 707",
+                    "address" => "Komplek Bumi Panyawangan Jl. Garcinia I No. 34 Ds. Cimekar Kec. Cileunyi",
+                    "province" => "JAWA BARAT",
+                    "city" => "KAB. BANDUNG",
+                    "website" => null,
+                    "email" => null
+                ],
+                [ 
+                    "parent_id" => 1,
+                    "level" => "bod",
+                    "type" => null,
+                    "name" => "Direktur",
+                    "code" => 2002,
+                    "phone" => "0811 9050 707",
+                    "address" => "Komplek Bumi Panyawangan Jl. Garcinia I No. 34 Ds. Cimekar Kec. Cileunyi",
+                    "province" => "JAWA BARAT",
+                    "city" => "KAB. BANDUNG",
+                    "website" => null,
+                    "email" => null
+                ],
+
+                // Level Unit
+                [ 
+                    "parent_id" => null,
+                    "level" => "unit",
+                    "type" => null,
+                    "name" => "Inkaba",
+                    "code" => 4008,
+                    "phone" => null,
+                    "address" => null,
+                    "province" => null,
+                    "city" => null,
+                    "website" => null,
+                    "email" => null
+                ],
+                [ 
+                    "parent_id" => null,
+                    "level" => "unit",
+                    "type" => null,
+                    "name" => "Saripetojo Bandung",
+                    "code" => 4009,
+                    "phone" => null,
+                    "address" => null,
+                    "province" => null,
+                    "city" => null,
+                    "website" => null,
+                    "email" => null
+                ],
+                [ 
+                    "parent_id" => null,
+                    "level" => "unit",
+                    "type" => null,
+                    "name" => "Saripetojo Sukabumi",
+                    "code" => 4010,
+                    "phone" => null,
+                    "address" => null,
+                    "province" => null,
+                    "city" => null,
+                    "website" => null,
+                    "email" => null
+                ],
+                [ 
+                    "parent_id" => null,
+                    "level" => "unit",
+                    "type" => null,
+                    "name" => "Saripetojo Cirebon",
+                    "code" => 4011,
+                    "phone" => null,
+                    "address" => null,
+                    "province" => null,
+                    "city" => null,
+                    "website" => null,
+                    "email" => null
+                ],
+                [ 
+                    "parent_id" => null,
+                    "level" => "unit",
+                    "type" => null,
+                    "name" => "BMC",
+                    "code" => 4012,
+                    "phone" => null,
+                    "address" => null,
+                    "province" => null,
+                    "city" => null,
+                    "website" => null,
+                    "email" => null
+                ],
+                [ 
+                    "parent_id" => null,
+                    "level" => "unit",
+                    "type" => null,
+                    "name" => "AMDK",
+                    "code" => 4013,
+                    "phone" => null,
+                    "address" => null,
+                    "province" => null,
+                    "city" => null,
+                    "website" => null,
+                    "email" => null
+                ],
+
+                // Level Divisi
+                [ 
+                    "parent_id" => 3,
+                    "level" => "division",
+                    "type" => null,
+                    "name" => "Divisi Sales",
+                    "code" => 4001,
+                    "phone" => "0811 9050 707",
+                    "address" => "Komplek Bumi Panyawangan Jl. Garcinia I No. 34 Ds. Cimekar Kec. Cileunyi",
+                    "province" => "JAWA BARAT",
+                    "city" => "KAB. BANDUNG",
+                    "website" => null,
+                    "email" => null
+                ],
+
+                // Level Departemen
+                [ 
+                    "parent_id" => 10,
+                    "level" => "department",
+                    "type" => null,
+                    "name" => "Departemen sales 1",
+                    "code" => 5001,
+                    "phone" => null,
+                    "address" => null,
+                    "province" => null,
+                    "city" => null,
+                    "website" => null,
+                    "email" => null
+                ],
+                [ 
+                    "parent_id" => 10,
+                    "level" => "department",
+                    "type" => null,
+                    "name" => "Departemen sales 2",
+                    "code" => 5002,
+                    "phone" => null,
+                    "address" => null,
+                    "province" => null,
+                    "city" => null,
+                    "website" => null,
+                    "email" => null
+                ]
         ];
 
         // $this->command->getOutput()->progressStart($this->countActions($structs));
@@ -146,20 +190,16 @@ class StructSeeder extends Seeder
         foreach ($structs as $val) {
             // $this->command->getOutput()->progressAdvance();
             $struct = Struct::firstOrNew(['code' => $val['code']]);
-            $struct->parent_id   = $val['parent_id'];
-            $struct->city_id   = $val['city_id'];
             $struct->level   = $val['level'];
+            $struct->parent_id = $val['parent_id'];
             $struct->name    = $val['name'];
             $struct->type    = $val['type'] ?? null;
             $struct->phone   = $val['phone'] ?? null;
             $struct->address = $val['address'] ?? null;
+            $struct->city    = $val['city'] ?? null;
+            $struct->province = $val['province'] ?? null;
             $struct->website = $val['website'] ?? null;
-            $struct->email = $val['email'] ?? null;
-            if (!empty($val['parent_code'])) {
-                if ($parent = Struct::where('code', $val['parent_code'])->first()) {
-                    $struct->parent_id = $parent->id;
-                }
-            }
+            $struct->email   = $val['email'] ?? null;
             $struct->save();
         }
     }

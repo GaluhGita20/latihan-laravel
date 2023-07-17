@@ -9,7 +9,7 @@ class MenuFlowSeeder extends Seeder
 {
     public function run()
     {
-        $data = [
+        // $data = [
             // // Example
             // [
             //     'module'   => 'example',
@@ -20,52 +20,52 @@ class MenuFlowSeeder extends Seeder
             //     ]
             // ],
             // PURCHASING
-            [
-                'module'   => 'purchasing',
-                'submenu'=> [
-                    [
-                        'module'   => 'purchasing.purchase-order',
-                        'name'      => 'Purchasing/Purchase Order',
-                    ],
-                    [
-                        'module'   => 'purchasing.good-receipt',
-                        'name'      => 'Purchasing/Good Receipt',
-                    ],
-                ]
-            ],
+        //     [
+        //         'module'   => 'purchasing',
+        //         'submenu'=> [
+        //             [
+        //                 'module'   => 'purchasing.purchase-order',
+        //                 'name'      => 'Purchasing/Purchase Order',
+        //             ],
+        //             [
+        //                 'module'   => 'purchasing.good-receipt',
+        //                 'name'      => 'Purchasing/Good Receipt',
+        //             ],
+        //         ]
+        //     ],
 
-            // Rencana Pemeliharaan
-            [
-                'module'   => 'rencana-pemeliharaan',
-                'submenu'=> [
-                    [
-                        'module'   => 'rencana-pemeliharaan.jadwal',
-                    ],
-                    [
-                        'module'   => 'rencana-pemeliharaan.biaya',
-                    ],
-            //         [
-            //             'module'   => 'maintain.biaya',
-            //         ],
-                ]
-            ],
+        //     // Rencana Pemeliharaan
+        //     [
+        //         'module'   => 'rencana-pemeliharaan',
+        //         'submenu'=> [
+        //             [
+        //                 'module'   => 'rencana-pemeliharaan.jadwal',
+        //             ],
+        //             [
+        //                 'module'   => 'rencana-pemeliharaan.biaya',
+        //             ],
+        //     //         [
+        //     //             'module'   => 'maintain.biaya',
+        //     //         ],
+        //         ]
+        //     ],
 
-            // Work Manage
-            [
-                'module'   => 'work-manage',
-                'submenu'=> [
-                    [
-                        'module'   => 'work-manage.work-req',
-                    ],
-                    [
-                        'module'   => 'work-manage.work-order',
-                    ],
-                ]
-            ],
-        ];
+        //     // Work Manage
+        //     [
+        //         'module'   => 'work-manage',
+        //         'submenu'=> [
+        //             [
+        //                 'module'   => 'work-manage.work-req',
+        //             ],
+        //             [
+        //                 'module'   => 'work-manage.work-order',
+        //             ],
+        //         ]
+        //     ],
+        // ];
 
         // $this->command->getOutput()->progressStart($this->countActions($data));
-        $this->generate($data);
+        // $this->generate($data);
         // $this->command->getOutput()->progressFinish();
     }
 
